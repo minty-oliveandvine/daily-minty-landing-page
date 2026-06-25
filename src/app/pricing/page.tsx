@@ -20,7 +20,7 @@ export default function PricingPage() {
   );
 }
 
-{/* 
+{/* ggg
 'use client';
 
 import { useState } from 'react';
