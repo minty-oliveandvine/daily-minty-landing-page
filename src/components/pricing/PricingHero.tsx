@@ -24,11 +24,12 @@ export default function PricingHero() {
             justify-center 
             md:justify-end 
             lg:absolute 
-            lg:right-40        
-            lg:bottom-[-120px] 
+            lg:right-20        
+            lg:bottom-[-160px] 
             max-w-[200px]      
             md:max-w-[280px]   
-            lg:w-[700px]
+            lg:w-[400px]
+            lg:max-w-[720px]
             ">
             <Image
                 src="/assets/deployed-assets/minty-hero-cat.png"

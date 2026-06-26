@@ -26,14 +26,14 @@ export const navLinks: NavLink[] = [
     enabled: true,
     children: [
       // { label: 'Support / FAQ', href: '/resources/support', enabled: true },
-      { label: 'Support / FAQ', href: '/faq/', enabled: true },
-      { label: 'Contact',       href: '/contact/', enabled: true },
+      { label: 'Support / FAQ', href: '/resources/support', enabled: true },
+      { label: 'Contact',       href: '/resources/contact/', enabled: true },
     ],
   },
   {
     key: 'get-started',
     label: 'Get Started with Minty',
-    href: '/getstarted',
+    href: '/get-started',
     variant: 'primary',
     enabled: true,
   },

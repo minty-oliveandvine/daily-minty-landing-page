@@ -9,15 +9,16 @@ import { Clock } from 'lucide-react';
 
 export default function GuidesSection() {
   const { guides } = getStartedContent;
-  
+
   // Track which guide is currently being viewed/played
   const [activeGuideId, setActiveGuideId] = useState<number | null>(null);
+  const [displayCount, setDisplayCount] = useState(4);
 
   // Find active guide data if one is selected
   const activeGuide = guides.items.find((item) => item.id === activeGuideId);
 
   return (
-    <section className="bg-white py-16 font-sans" id="guide">
+    <section className="bg-white py-10 mb-20 font-sans" id="guide">
       <Container>
         <div className="text-left mb-10">
           <h2 className="text-[#113B4A] text-[28px] md:text-[32px] font-extrabold tracking-tight mb-2">
@@ -71,8 +72,9 @@ export default function GuidesSection() {
 
           </div>
         ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 animate-fadeIn">
-            {guides.items.map((guide) => (
+          <>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 animate-fadeIn">
+              {guides.items.slice(0, displayCount).map((guide) => (
               <div 
                 key={guide.id}
                 className="bg-white border border-gray-100 rounded-2xl p-6 md:p-8 shadow-[0_4px_20px_rgba(0,0,0,0.02)] flex flex-col transition-all duration-200 hover:shadow-[0_8px_30px_rgba(0,0,0,0.04)]"
@@ -119,7 +121,6 @@ export default function GuidesSection() {
                     </span>
                   )}
 
-                  {/* Centered Play Button Overlay */}
                   <div className="absolute inset-0 bg-black/5 flex items-center justify-center transition-colors group-hover:bg-black/10">
                     <div className="w-14 h-14 bg-white/90 rounded-full flex items-center justify-center shadow-md backdrop-blur-xs transform transition-transform group-hover:scale-110">
                       <span className="text-[#113B4A] text-xl ml-1">▶</span>
@@ -128,8 +129,20 @@ export default function GuidesSection() {
                 </div>
 
               </div>
-            ))}
-          </div>
+              ))}
+            </div>
+
+            {displayCount < guides.items.length && (
+              <div className="flex justify-center mt-12">
+                <button
+                  onClick={() => setDisplayCount(displayCount + 4)}
+                  className="bg-white border border-gray-200 text-[#113B4A] hover:bg-gray-50 font-bold px-6 py-2.5 rounded-full text-[13px] transition-all duration-200 shadow-xs"
+                >
+                  Show more guides
+                </button>
+              </div>
+            )}
+          </>
         )}
       </Container>
     </section>

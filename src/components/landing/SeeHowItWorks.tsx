@@ -8,7 +8,7 @@ export default function SeeHowItWorksSection() {
   const { seeHowItWorks } = landingContent;
 
   return (
-    <section className="bg-[#00CBB0] pt-20 pb-20 text-center flex flex-col items-center">
+    <section id="see-how-it-works" className="bg-[#00CBB0] pt-20 pb-20 text-center flex flex-col items-center">
       <Container className="flex flex-col items-center mb-0">
         
         <h2 className="text-[32px] md:text-[40px] font-extrabold text-white mb-6 tracking-tight">
@@ -21,21 +21,18 @@ export default function SeeHowItWorksSection() {
           {seeHowItWorks.buttonText}
         </Button>
 
-        <div className="w-full max-w-[600px] aspect-[1.7/1] bg-white rounded-[32px] shadow-[0_10px_30px_rgba(0,0,0,0.06)] overflow-hidden">
-            <video 
-            className="w-full h-full object-cover" 
-            autoPlay 
-            muted 
-            loop 
+        <div className="w-full max-w-[600px] aspect-[1.7/1] rounded-[32px] overflow-hidden">
+            <video
+            className="w-full h-full object-contain"
+            autoPlay
+            muted
+            loop
             playsInline
             >
             <source src={`/${seeHowItWorks.image}`} type="video/mp4" />
             Your browser does not support the video tag.
             </video>
         </div>
-        
-    
-
       </Container>
     </section>
   );

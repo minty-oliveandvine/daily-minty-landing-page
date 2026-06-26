@@ -2,9 +2,9 @@
 
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
-import PricingHero from '@/components/pricing-components/PricingHero';
-import PricingGrid from '@/components/pricing-components/PricingGrid';
-import PricingFAQSupport from '@/components/pricing-components/PricingFaq';
+import PricingHero from '@/components/pricing/PricingHero';
+import PricingGrid from '@/components/pricing/PricingGrid';
+import PricingFAQSupport from '@/components/pricing/PricingFaq';
 
 export default function PricingPage() {
   return (

@@ -112,7 +112,7 @@ faqSection: {
       items: [
         { id: 1, question: "I didn’t finish today’s closing. Is that okay?" },
         { id: 2, question: "Do the numbers need to be exact?" },
-        { id: 3, question: "What if Minty and Xero show different numbers?" },
+        { id: 3, question: "What if numbers don’t match exactly?" },
         { id: 4, question: "What if I don’t have a receipt?" },
         { id: 5, question: "Is Minty monitoring or controlling my shop?" }
       ]
@@ -124,7 +124,7 @@ faqSection: {
         title: "Contact support",
         description: "Contact Olive and Vine Consulting for more information, personalised help, or to book an hour with a specialist.",
         linkText: "Send a message",
-        href: "/contact"
+        href: "/resources/contact"
       },
       {
         type: "videos",

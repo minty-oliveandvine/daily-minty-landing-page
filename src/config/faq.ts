@@ -11,7 +11,6 @@ export type FaqBlock =
   | { type: 'ol'; items: string[] }
   | { type: 'permissions-table' };
 
-
 export interface FaqItem {
   id: string;
   category: 'beginner' | 'intermediate' | 'accountant';
@@ -173,5 +172,19 @@ export const landingFaq: FaqItem[] = [
     body: [
       { type: 'p-strong', text: "Yes. System compliance data downloads cleanly into standardized CSV/XLS format matrices built for direct general ledger injection maps." }
     ]
-  }
+  },
+
+  {
+    id: 'user-permissions',
+    category: 'accountant',
+    question: "Why do different users see different things in Minty?",
+    wide: true,
+    body: [
+      {
+        type: 'p',
+        text: "A Minty user role-based permissions so each user sees only what they need. This prevents mistakes and reduces confusion."
+      },
+      { type: 'permissions-table' }
+    ]
+  },
 ];
