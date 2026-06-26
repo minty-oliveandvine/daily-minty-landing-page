@@ -3,7 +3,50 @@
 import { useState } from 'react';
 import { cn } from '@/lib/utils';
 import type { FaqItem, FaqBlock } from '@/config/faq';
-//import PermissionsTable from './PermissionsTable';
+
+function PermissionsTable() {
+  const roles = ['CASHIER', 'SHOP MANAGER', 'ACCOUNTANT', 'ADMIN'];
+  const permissions = [
+    { name: 'Prepare daily report', roles: { CASHIER: true, 'SHOP MANAGER': true, ACCOUNTANT: true, ADMIN: true } },
+    { name: 'View daily report you created', roles: { CASHIER: true, 'SHOP MANAGER': true, ACCOUNTANT: true, ADMIN: true } },
+    { name: 'View daily report of the whole shop', roles: { CASHIER: false, 'SHOP MANAGER': true, ACCOUNTANT: true, ADMIN: true } },
+    { name: 'Sales method setting', roles: { CASHIER: false, 'SHOP MANAGER': false, ACCOUNTANT: true, ADMIN: true } },
+    { name: 'Expense code setting', roles: { CASHIER: false, 'SHOP MANAGER': false, ACCOUNTANT: true, ADMIN: true } },
+    { name: 'Publish to Xero', roles: { CASHIER: false, 'SHOP MANAGER': false, ACCOUNTANT: true, ADMIN: true } },
+    { name: 'Connect & disconnect to Xero', roles: { CASHIER: false, 'SHOP MANAGER': false, ACCOUNTANT: false, ADMIN: true } },
+  ];
+
+  return (
+    <div className="mt-4 overflow-x-auto border border-gray-200 rounded-lg">
+      <table className="w-full text-sm">
+        <thead className="bg-gray-50 border-b border-gray-200">
+          <tr>
+            <th className="px-4 py-3 text-left font-bold text-ink">PERMISSION</th>
+            {roles.map((role) => (
+              <th key={role} className="px-4 py-3 text-center font-bold text-ink text-xs uppercase tracking-wider">{role}</th>
+            ))}
+          </tr>
+        </thead>
+        <tbody>
+          {permissions.map((perm, idx) => (
+            <tr key={idx} className={idx % 2 === 0 ? 'bg-gray-50' : 'bg-white'}>
+              <td className="px-4 py-3 font-medium text-ink">{perm.name}</td>
+              {roles.map((role) => (
+                <td key={role} className="px-4 py-3 text-center">
+                  {perm.roles[role as keyof typeof perm.roles] ? (
+                    <span className="text-teal-deep text-xl">✓</span>
+                  ) : (
+                    <span className="text-gray-300 text-xl">○</span>
+                  )}
+                </td>
+              ))}
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  );
+}
 
 export default function FaqAccordion({ items }: { items: FaqItem[] }) {
   const [openId, setOpenId] = useState<string | null>(null);
@@ -84,8 +127,8 @@ function renderBlocks(blocks: FaqBlock[]) {
             {block.items.map((it, i) => <li key={i} className="mb-2">{it}</li>)}
           </ol>
         );
-      // case 'permissions-table':
-      //   return <PermissionsTable key={idx} />;
+      case 'permissions-table':
+        return <PermissionsTable key={idx} />;
     }
   });
 }

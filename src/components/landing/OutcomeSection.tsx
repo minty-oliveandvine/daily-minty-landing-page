@@ -10,7 +10,6 @@ const iconMap: { [key: string]: LucideIcon } = {
 
 export default function OutcomeSection() {
   const { outcome } = landingContent;
-
   const cardThemeStyles = [
     {
       bgClass: "bg-[#00cbb2]", 
@@ -25,7 +24,6 @@ export default function OutcomeSection() {
   return (
     <section className="bg-[#dcf3ec] py-20" aria-labelledby="outcome-title">
       <Container className="max-w-5xl mx-auto">
-        
         {/* Section Header */}
         <div className="flex flex-col items-center text-center mb-12">
           <span className="bg-[#bfeae0] text-[#00a896] text-xs font-bold tracking-wider px-4 py-1.5 rounded-full uppercase mb-4">
@@ -35,17 +33,14 @@ export default function OutcomeSection() {
             <h2 id="outcome-title" className="text-[20px] md:text-[24px] font-extrabold text-[#1a202c] leading-tight">
               {outcome.title}{' '}
               <span className="text-[#00cbb2]">{outcome.titleAccent}</span>{' '}
-              again.
             </h2>
           </div>
         </div>
-
         {/* Cards Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 px-4">
           {outcome.cards.map((card, index) => {
             const theme = cardThemeStyles[index] || cardThemeStyles[0];
             const IconComponent = iconMap[card.icon];
-
             return (
               <div
                 key={card.key}

@@ -3,7 +3,7 @@ import Image from 'next/image';
 export default function ContactHero() {
   return (
     <section className="relative pt-10 pb-16 text-center px-4 overflow-hidden bg-[#FAF6F0]">
-        <div className="inline-flex items-center gap-2 bg-white text-[#00CBB0] px-4 py-1 rounded-full text-[11px] font-bold uppercase tracking-widest mb-6 border border-[#00CBB0]/10 shadow-sm">
+        <div className="inline-flex items-center gap-2 bg-[#d6efe8] text-[#00CBB0] px-4 py-1 rounded-full text-[11px] font-bold uppercase tracking-widest mb-6 border border-[#00CBB0]/10 shadow-sm">
             <span className="w-1.5 h-1.5 rounded-full bg-[#00CBB0]" />
             {"We're here to help"}
         </div>

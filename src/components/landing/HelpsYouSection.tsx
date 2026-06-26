@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import Container from '@/components/ui/Container';
 import { landingContent } from '@/config/landing';
-import { CheckCircle, RefreshCw, CreditCard, LucideIcon } from 'lucide-react';
+import { CheckCircle, RefreshCw, CreditCard, LucideIcon, Leaf } from 'lucide-react';
 
 const iconMap: { [key: string]: LucideIcon } = {
   CheckCircle: CheckCircle,
@@ -10,34 +10,39 @@ const iconMap: { [key: string]: LucideIcon } = {
 };
 
 export default function HelpsYouSection() {
-  const { helpsYou } = landingContent;
+  const { helpsYou, demo } = landingContent;
   return (
-    <section className="bg-[#EBF7F4] py-20" aria-labelledby="helps-title">
+    <section className="bg-mint-soft py-10" aria-labelledby="helps-title">
       <Container>
-        <div className="text-center mb-16 flex flex-col items-center justify-center">
-          <span className="text-[32px] font-extrabold text-[#113B4A] tracking-tight">
-            {helpsYou.title}
-          </span>
+        {/* Title with leaf icon */}
+        <div className="text-center mb-20 flex flex-col items-center justify-center">
+          <div className="flex items-center gap-3 mb-2">
+            <Leaf className="w-8 h-8 text-teal-deep" />
+            <h2 id="helps-title" className="text-[42px] md:text-[48px] font-extrabold text-ink tracking-tight">
+              {helpsYou.title}
+            </h2>
+          </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+        {/* Cards Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
           {helpsYou.cards.map((card, index) => {
             const IconComponent = iconMap[card.icon];
 
             return (
               <article
                 key={index}
-                className="bg-white rounded-[20px] p-8 text-center flex flex-col items-center justify-center min-h-[200px] shadow-sm"
+                className="bg-white rounded-3xl p-10 text-center flex flex-col items-center justify-start shadow-minty-sm hover:shadow-minty-md transition-shadow duration-200"
               >
-                <div className="w-14 h-14 flex items-center justify-center mb-5 bg-[#EBF7F4] rounded-full text-[#00A884]">
-                  {IconComponent && <IconComponent className="w-6 h-6" />}
+                <div className="w-16 h-16 flex items-center justify-center bg-mint rounded-full text-teal-deep mb-5">
+                  {IconComponent && <IconComponent className="w-8 h-8" />}
                 </div>
-                
-                <p className="text-[16px] text-[#4A5E65] leading-relaxed font-medium px-2">
+
+                <p className="text-[16px] text-ink-soft leading-relaxed font-medium">
                   {card.body.includes('Xero') ? (
                     <>
                       Trust your daily numbers and sync them directly to{' '}
-                      <span className="text-[#00A884] font-bold">Xero.</span>
+                      <span className="text-teal-deep font-bold">Xero.</span>
                     </>
                   ) : (
                     card.body

@@ -16,8 +16,8 @@ export const footerLinks: FooterLink[] = [
   {
     key: 'resources', label: 'Resources', href: '#', style: 'text', enabled: true,
     children: [
-      { key: 'support-faq', label: 'Support / FAQ', href: '/faq', enabled: true },
-      { key: 'contact',     label: 'Contact',       href: '/contact', enabled: true },
+      { key: 'support-faq', label: 'Support / FAQ', href: '/resources/support', enabled: true },
+      { key: 'contact',     label: 'Contact',       href: '/resources/contact', enabled: true },
     ],
   },
   {
