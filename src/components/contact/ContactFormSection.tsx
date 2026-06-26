@@ -40,7 +40,7 @@ export default function ContactFormSection() {
           </div>
 
           <div className="flex items-center justify-between pt-2">
-            <p className="text-[13px] text-[#4A7280] max-w-[200px]">By submitting, you agree to our <a href="#" className="text-[#00CBB0] underline">privacy policy</a>. We'll only use your details to reply to you.</p>
+            <p className="text-[13px] text-[#4A7280] max-w-[200px]">By submitting, you agree to our <a href="#" className="text-[#00CBB0] underline">privacy policy</a>. We&apos;ll only use your details to reply to you.</p>
             <button className="bg-[#00CBB0] text-white px-8 py-3.5 rounded-full font-bold text-sm hover:bg-[#00B59D] transition-colors shadow-lg shadow-[#00CBB0]/20">
               Send message →
             </button>
