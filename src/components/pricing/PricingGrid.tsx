@@ -49,6 +49,11 @@ export default function PricingGrid() {
 
   return (
     <section className="max-w-[1200px] mx-auto px-4 mb-16">
+      <div className="flex justify-center mb-12">
+        <span className="bg-white border border-gray-100 text-[#113B4A] text-[13px] font-bold px-6 py-2.5 rounded-full shadow-md tracking-wide">
+          Subscription Types
+        </span>
+      </div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 items-stretch">
         {pricingPlans.map((plan) => {
           const isSelected = selectedPlan === plan.id;
@@ -99,6 +104,10 @@ export default function PricingGrid() {
           );
         })}
       </div>
+
+      <p className="text-center text-gray-400 text-[11px] max-w-[800px] mx-auto mb-16 leading-normal mt-8">
+        *Prices in HKD, billed monthly per shop. Subscribe to one service for HKD 280/mo, or add the second for just HKD 120 more — the Super Minty bundle at HKD 400/mo.
+      </p>
     </section>
   );
 }

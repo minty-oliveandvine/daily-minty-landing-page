@@ -5,8 +5,8 @@ import Link from 'next/link';
 import Container from '@/components/ui/Container';
 import Button from '@/components/ui/Button';
 import { getStartedContent } from '@/config/get-started';
-import Navbar from '@/components/layout/Navbar'; // Import your Navbar
-import Footer from '@/components/layout/Footer'; // Import your Footer
+import Navbar from '@/components/layout/Navbar';
+import Footer from '@/components/layout/Footer';
 import GetStartedHeroSection from '@/components/get-started/Hero-Section';
 import GuidesSection from '@/components/get-started/Guide-Section';
 import GuidesSectionFaq from '@/components/get-started/GetStartedFaq';

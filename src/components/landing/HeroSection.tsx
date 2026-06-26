@@ -24,6 +24,7 @@ export default function HeroSection() {
             </Button>
             <Button href={hero.secondaryCta.href} variant="text">
               {hero.secondaryCta.label}
+              
             </Button>
           </div>
           <span className="inline-flex items-center gap-2 text-[13px] text-ink-muted">

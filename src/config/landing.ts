@@ -5,11 +5,11 @@ export const landingContent = {
     lede: 'No more lost receipts, no more missing numbers.',
     primaryCta: {
       label: 'Get started with Minty',
-      href: '/getstarted',
+      href: '/get-started',
     },
     secondaryCta: {
       label: 'See how it works',
-      href: '#how-it-works',
+      href: '#see-how-it-works',
     },
     trustText: 'Sync directly with Xero',
     imageAlt: 'Daily Minty hero image showing a cat with a laptop and phone',
@@ -111,7 +111,7 @@ demo: {
 seeHowItWorks: {
   title: 'See how Minty works.',
   buttonText: 'Open the demo →',
-  image: 'assets/deployed-assets/minty-mascot-wave.mp4'
+  image: 'assets/deployed-assets/minty-mascot-wave.webm'
   
 }
 };
