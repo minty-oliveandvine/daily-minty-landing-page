@@ -11,23 +11,10 @@ export interface FooterLink {
 }
 
 export const footerLinks: FooterLink[] = [
-  { key: 'home',    label: 'Home',    href: '/',        style: 'text', enabled: true },
-  { key: 'pricing', label: 'Pricing', href: '/pricing', style: 'text', enabled: true },
-  {
-    key: 'resources', label: 'Resources', href: '#', style: 'text', enabled: true,
-    children: [
-      { key: 'support-faq', label: 'Support / FAQ', href: '/resources/support', enabled: true },
-      { key: 'contact',     label: 'Contact',       href: '/resources/contact', enabled: true },
-    ],
-  },
-  {
-    key: 'get-started', label: 'Get started with Minty',
-    href: '/getstarted', style: 'button', enabled: false, // placeholder
-  },
-  {
-    key: 'login', label: 'Log In',
-    href: siteConfig.loginUrl, external: true, style: 'button', enabled: true,
-  },
+  { key: 'privacy', label: 'Privacy', href: '/privacy', style: 'text', enabled: true },
+  { key: 'terms', label: 'Terms', href: '/terms', style: 'text', enabled: true },
+  { key: 'contact', label: 'Contact', href: '/resources/contact', style: 'text', enabled: true },
+  { key: 'instagram', label: 'Instagram', href: 'https://instagram.com', external: true, style: 'text', enabled: true },
 ];
 
 export function getVisibleFooterLinks(): FooterLink[] {

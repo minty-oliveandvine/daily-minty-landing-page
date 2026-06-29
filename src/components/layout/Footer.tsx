@@ -19,8 +19,8 @@ function FooterAnchor({
 
 function FooterMenuItem({ link }: { link: FooterLink }) {
   const hasChildren = !!link.children && link.children.length > 0;
-  const baseTextClass = 'text-ink-muted no-underline text-[13px] font-semibold hover:text-ink transition-colors';
-  const buttonClass = 'inline-flex items-center rounded-full bg-ink text-white text-sm font-semibold px-[18px] py-[10px] hover:bg-[#1a3e4d] transition-colors';
+  const baseTextClass = 'inline-flex items-center text-ink-muted no-underline text-[13px] font-semibold hover:text-ink transition-colors h-full';
+  const buttonClass = 'inline-flex items-center justify-center rounded-full bg-ink text-white text-sm font-semibold px-[18px] py-[8px]';
 
   if (!hasChildren) {
     return (
@@ -35,7 +35,7 @@ function FooterMenuItem({ link }: { link: FooterLink }) {
   }
 
   return (
-    <div className="relative group">
+    <div className="relative group flex items-center h-full">
       <button
         type="button"
         className={cn(baseTextClass, 'inline-flex items-center gap-1.5 bg-transparent border-0 p-0 cursor-pointer font-sans')}
@@ -45,7 +45,7 @@ function FooterMenuItem({ link }: { link: FooterLink }) {
         {link.label}
         <span
           aria-hidden="true"
-          className="inline-block w-[7px] h-[7px] border-r-2 border-b-2 border-current rotate-45 -translate-y-px transition-transform group-hover:rotate-[225deg] group-focus-within:rotate-[225deg]"
+          className="inline-block w-[6px] h-[6px] border-r-2 border-b-2 border-current rotate-45 translate-y-[-1px] transition-transform group-hover:rotate-[225deg] group-focus-within:rotate-[225deg]"
         />
       </button>
       <ul
@@ -84,11 +84,11 @@ export default function Footer() {
   return (
     <footer className="bg-cream py-9 border-t border-ink/[0.06]" aria-labelledby="footer-heading">
       <h2 id="footer-heading" className="sr-only">Footer</h2>
-      <Container className="flex justify-between items-center gap-6 flex-wrap">
+      <Container className="flex justify-between items-center gap-6">
         <div className="flex gap-[18px] items-center text-ink-muted text-[13px]">
           <Link href="/" aria-label="Daily Minty home" className="inline-flex items-center">
             <Image
-              src="/assets/minty-logo.png"
+              src="/assets/deployed-assets/minty-logo-v2.png"
               alt=""
               width={100}
               height={60}
@@ -97,7 +97,7 @@ export default function Footer() {
           </Link>
           <span>© {year} {siteConfig.author.name}</span>
         </div>
-        <nav className="flex gap-3.5 items-center flex-wrap" aria-label="Footer">
+        <nav className="flex gap-3.5 items-center" aria-label="Footer">
           {visibleLinks.map((link) => (
             <FooterMenuItem key={link.key} link={link} />
           ))}
