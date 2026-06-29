@@ -58,11 +58,15 @@ export default function PricingGrid() {
         {pricingPlans.map((plan) => {
           const isSelected = selectedPlan === plan.id;
           return (
-            <div 
+            <div
               key={plan.id}
               onClick={() => setSelectedPlan(plan.id)}
-              className={`bg-white border rounded-[24px] p-8 flex flex-col justify-between transition-all duration-200 cursor-pointer relative ${
-                isSelected ? 'border-[#00CBB0] shadow-[0_12px_36px_rgba(0,203,176,0.08)] scale-[1.01]' : 'border-gray-200/70 shadow-sm hover:border-gray-300'
+              className={`border rounded-[24px] p-8 flex flex-col justify-between transition-all duration-200 cursor-pointer relative ${
+                isSelected && plan.id === 'super-minty'
+                  ? 'bg-[#01d0c1] border-[#01d0c1] shadow-[0_12px_36px_rgba(1,208,193,0.2)] scale-[1.01] text-white'
+                  : isSelected && (plan.id === 'petty-cash' || plan.id === 'bill-payment')
+                  ? 'bg-white border-gray-300 shadow-md'
+                  : 'bg-[#f4f6fc] border-gray-200/70 shadow-sm hover:border-gray-300'
               }`}
             >
               <div>
@@ -71,11 +75,11 @@ export default function PricingGrid() {
                 </div>
                 
                 <div className="flex gap-2 items-center mb-3">
-                  <h2 className="text-[#113B4A] text-2xl font-extrabold">{plan.title}</h2>
-                  {plan.badgeText && <span className="text-[10px] font-bold px-2.5 py-0.5 rounded-full bg-[#E5ECF0] text-[#4A7280] uppercase tracking-wide">{plan.badgeText}</span>}
+                  <h2 className={`text-2xl font-extrabold ${isSelected && plan.id === 'super-minty' ? 'text-white' : 'text-[#113B4A]'}`}>{plan.title}</h2>
+                  {plan.badgeText && <span className={`text-[10px] font-bold px-2.5 py-0.5 rounded-full uppercase tracking-wide ${isSelected && plan.id === 'super-minty' ? 'bg-white/20 text-white' : 'bg-[#E5ECF0] text-[#4A7280]'}`}>{plan.badgeText}</span>}
                 </div>
 
-                <p className="text-gray-500 text-xs leading-relaxed mb-8">{plan.description}</p>
+                <p className={`text-xs leading-relaxed mb-8 ${isSelected && plan.id === 'super-minty' ? 'text-white/80' : 'text-gray-500'}`}>{plan.description}</p>
 
                 <div className="flex items-center gap-3 mb-1.5">
                   <span className="text-gray-400 font-bold text-2xl relative">
@@ -88,7 +92,7 @@ export default function PricingGrid() {
                 <p className="text-gray-400 text-[11px] whitespace-pre-line mb-3">{plan.subText}</p>
                 <p className="text-[#113B4A] text-[11px] font-medium bg-[#F5F8F9] p-3 rounded-xl mb-6">{plan.trialText}</p>
 
-                <Button className={`w-full py-3 rounded-xl font-bold text-sm mb-8 ${isSelected ? 'bg-[#113B4A] text-white' : 'bg-[#ECF2F5] text-[#113B4A]'}`}>
+                <Button href='https://www.minty.oliveandvinehk.com/' className={`w-full py-3 rounded-xl font-bold text-sm mb-8 ${isSelected ? 'bg-[#113B4A] text-white' : 'bg-[#ECF2F5] text-[#113B4A]'}`}>
                   Try for free
                 </Button>
 
