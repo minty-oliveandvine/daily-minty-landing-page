@@ -121,7 +121,9 @@ export default function FAQCategories({ openId }: { openId?: string | null }) {
               <div className={`w-8 h-8 rounded-md flex items-center justify-center shrink-0 font-bold text-lg ${
                 openIndex === index ? 'bg-[#00CBB0] text-white' : 'bg-[#00CBB0] text-white'
               }`}>
-                {openIndex === index ? '−' : '+'}
+                <span className="transform -translate-y-[2px] select-none">
+                  {openIndex === index ? '−' : '+'}
+                </span>
               </div>
             </div>
             {openIndex === index && (
