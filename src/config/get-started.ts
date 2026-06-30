@@ -63,7 +63,7 @@ export const getStartedContent = {
       title: "4. Introducing Petty Cash Module",
       description: '"What can you do with Petty Cash Module?"',
       badge: "",
-      videoThumbnail: "/assets/deployed-assets/guide-thumb-4.png"
+      videoThumbnail: "/assets/deployed-assets/guide-thumb-4.png",
     },
     {
       id: 5,
@@ -90,7 +90,8 @@ export const getStartedContent = {
       title: "7. Introducing Payment Module",
       description: '"How should I manage bills and payables?"',
       badge: "B",
-      videoThumbnail: "/assets/deployed-assets/guide-thumb-7.png"
+      videoThumbnail: "/assets/deployed-assets/guide-thumb-7.png",
+      videoUrl: "https://www.youtube.com/watch?v=fucuzlKQwDU"
     },
     {
       id: 8,

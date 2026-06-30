@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import Image from 'next/image';
 import Container from '@/components/ui/Container';
 import { getStartedContent } from '@/config/get-started';
@@ -13,9 +13,19 @@ export default function GuidesSection() {
   // Track which guide is currently being viewed/played
   const [activeGuideId, setActiveGuideId] = useState<number | null>(null);
   const [displayCount, setDisplayCount] = useState(4);
+  const videoContainerRef = useRef<HTMLDivElement>(null);
 
   // Find active guide data if one is selected
   const activeGuide = guides.items.find((item) => item.id === activeGuideId);
+
+  // Scroll to video player when a guide is selected
+  useEffect(() => {
+    if (activeGuideId && videoContainerRef.current) {
+      setTimeout(() => {
+        videoContainerRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }, 100);
+    }
+  }, [activeGuideId]);
 
   return (
     <section className="bg-white py-10 mb-20 font-sans" id="guide">
@@ -30,7 +40,7 @@ export default function GuidesSection() {
         </div>
 
         {activeGuide ? (
-          <div className="bg-white border border-gray-100 rounded-3xl p-6 md:p-8 shadow-[0_4px_24px_rgba(17,59,74,0.02)] animate-fadeIn">
+          <div ref={videoContainerRef} className="bg-white border border-gray-100 rounded-3xl p-6 md:p-8 shadow-[0_4px_24px_rgba(17,59,74,0.02)] animate-fadeIn">
             <div className="flex justify-between items-center mb-4">
               <span className={cn(
                 "text-xs font-bold px-3 py-1 rounded-full",
@@ -64,10 +74,34 @@ export default function GuidesSection() {
             </p>
 
             {/* Embedded Screen / Video Sandbox Player Element */}
-            <div className="relative aspect-[16/9] w-full rounded-2xl overflow-hidden bg-[#EDF3F1] border border-emerald-50/50 flex flex-col items-center justify-center shadow-inner">
-              <div className="flex items-center gap-2 text-gray-400 text-[14px] font-semibold tracking-wide selection:bg-transparent">
-                <span className="text-[11px] opacity-80">▶</span> Tutorial video coming soon
-              </div>
+            <div className="relative aspect-[16/9] w-full rounded-2xl overflow-hidden bg-[#EDF3F1] border border-emerald-50/50 shadow-inner">
+              {activeGuide.videoUrl ? (
+                (() => {
+                  // Extract video ID from YouTube URL and convert to embed format
+                  let embedUrl = activeGuide.videoUrl;
+                  if (activeGuide.videoUrl.includes('watch?v=')) {
+                    const videoId = activeGuide.videoUrl.split('watch?v=')[1];
+                    embedUrl = `https://www.youtube.com/embed/${videoId}`;
+                  }
+                  return (
+                    <iframe
+                      width="100%"
+                      height="100%"
+                      src={embedUrl}
+                      title={activeGuide.title}
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      allowFullScreen
+                      className="w-full h-full border-0"
+                    />
+                  );
+                })()
+              ) : (
+                <div className="flex flex-col items-center justify-center h-full">
+                  <div className="flex items-center gap-2 text-gray-400 text-[14px] font-semibold tracking-wide selection:bg-transparent">
+                    <span className="text-[11px] opacity-80">▶</span> Tutorial video coming soon
+                  </div>
+                </div>
+              )}
             </div>
 
           </div>

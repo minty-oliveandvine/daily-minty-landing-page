@@ -19,7 +19,7 @@ const pricingPlans = [
   },
   {
     id: 'bill-payment',
-    title: 'Bill Payment',
+    title: 'Payment',
     description: 'Schedule supplier bills, log payments, and never miss a due date.',
     illustrationSrc: '/assets/deployed-assets/sub-bill-payment.png',
     crossedText: 'HKD 280/mo',

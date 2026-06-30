@@ -105,8 +105,8 @@ helpsYou: {
 demo: {
   badge: 'WATCH HOW IT WORKS',
   title: 'See Minty in action',
-  subtitle: 'A short walkthrough of daily closing, syncing to Xero, and reviewing your shop — all in under two minutes.',
-  videoUrl: 'https://www.youtube.com/embed/your-video-id', // Replace with actual embed URL
+  subtitle: '',
+  videoUrl: 'https://www.youtube.com/embed/LZVNOp6YTzE',
 },
 seeHowItWorks: {
   title: 'See how Minty works.',

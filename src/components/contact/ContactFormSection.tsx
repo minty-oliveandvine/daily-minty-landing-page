@@ -93,7 +93,7 @@ export default function ContactFormSection() {
           <CheckCircle2 className="w-5 h-5 text-[#00CBB0] flex-shrink-0 mt-0.5" />
           <div>
             <p className="text-sm font-bold text-[#113B4A] mb-1">All systems normal</p>
-            <p className="text-xs text-[#4A7280]">No incidents reported in the last 24 hours. <a href="#" className="text-[#00CBB0] font-bold hover:underline">View status page →</a></p>
+            <p className="text-xs text-[#4A7280]">No incidents reported in the last 24 hours. {/*<a href="#" className="text-[#00CBB0] font-bold hover:underline">View status page →</a> */}</p>
           </div>
         </div>
       </div>
