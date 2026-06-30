@@ -68,13 +68,13 @@ export default function PricingGrid() {
               isSuperMintyGreen
                 ? 'bg-[#01d0c1] border-[#01d0c1] shadow-[0_12px_36px_rgba(1,208,193,0.2)] scale-[1.01] text-white'
                 : isSelected && (plan.id === 'petty-cash' || plan.id === 'bill-payment')
-                ? 'bg-white border-gray-300 shadow-md'
+                ? 'bg-white border-gray-300 shadow-md scale-[1.01]'
                 : 'bg-[#f4f6fc] border-gray-200/70 shadow-sm hover:border-gray-300'
             }`}
           >
             <div>
-              <div className="bg-[#F5F8F9] rounded-2xl w-full aspect-[1.75/1] mb-6 flex items-center justify-center overflow-hidden border border-gray-100/50">
-                <Image src={plan.illustrationSrc} alt={plan.title} width={plan.id === 'super-minty' ? 220 : 180} height={110} className="object-contain" />
+              <div className="bg-[#F5F8F9] rounded-2xl w-full aspect-[1.75/1] mb-6 flex items-center justify-center border border-gray-100/50">
+                <Image src={plan.illustrationSrc} alt={plan.title} width={plan.id === 'super-minty' ? 450 : 400} height={220} className="object-contain" />
               </div>
               
               <div className="flex gap-2 items-center mb-3">
