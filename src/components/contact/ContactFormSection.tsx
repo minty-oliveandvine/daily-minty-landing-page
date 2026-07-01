@@ -57,7 +57,7 @@ export default function ContactFormSection() {
             <div className="flex-1">
               <h3 className="font-bold text-[#113B4A] mb-1 text-sm">Email us directly</h3>
               <p className="text-xs text-[#4A7280] leading-relaxed mb-2">Best for non-urgent questions and detailed asks. Replies usually within 4 hours.</p>
-              <a href="mailto:dailyminty.app" className="text-xs font-bold text-[#00CBB0] hover:underline">dailyminty.com →</a>
+              <a href="mailto:hello@dailyminty.com" className="text-xs font-bold text-[#00CBB0] hover:underline">hello@dailyminty.com →</a>
             </div>
           </div>
         </div>
@@ -68,9 +68,9 @@ export default function ContactFormSection() {
               <MessageSquare className="w-5 h-5 text-[#00CBB0]" />
             </div>
             <div className="flex-1">
-              <h3 className="font-bold text-[#113B4A] mb-1 text-sm">Chat in the app</h3>
-              <p className="text-xs text-[#4A7280] leading-relaxed mb-2">Tap the speech bubble in the bottom-right of the dashboard for live chat with our team.</p>
-              <a href="/" className="text-xs font-bold text-[#00CBB0] hover:underline">Open dashboard →</a>
+              <h3 className="font-bold text-[#113B4A] mb-1 text-sm">Whatsapp us</h3>
+              <p className="text-xs text-[#4A7280] leading-relaxed mb-2">Get instant replies during business hours. Chat directly with our team on WhatsApp.</p>
+              <a href="https://wa.me/85260423884" target="_blank" rel="noopener noreferrer" className="text-xs font-bold text-[#00CBB0] hover:underline">Start chat →</a>
             </div>
           </div>
         </div>
@@ -93,7 +93,7 @@ export default function ContactFormSection() {
           <CheckCircle2 className="w-5 h-5 text-[#00CBB0] flex-shrink-0 mt-0.5" />
           <div>
             <p className="text-sm font-bold text-[#113B4A] mb-1">All systems normal</p>
-            <p className="text-xs text-[#4A7280]">No incidents reported in the last 24 hours. <a href="#" className="text-[#00CBB0] font-bold hover:underline">View status page →</a></p>
+            <p className="text-xs text-[#4A7280]">No incidents reported in the last 24 hours. {/*<a href="#" className="text-[#00CBB0] font-bold hover:underline">View status page →</a> */}</p>
           </div>
         </div>
       </div>

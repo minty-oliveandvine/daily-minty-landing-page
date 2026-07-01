@@ -16,7 +16,7 @@ function renderHeadline(headline: string, highlights: readonly string[]) {
 export default function ProblemSection() {
   const { problem } = landingContent;
   return (
-    <section className="bg-peach py-20" aria-labelledby="problem-title">
+    <section className="bg-peach py-10" aria-labelledby="problem-title">
       <Container className="grid grid-cols-1 md:grid-cols-[1.1fr_1fr] gap-12 items-center">
         <div className="aspect-[5/4] flex items-center justify-center">
           <Image

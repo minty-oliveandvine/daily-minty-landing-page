@@ -8,9 +8,13 @@ export default function DemoSection() {
   const { demo } = landingContent;
   const [isPlaying, setIsPlaying] = useState(false);
 
+  // Extract video ID from YouTube embed URL
+  const videoId = demo.videoUrl.split('/embed/')[1];
+  const thumbnailUrl = `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`;
+
   return (
-    <section className="bg-[#EBF7F4] py-20" aria-labelledby="demo-title">
-      <Container className="flex flex-col items-center text-center">
+    <section className="bg-[#EBF7F4] py-10" aria-labelledby="demo-title">
+      <Container className="flex flex-col items-center text-center mb-10">
         
         {/* Top Pill Badge */}
         <div className="inline-flex items-center gap-1.5 bg-[#D2EFE9] text-[#00A884] text-[11px] font-bold tracking-wider uppercase px-4 py-1.5 rounded-full mb-5">
@@ -46,22 +50,14 @@ export default function DemoSection() {
               className="w-full h-full relative block group overflow-hidden"
               aria-label="Play demo video"
             >
-              {/* Background Canvas: Gradient + CSS Diagonal Stripe Pattern */}
-              <div 
-                className="absolute inset-0 bg-gradient-to-tr from-[#BBEADF] via-[#CEF0E8] to-[#E2F7F2] opacity-95 group-hover:opacity-100 transition-opacity duration-200"
+              {/* Background: YouTube Thumbnail with Dark Overlay */}
+              <div
+                className="absolute inset-0 bg-cover bg-center"
                 style={{
-                  backgroundImage: `
-                    repeating-linear-gradient(
-                      -45deg,
-                      transparent,
-                      transparent 10px,
-                      rgba(255, 255, 255, 0.25) 10px,
-                      rgba(255, 255, 255, 0.25) 12px
-                    ),
-                    linear-gradient(to top right, #BBEADF, #E2F7F2)
-                  `
+                  backgroundImage: `url('${thumbnailUrl}')`,
                 }}
               />
+              <div className="absolute inset-0 bg-black/30 group-hover:bg-black/20 transition-all duration-200" />
 
               {/* Centered Circular White Play Button with Soft Backdrop Shadow */}
               <div className="absolute inset-0 flex items-center justify-center">
@@ -79,12 +75,12 @@ export default function DemoSection() {
 
               {/* Bottom Left Badge overlay */}
               <div className="absolute bottom-6 left-6 bg-white text-[#113B4A] text-xs font-bold px-4 py-2 rounded-full shadow-sm">
-                Onboarding · Chapter 1
+                DailyMinty
               </div>
               
               {/* Bottom Right Duration overlay */}
               <div className="absolute bottom-6 right-6 bg-[#2B4750] text-white text-xs font-bold px-3 py-2 rounded-xl shadow-sm">
-                1:48
+                0:40
               </div>
             </button>
           )}

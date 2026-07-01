@@ -10,7 +10,7 @@ import DemoSection from '@/components/landing/DemoSection';
 import SeeHow from '@/components/landing/SeeHowItWorks';
 
 export const metadata: Metadata = {
-  title: 'Daily Minty — Daily closing, finally calm.',
+  title: 'Daily Minty',
   description:
     'Daily Minty makes daily cash closing simple. Petty cash, bill payment, and Xero sync in one calm dashboard for small business owners.',
   alternates: { canonical: '/' },

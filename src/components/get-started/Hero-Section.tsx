@@ -21,7 +21,7 @@ export default function HeroSection() {
           
 
           <div className="lg:col-span-7 max-w-[550px]">
-            <h1 className="text-[32px] md:text-[48px] font-extrabold tracking-tight leading-tight mb-4 flex items-center flex-wrap gap-x-3">
+            <h1 className="text-white text-[32px] md:text-[48px] font-extrabold tracking-tight leading-tight mb-4 flex items-center flex-wrap gap-x-3">
               {hero.title}
               <Image 
                 src="/assets/minty-logo.png" 
@@ -32,7 +32,7 @@ export default function HeroSection() {
               />
             </h1>
 
-            <p className="text-white/90 text-sm md:text-base leading-relaxed mb-8 max-w-[480px]">
+            <p className="text-white text-sm md:text-base leading-relaxed mb-8 max-w-[420px]">
               {hero.description}
             </p>
 
@@ -49,9 +49,9 @@ export default function HeroSection() {
           <div className="
               relative mt-6 mx-auto
               lg:absolute 
-              lg:mt-0
+              lg:mt-20
               lg:right-10 
-              lg:top-[-70px]
+              lg:top-[-120px]
               w-full 
               max-w-[260px]
               md:max-w-[320px]   
@@ -97,12 +97,12 @@ export default function HeroSection() {
             {benefits.items.map((item) => (
               <div
                 key={item.id}
-                className="bg-white rounded-[20px] p-8 text-left border border-gray-100 shadow-[0_8px_24px_rgba(17,59,74,0.04)] hover:shadow-[0_12px_32px_rgba(17,59,74,0.06)] transition-shadow duration-200 flex flex-col gap-4"
+                className="bg-white rounded-[20px] py-[50px] px-10 text-left border border-gray-100 shadow-[0_8px_24px_rgba(17,59,74,0.04)] hover:shadow-[0_12px_32px_rgba(17,59,74,0.06)] transition-shadow duration-200 flex flex-col gap-4"
               >
                 <div className="w-10 h-8 bg-[#E6FAF7] text-[#00CBB0] font-bold text-sm flex items-center justify-center rounded-lg">
                   {item.id}
                 </div>
-                <p className="text-[#113B4A] font-bold text-[14px] md:text-[15px] leading-snug">
+                <p className="text-[#113B4A] font-bold text-[16px] md:text-[17px] leading-normal">
                   {item.text}
                 </p>
               </div>

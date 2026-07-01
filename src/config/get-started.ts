@@ -27,6 +27,7 @@ export const getStartedContent = {
   },
   guides: {
   title: "Getting started guides",
+  titleAccent: "guides",
   subtitle: "Short, practical tutorials to help you master Minty step by step.",
   items: [
     {
@@ -63,7 +64,7 @@ export const getStartedContent = {
       title: "4. Introducing Petty Cash Module",
       description: '"What can you do with Petty Cash Module?"',
       badge: "",
-      videoThumbnail: "/assets/deployed-assets/guide-thumb-4.png"
+      videoThumbnail: "/assets/deployed-assets/guide-thumb-4.png",
     },
     {
       id: 5,
@@ -86,17 +87,27 @@ export const getStartedContent = {
     {
       id: 7,
       category: "Bill Payment",
-      duration: "5 min",
+      duration: "40 sec",
       title: "7. Introducing Payment Module",
       description: '"How should I manage bills and payables?"',
       badge: "B",
-      videoThumbnail: "/assets/deployed-assets/guide-thumb-7.png"
+      videoThumbnail: "/assets/deployed-assets/guide-thumb-7.png",
+      videoUrl: "https://www.youtube.com/watch?v=fucuzlKQwDU"
     },
     {
       id: 8,
       category: "Getting Started",
       duration: "4 min",
       title: "8. How to add and manage users",
+      description: '"How can my team use Minty together?"',
+      badge: "",
+      videoThumbnail: "/assets/deployed-assets/guide-thumb-8.png"
+    },
+    {
+      id: 9,
+      category: "Petty Cash",
+      duration: "4 min",
+      title: "9. Introducing Petty Cash",
       description: '"How can my team use Minty together?"',
       badge: "",
       videoThumbnail: "/assets/deployed-assets/guide-thumb-8.png"
