@@ -118,13 +118,14 @@ export default function FAQCategories({ openId }: { openId?: string | null }) {
           >
             <div className="flex justify-between items-center gap-4">
               <span className="text-[#00CBB0] font-bold text-[13px]">{item.q}</span>
-              <div className={`w-8 h-8 rounded-md flex items-center justify-center shrink-0 font-bold text-lg ${
+              <div className={`w-10 h-10 rounded-xl flex items-center justify-center shrink-0 font-bold text-2xl ${
                 openIndex === index ? 'bg-[#00CBB0] text-white' : 'bg-[#00CBB0] text-white'
               }`}>
-                <span className="transform -translate-y-[2px] select-none">
+                <span className="transform -translate-y-[5px] select-none text-[35px] font-normal">
                   {openIndex === index ? '−' : '+'}
                 </span>
               </div>
+
             </div>
             {openIndex === index && (
               <p className="mt-4 text-gray-500 text-xs leading-relaxed pt-4">

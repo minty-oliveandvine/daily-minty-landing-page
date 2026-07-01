@@ -57,7 +57,6 @@ export default function PricingGrid() {
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 items-stretch">
       {pricingPlans.map((plan) => {
         const isSelected = selectedPlan === plan.id;
-        {/* Helper boolean to know exactly when this card turns green */}
         const isSuperMintyGreen = isSelected && plan.id === 'super-minty';
 
         return (
@@ -73,18 +72,19 @@ export default function PricingGrid() {
             }`}
           >
             <div>
-              <div className="bg-[#F5F8F9] rounded-2xl w-full aspect-[1.75/1] mb-6 flex items-center justify-center border border-gray-100/50">
-                <Image src={plan.illustrationSrc} alt={plan.title} width={plan.id === 'super-minty' ? 450 : 400} height={220} className="object-contain" />
+              <div className={`bg-[#F5F8F9] rounded-2xl w-full aspect-[1.75/1] flex items-center justify-center border border-gray-100/50 ${plan.id === 'super-minty' ? 'mb-[50px]' : 'mb-6'}`}>
+                <Image src={plan.illustrationSrc} alt={plan.title} width={plan.id === 'super-minty' ? 500 : 450} height={220} className="object-contain" />
               </div>
+
               
-              <div className="flex gap-2 items-center mb-3">
+              <div className={`flex gap-2 items-center mb-3 ${plan.id === 'super-minty' ? 'mb-[16px]' : ''}`}>
                 <h2 className={`text-2xl font-extrabold ${isSuperMintyGreen ? 'text-white' : 'text-[#113B4A]'}`}>{plan.title}</h2>
                 {plan.badgeText && <span className={`text-[10px] font-bold px-2.5 py-0.5 rounded-full uppercase tracking-wide ${isSuperMintyGreen ? 'bg-white/20 text-white' : 'bg-[#E5ECF0] text-[#4A7280]'}`}>{plan.badgeText}</span>}
               </div>
 
               <p className={`text-xs leading-relaxed mb-8 ${isSuperMintyGreen ? 'text-white/80' : 'text-gray-500'}`}>{plan.description}</p>
 
-              <div className="flex items-center gap-3 mb-1.5">
+              <div className={`flex items-center gap-3 mb-1.5 ${plan.id === 'super-minty' ? 'mb-[28px]' : ''}`}>
                 <span className={`font-bold text-2xl relative ${isSuperMintyGreen ? 'text-white/70' : 'text-gray-400'}`}>
                   {plan.crossedText}
                   <span className="absolute left-0 top-1/2 w-full h-[2.5px] bg-[#FF5E5E] -translate-y-1/2 rounded" />
@@ -97,10 +97,9 @@ export default function PricingGrid() {
       
               <p className={`text-[11px] font-medium p-3 rounded-xl mb-6 ${isSuperMintyGreen ? 'bg-white/15 text-white' : 'text-[#113B4A] bg-[#F5F8F9]'}`}>{plan.trialText}</p>
 
-              <Button href='https://www.minty.oliveandvinehk.com/' className={`w-full py-3 rounded-xl font-bold text-sm mb-8 ${isSelected ? 'bg-[#113B4A] text-white' : 'bg-[#ECF2F5] text-[#113B4A]'}`}>
+              <Button href='/' className={`w-full py-3 rounded-xl font-bold text-sm mb-8 ${isSelected ? 'bg-[#113B4A] text-white' : 'bg-[#ECF2F5] text-[#113B4A]'}`}>
                 Try for free
               </Button>
-
             
               <ul className={`flex flex-col gap-3.5 border-t pt-6 ${isSuperMintyGreen ? 'border-white/20' : 'border-gray-100'}`}>
                 {plan.features.map((feature, idx) => (

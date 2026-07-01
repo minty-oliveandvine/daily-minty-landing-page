@@ -63,22 +63,24 @@ export const landingContent = {
     {
       key: 'petty-cash',
       title: 'Petty Cash',
-      image: '/assets/deployed-assets/sub-petty-cash.png',
+      image: '/assets/deployed-assets/landing_payment.png',
       alt: 'Petty cash placeholder',
       // Added design tokens for the first card
       icon: 'Wallet',
       bgColor: 'bg-[#00cbb2]',
-      iconTextColor: 'text-[#00cbb2]'
+      iconTextColor: 'text-[#00cbb2]',
+      href: 'https://www.youtube.com/watch?v=3_TVkcyzEQs'
     },
     {
       key: 'bill-payment',
-      title: 'Bill Payment',
-      image: '/assets/deployed-assets/sub-bill-payment.png',
+      title: 'Payment',
+      image: '/assets/deployed-assets/landing_petty.png',
       alt: 'Bill payment placeholder',
       // Added design tokens for the second card
       icon: 'ReceiptText',
       bgColor: 'bg-[#0f2d37]',
-      iconTextColor: 'text-[#0f2d37]'
+      iconTextColor: 'text-[#0f2d37]',
+      href: 'https://www.youtube.com/watch?v=fucuzlKQwDU'
     },
   ],
 },

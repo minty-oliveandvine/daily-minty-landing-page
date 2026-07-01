@@ -42,9 +42,12 @@ export default function OutcomeSection() {
             const theme = cardThemeStyles[index] || cardThemeStyles[0];
             const IconComponent = iconMap[card.icon];
             return (
-              <div
+              <a
                 key={card.key}
-                className={`${theme.bgClass} rounded-[24px] p-6 pb-0 flex flex-col justify-between shadow-md overflow-hidden aspect-[4/3]`}
+                href={card.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`${theme.bgClass} rounded-[24px] p-6 pb-0 flex flex-col justify-between shadow-md overflow-hidden aspect-[4/3] cursor-pointer transition-transform duration-200 hover:scale-105 hover:shadow-lg`}
               >
                 <div className="flex items-center justify-between mb-4">
                   <h3 className="text-[24px] font-bold text-white tracking-wide">
@@ -70,7 +73,7 @@ export default function OutcomeSection() {
                     />
                   </div>
                 </div>
-              </div>
+              </a>
             );
           })}
         </div>

@@ -70,7 +70,7 @@ export default function ContactFormSection() {
             <div className="flex-1">
               <h3 className="font-bold text-[#113B4A] mb-1 text-sm">Whatsapp us</h3>
               <p className="text-xs text-[#4A7280] leading-relaxed mb-2">Get instant replies during business hours. Chat directly with our team on WhatsApp.</p>
-              <a href="https://wa.me/60423884" target="_blank" rel="noopener noreferrer" className="text-xs font-bold text-[#00CBB0] hover:underline">Start chat →</a>
+              <a href="https://wa.me/85260423884" target="_blank" rel="noopener noreferrer" className="text-xs font-bold text-[#00CBB0] hover:underline">Start chat →</a>
             </div>
           </div>
         </div>
