@@ -60,10 +60,10 @@ export default function FAQCategories({ openId }: { openId?: string | null }) {
   }, [openId]);
 
   return (
-    <section className="max-w-5xl mx-auto px-4 py-12">
+    <section className="max-w-5xl mx-auto px-4 py-8 md:py-12">
       {/* Tab Navigation */}
-      <div className="flex flex-col items-center mb-12">
-        <div className="inline-flex bg-[#edf7f5] p-1.5 rounded-full border border-[#d6eae4] shadow-inner">
+      <div className="flex flex-col items-center mb-8 md:mb-12">
+        <div className="inline-flex bg-[#edf7f5] p-1 md:p-1.5 rounded-full border border-[#d6eae4] shadow-inner flex-wrap justify-center gap-1 md:gap-0">
           {(['beginner', 'intermediate', 'accountant'] as const).map((tab) => {
             const isActive = activeTab === tab;
 
@@ -74,7 +74,7 @@ export default function FAQCategories({ openId }: { openId?: string | null }) {
                   setActiveTab(tab);
                   setOpenIndex(null);
                 }}
-                className={`px-6 py-2.5 rounded-full text-sm font-bold transition-all duration-200 flex items-center gap-2 ${
+                className={`px-3 md:px-6 py-2 md:py-2.5 rounded-full text-[11px] md:text-sm font-bold transition-all duration-200 flex items-center gap-1 md:gap-2 whitespace-nowrap ${
                   isActive
                     ? 'bg-[#00CBB0] text-white shadow-[0_4px_12px_rgba(0,203,176,0.3)]'
                     : 'text-[#1e3a47] hover:bg-white/50'
@@ -82,13 +82,13 @@ export default function FAQCategories({ openId }: { openId?: string | null }) {
               >
                 {/* Render exact graphics based on tab key matching design image_af6ba6.png */}
                 {tab === 'beginner' && (
-                  <span className="text-base" role="img" aria-label="sprout">🌱</span>
+                  <span className="text-sm md:text-base" role="img" aria-label="sprout">🌱</span>
                 )}
                 {tab === 'intermediate' && (
-                  <span className="text-base" role="img" aria-label="gear">⚙️</span>
+                  <span className="text-sm md:text-base" role="img" aria-label="gear">⚙️</span>
                 )}
                 {tab === 'accountant' && (
-                  <span className="text-base" role="img" aria-label="chart">📊</span>
+                  <span className="text-sm md:text-base" role="img" aria-label="chart">📊</span>
                 )}
 
                 {/* Display Text Label */}
@@ -99,36 +99,36 @@ export default function FAQCategories({ openId }: { openId?: string | null }) {
             );
           })}
         </div>
-        <p className="text-gray-400 text-sm mt-4">
+        <p className="text-gray-400 text-[12px] md:text-sm mt-3 md:mt-4 text-center">
           {activeTab === 'beginner' && "New to Minty? Start here — the everyday basics of closing your day."}
           {activeTab === 'intermediate' && "Optimize operations — workflows, tracking codes, and team control options."}
           {activeTab === 'accountant' && "Deep dives — bookkeeper workflows, reconciliation tools, and data mapping."}
         </p>
       </div>
 
-      <div className="grid md:grid-cols-2 gap-4 items-start">
+      <div className="grid md:grid-cols-2 gap-3 md:gap-4 items-start">
         {faqDatabase[activeTab].map((item, index) => (
           <div
             key={index}
             id={`faq-item-${index}`}
-            className={`bg-white border rounded-2xl p-5 cursor-pointer transition-all h-fit ${
+            className={`bg-white border rounded-xl md:rounded-2xl p-4 md:p-5 cursor-pointer transition-all h-fit ${
               openIndex === index ? 'border-[#00CBB0] shadow-sm' : 'border-gray-100 hover:border-gray-200'
             }`}
             onClick={() => setOpenIndex(openIndex === index ? null : index)}
           >
-            <div className="flex justify-between items-center gap-4">
-              <span className="text-[#00CBB0] font-bold text-[13px]">{item.q}</span>
-              <div className={`w-10 h-10 rounded-xl flex items-center justify-center shrink-0 font-bold text-2xl ${
+            <div className="flex justify-between items-start gap-3 md:gap-4">
+              <span className="text-[#00CBB0] font-bold text-[12px] md:text-[13px] leading-tight">{item.q}</span>
+              <div className={`w-9 md:w-10 h-9 md:h-10 rounded-lg md:rounded-xl flex items-center justify-center shrink-0 font-bold text-2xl flex-shrink-0 ${
                 openIndex === index ? 'bg-[#00CBB0] text-white' : 'bg-[#00CBB0] text-white'
               }`}>
-                <span className="transform -translate-y-[5px] select-none text-[35px] font-normal">
+                <span className="transform -translate-y-[5px] select-none text-[30px] md:text-[35px] font-normal">
                   {openIndex === index ? '−' : '+'}
                 </span>
               </div>
 
             </div>
             {openIndex === index && (
-              <p className="mt-4 text-gray-500 text-xs leading-relaxed pt-4">
+              <p className="mt-3 md:mt-4 text-gray-500 text-[11px] md:text-xs leading-relaxed pt-3 md:pt-4">
                 {item.a}
               </p>
             )}

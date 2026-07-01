@@ -33,6 +33,7 @@ export default function Navbar() {
   const pathname = usePathname();
   const visible = navLinks.filter((l) => l.enabled);
   const [isOpen, setIsOpen] = useState(false);
+  const [openDropdown, setOpenDropdown] = useState<string | null>(null);
 
   return (
     <nav className="relative top-0 z-50 bg-white border-b border-ink/[0.06]" aria-label="Primary">
@@ -134,30 +135,67 @@ export default function Navbar() {
 
       {isOpen && (
         <div className="md:hidden absolute top-full left-0 w-full bg-white border-b border-ink/10 p-4 flex flex-col gap-3 shadow-lg z-[60]">
-          
+
           {visible
             .filter((link) => link.key !== 'get-started' && link.key !== 'login')
-            .map((link) => (
-              <Link 
-                key={link.key} 
-                href={link.href} 
-                onClick={() => setIsOpen(false)}
-                className="px-4 py-3 rounded-xl font-semibold text-ink hover:bg-ink/[0.05] transition-colors"
-              >
-                {link.label}
-              </Link>
-          ))}
+            .map((link) => {
+              const hasChildren = link.children && link.children.length > 0;
+              const isDropdownOpen = openDropdown === link.key;
+
+              return (
+                <div key={link.key}>
+                  {hasChildren ? (
+                    <>
+                      <button
+                        onClick={() => setOpenDropdown(isDropdownOpen ? null : link.key)}
+                        className="w-full text-left px-4 py-3 rounded-xl font-semibold text-ink hover:bg-ink/[0.05] transition-colors flex items-center justify-between"
+                      >
+                        <span>{link.label}</span>
+                        <span className={`text-sm transition-transform ${isDropdownOpen ? 'rotate-180' : ''}`}>
+                          ▼
+                        </span>
+                      </button>
+                      {isDropdownOpen && (
+                        <div className="pl-4 flex flex-col gap-2 mt-1">
+                          {link.children!.filter((c) => c.enabled).map((child) => (
+                            <Link
+                              key={child.href}
+                              href={child.href}
+                              onClick={() => {
+                                setIsOpen(false);
+                                setOpenDropdown(null);
+                              }}
+                              className="px-4 py-2.5 rounded-lg font-semibold text-ink text-sm hover:bg-teal/10 hover:text-teal-deep transition-colors"
+                            >
+                              {child.label}
+                            </Link>
+                          ))}
+                        </div>
+                      )}
+                    </>
+                  ) : (
+                    <Link
+                      href={link.href}
+                      onClick={() => setIsOpen(false)}
+                      className="px-4 py-3 rounded-xl font-semibold text-ink hover:bg-ink/[0.05] transition-colors"
+                    >
+                      {link.label}
+                    </Link>
+                  )}
+                </div>
+              );
+            })}
 
           <div className="flex flex-col gap-3 mt-4">
-            <Link 
-              href="/getstarted" 
+            <Link
+              href="/get-started"
               onClick={() => setIsOpen(false)}
               className="bg-[#00CBB0] text-white px-6 py-3 rounded-full font-bold text-center hover:opacity-90 transition-opacity"
             >
               Get Started with Minty
             </Link>
-            <Link 
-              href={siteConfig.loginUrl} 
+            <Link
+              href={siteConfig.loginUrl}
               onClick={() => setIsOpen(false)}
               className="bg-[#113B4A] text-white px-6 py-3 rounded-full font-bold text-center hover:bg-[#1a5569] transition-colors"
             >

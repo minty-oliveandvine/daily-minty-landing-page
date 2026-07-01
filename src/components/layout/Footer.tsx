@@ -82,10 +82,10 @@ export default function Footer() {
   const visibleLinks = getVisibleFooterLinks();
 
   return (
-    <footer className="bg-cream py-9 border-t border-ink/[0.06]" aria-labelledby="footer-heading">
+    <footer className="bg-cream py-6 md:py-9 border-t border-ink/[0.06]" aria-labelledby="footer-heading">
       <h2 id="footer-heading" className="sr-only">Footer</h2>
-      <Container className="flex justify-between items-center gap-6">
-        <div className="flex gap-[18px] items-center text-ink-muted text-[13px]">
+      <Container className="flex flex-col md:flex-row md:justify-between items-center gap-4 md:gap-6">
+        <div className="flex flex-col md:flex-row gap-[18px] items-center text-ink-muted text-[12px] md:text-[13px]">
           <Link href="/" aria-label="Daily Minty home" className="inline-flex items-center">
             <Image
               src="/assets/deployed-assets/minty-logo-v2.png"
@@ -97,7 +97,7 @@ export default function Footer() {
           </Link>
           <span>© {year} {siteConfig.author.name}</span>
         </div>
-        <nav className="flex gap-3.5 items-center" aria-label="Footer">
+        <nav className="flex flex-col md:flex-row gap-2 md:gap-3.5 items-center" aria-label="Footer">
           {visibleLinks.map((link) => (
             <FooterMenuItem key={link.key} link={link} />
           ))}
