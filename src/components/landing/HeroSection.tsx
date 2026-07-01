@@ -7,7 +7,7 @@ export default function HeroSection() {
   const { hero } = landingContent;
   return (
     <section className="bg-white py-15 md:py-20" aria-labelledby="hero-title">
-      <Container className="grid grid-cols-1 md:grid-cols-[1.05fr_1fr] gap-10 items-center">
+      <Container className="grid grid-cols-1 md:grid-cols-[1.05fr_1fr] gap-10 items-center max-w-[1200px]">
         <div className="md:pl-12">
           <h1
             id="hero-title"
