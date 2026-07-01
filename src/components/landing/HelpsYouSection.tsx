@@ -32,7 +32,7 @@ export default function HelpsYouSection() {
             return (
               <article
                 key={index}
-                className="bg-white rounded-3xl p-10 text-center flex flex-col items-center justify-start shadow-minty-sm hover:shadow-minty-md transition-shadow duration-200"
+                className="bg-white rounded-3xl p-10 text-center flex flex-col items-center justify-start shadow-minty-sm hover:shadow-minty-md active:shadow-minty-md focus-within:shadow-minty-md transition-shadow duration-200 cursor-pointer"
               >
                 <div className="w-16 h-16 flex items-center justify-center bg-mint rounded-full text-teal-deep mb-5">
                   {IconComponent && <IconComponent className="w-8 h-8" />}
