@@ -2,8 +2,8 @@ import Link from 'next/link';
 
 export default function PricingFAQSupport() {
   return (
-    <section className="px-4">
-      <div className="bg-[#f4faf8] p-8 md:p-12 shadow-[0_4px_24px_rgba(17,59,74,0.01)] text-center w-full mx-auto">
+    <section>
+      <div className="bg-[#f4faf8] p-8 px-4 md:p-12 shadow-[0_4px_24px_rgba(17,59,74,0.01)] text-center w-full mx-auto">
         <h3 className="text-[#113B4A] text-[24px] md:text-[28px] font-extrabold tracking-tight mb-2">
           Still have questions?
         </h3>
