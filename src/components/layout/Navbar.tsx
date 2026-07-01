@@ -36,7 +36,7 @@ export default function Navbar() {
 
   return (
     <nav className="relative top-0 z-50 bg-white border-b border-ink/[0.06]" aria-label="Primary">
-      <Container className="flex items-center justify-between py-[18px]">
+      <Container className="flex items-center justify-between py-[18px] max-w-[1300px]">
         <Link href="/" className="inline-flex items-center" aria-label="Daily Minty home">
           <Image
             src="/assets/deployed-assets/minty-logo-v2.png"
