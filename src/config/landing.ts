@@ -11,7 +11,7 @@ export const landingContent = {
       label: 'See how it works',
       href: '#see-how-it-works',
     },
-    trustText: 'Sync directly with Xero',
+    trustText: {before: 'Sync directly with',highlighted: 'Xero'},
     imageAlt: 'Daily Minty hero image showing a cat with a laptop and phone',
     image: '/assets/deployed-assets/hero-cat-laptop-phone.png',
   },
