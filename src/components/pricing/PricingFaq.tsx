@@ -1,7 +1,9 @@
 import Link from 'next/link';
+import FadeContent from '@/animations/landing/fadeanim';
 
 export default function PricingFAQSupport() {
   return (
+    <FadeContent blur={true} duration={1000} ease="ease-out" initialOpacity={0}>
     <section className="w-full">
       <div className="bg-[#f4faf8] px-4 py-8 md:p-12 shadow-[0_4px_24px_rgba(17,59,74,0.01)] text-center w-full mx-auto">
         <h3 className="text-[#113B4A] text-[22px] md:text-[28px] font-extrabold tracking-tight mb-3 md:mb-2">
@@ -27,5 +29,6 @@ export default function PricingFAQSupport() {
         </div>
       </div>
     </section>
+    </FadeContent>
   );
 }

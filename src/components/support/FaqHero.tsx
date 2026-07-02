@@ -1,7 +1,20 @@
 import Image from 'next/image';
+import AnimatedContent from '@/animations/landing/heroanim';
 
 export default function FAQHero() {
   return (
+    <AnimatedContent
+      distance={100}
+      direction="vertical"
+      reverse={false}
+      duration={0.8}
+      ease="power3.out"
+      initialOpacity={0}
+      animateOpacity
+      scale={1}
+      threshold={0.1}
+      delay={0}
+    >
     <section className="relative w-full max-w-[1200px] mx-auto my-6 md:my-8 px-4">
       <div className="relative w-full bg-gradient-to-r from-[#03c5c0] to-[#69d8c2] rounded-[24px] md:rounded-[32px] p-6 md:p-12 overflow-visible min-h-auto md:min-h-[240px] flex flex-col md:items-center md:justify-between md:flex-row gap-4 md:gap-6">
 
@@ -37,5 +50,6 @@ export default function FAQHero() {
 
       </div>
     </section>
+    </AnimatedContent>
   );
 }

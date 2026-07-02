@@ -6,12 +6,25 @@ import Container from '@/components/ui/Container';
 import Button from '@/components/ui/Button';
 import { getStartedContent } from '@/config/get-started';
 import { siteConfig } from '@/config/site';
+import AnimatedContent from '@/animations/landing/heroanim';
 
 
 export default function HeroSection() {
   const { hero, benefits } = getStartedContent;
 
   return (
+     <AnimatedContent
+      distance={100}
+      direction="vertical"
+      reverse={false}
+      duration={0.8}
+      ease="power3.out"
+      initialOpacity={0}
+      animateOpacity
+      scale={1}
+      threshold={0.1}
+      delay={0}
+    >
     <div className="min-h-screen flex flex-col bg-white">
   <main className="flex-grow pt-6 md:pt-10 pb-4 font-sans">
     <Container>
@@ -115,5 +128,6 @@ export default function HeroSection() {
     </Container>
   </main>
 </div>
+</AnimatedContent>
   );
 }

@@ -6,6 +6,7 @@ import Container from '@/components/ui/Container';
 import { getStartedContent } from '@/config/get-started';
 import { cn } from '@/lib/utils';
 import { Clock } from 'lucide-react';
+import FadeContent from '@/animations/landing/fadeanim';
 
 export default function GuidesSection() {
   const { guides } = getStartedContent;
@@ -28,6 +29,7 @@ export default function GuidesSection() {
   }, [activeGuideId]);
 
   return (
+    <FadeContent blur={true} duration={1000} ease="ease-out" initialOpacity={0}>
     <section className="bg-white py-10 mb-20 font-sans" id="guide">
       <Container>
         <div className="text-left mb-10">
@@ -198,5 +200,6 @@ export default function GuidesSection() {
         )}
       </Container>
     </section>
+    </FadeContent>
   );
 }

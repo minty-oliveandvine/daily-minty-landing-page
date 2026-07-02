@@ -1,7 +1,20 @@
 import Image from 'next/image';
+import AnimatedContent from '@/animations/pricing/heroanim';
 
 export default function PricingHero() {
   return (
+    <AnimatedContent
+      distance={100}
+      direction="vertical"
+      reverse={false}
+      duration={0.8}
+      ease="power3.out"
+      initialOpacity={0}
+      animateOpacity
+      scale={1}
+      threshold={0.1}
+      delay={0}
+    >
     <section className="relative bg-gradient-to-r from-[#04c2bb] to-[#5ad6c4] rounded-[32px] mx-4 md:mx-auto max-w-[1200px] px-6 py-10 md:p-16 text-white overflow-hidden lg:overflow-visible mb-12 md:mb-16 shadow-sm">
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center relative z-10">
         
@@ -43,5 +56,6 @@ export default function PricingHero() {
 
       </div>
     </section>
+    </AnimatedContent>
   );
 }
