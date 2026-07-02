@@ -2,6 +2,7 @@ import Image from 'next/image';
 import Container from '@/components/ui/Container';
 import { landingContent } from '@/config/landing';
 import { Wallet, ReceiptText, Menu, LucideIcon } from 'lucide-react';
+import FadeContent from '@/animations/landing/fadeanim';
 
 const iconMap: { [key: string]: LucideIcon } = {
   Wallet: Wallet,
@@ -22,6 +23,7 @@ export default function OutcomeSection() {
   ];
 
   return (
+    <FadeContent blur={true} duration={1000} ease="ease-out" initialOpacity={0}>
     <section className="bg-[#dcf3ec] py-20" aria-labelledby="outcome-title">
       <Container className="max-w-5xl mx-auto">
         {/* Section Header */}
@@ -79,5 +81,6 @@ export default function OutcomeSection() {
         </div>
       </Container>
     </section>
+    </FadeContent>
   );
 }

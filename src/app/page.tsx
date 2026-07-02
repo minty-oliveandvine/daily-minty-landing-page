@@ -8,7 +8,6 @@ import HowItWorksSection from '@/components/landing/HowItWorksSection';
 import HelpsYouSection from '@/components/landing/HelpsYouSection';
 import DemoSection from '@/components/landing/DemoSection';
 import SeeHow from '@/components/landing/SeeHowItWorks';
-
 export const metadata: Metadata = {
   title: 'Daily Minty',
   description:
@@ -30,6 +29,7 @@ export default function HomePage() {
         <SeeHow />
       </main>
       <Footer />
+      
     </>
   );
 }

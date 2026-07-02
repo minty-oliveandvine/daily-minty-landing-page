@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { cn } from '@/lib/utils';
 import type { FaqItem, FaqBlock, PermissionRow } from '@/config/faq';
 
@@ -60,8 +60,25 @@ function PermissionsTable({ permissions }: { permissions?: PermissionRow[] }) {
   );
 }
 
-export default function FaqAccordion({ items }: { items: FaqItem[] }) {
+export default function FaqAccordion({ items, defaultOpenId }: { items: FaqItem[]; defaultOpenId?: string | null }) {
   const [openId, setOpenId] = useState<string | null>(null);
+
+  useEffect(() => {
+    if (defaultOpenId) {
+      setOpenId(defaultOpenId);
+    }
+  }, [defaultOpenId, items]);
+
+  useEffect(() => {
+    if (openId) {
+      setTimeout(() => {
+        const element = document.getElementById(`faq-${openId}`);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+      }, 300);
+    }
+  }, [openId]);
 
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 gap-4 items-start">

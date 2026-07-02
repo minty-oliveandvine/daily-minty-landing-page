@@ -6,13 +6,31 @@ import FaqAccordion from './FaqAccordion';
 
 export default function FAQCategories({ openId }: { openId?: string | null }) {
   const [activeTab, setActiveTab] = useState<'beginner' | 'intermediate' | 'accountant'>('beginner');
-  const [openId_state, setOpenId] = useState<string | null>(null);
+  const [targetId, setTargetId] = useState<string | null>(null);
 
   useEffect(() => {
     if (openId) {
-      setOpenId(openId);
+      const normalize = (str: string) =>
+        str
+          .toLowerCase()
+          .replace(/[^a-z0-9\s]/g, '') // keep only letters, numbers, and spaces
+          .replace(/\s+/g, ' ')
+          .trim();
+
+      const decodedId = normalize(decodeURIComponent(openId));
+
+      const matchingFaq = landingFaq.find((item) => {
+        const normalizedQuestion = normalize(item.question);
+        return normalizedQuestion === decodedId;
+      });
+
+      if (matchingFaq) {
+        setActiveTab(matchingFaq.category);
+        setTargetId(matchingFaq.id);
+      }
     }
   }, [openId]);
+
 
   const filteredFaqs = landingFaq.filter((item) => item.category === activeTab);
 
@@ -29,7 +47,7 @@ export default function FAQCategories({ openId }: { openId?: string | null }) {
                 key={tab}
                 onClick={() => {
                   setActiveTab(tab);
-                  setOpenId(null);
+                  setTargetId(null);
                 }}
                 className={`px-3 md:px-6 py-2 md:py-2.5 rounded-full text-[11px] md:text-sm font-bold transition-all duration-200 flex items-center gap-1 md:gap-2 whitespace-nowrap ${
                   isActive
@@ -61,7 +79,7 @@ export default function FAQCategories({ openId }: { openId?: string | null }) {
         </p>
       </div>
 
-      <FaqAccordion items={filteredFaqs} />
+      <FaqAccordion items={filteredFaqs} defaultOpenId={targetId} />
     </section>
   );
 }

@@ -2,6 +2,7 @@ import Image from 'next/image';
 import Container from '@/components/ui/Container';
 import { landingContent } from '@/config/landing';
 import { CheckCircle, RefreshCw, CreditCard, LucideIcon, Leaf } from 'lucide-react';
+import FadeContent from '@/animations/landing/fadeanim';
 
 const iconMap: { [key: string]: LucideIcon } = {
   CheckCircle: CheckCircle,
@@ -12,6 +13,7 @@ const iconMap: { [key: string]: LucideIcon } = {
 export default function HelpsYouSection() {
   const { helpsYou, demo } = landingContent;
   return (
+    <FadeContent blur={true} duration={1000} ease="ease-out" initialOpacity={0}>
     <section className="bg-mint-soft py-10" aria-labelledby="helps-title">
       <Container>
         {/* Title with leaf icon */}
@@ -54,5 +56,6 @@ export default function HelpsYouSection() {
         </div>
       </Container>
     </section>
+    </FadeContent>
   );
 }
