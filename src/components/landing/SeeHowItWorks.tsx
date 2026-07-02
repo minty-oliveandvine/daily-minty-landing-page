@@ -3,11 +3,13 @@
 import Container from '@/components/ui/Container';
 import Button from '@/components/ui/Button';
 import { landingContent } from '@/config/landing';
+import FadeContent from '@/animations/landing/fadeanim';
 
 export default function SeeHowItWorksSection() {
   const { seeHowItWorks } = landingContent;
 
   return (
+    <FadeContent blur={true} duration={1000} ease="ease-out" initialOpacity={0}>
     <section id="see-how-it-works" className="bg-[#00CBB0] pt-12 md:pt-20 pb-12 md:pb-20 text-center flex flex-col items-center">
       <Container className="flex flex-col items-center mb-0">
 
@@ -38,5 +40,6 @@ export default function SeeHowItWorksSection() {
         </div>
       </Container>
     </section>
+    </FadeContent>
   );
 }

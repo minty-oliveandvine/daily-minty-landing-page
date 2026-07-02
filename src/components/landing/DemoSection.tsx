@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import Container from '@/components/ui/Container';
 import { landingContent } from '@/config/landing';
+import FadeContent from '@/animations/landing/fadeanim';
 // Test
 export default function DemoSection() {
   const { demo } = landingContent;
@@ -13,6 +14,7 @@ export default function DemoSection() {
   const thumbnailUrl = `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`;
 
   return (
+    <FadeContent blur={true} duration={1000} ease="ease-out" initialOpacity={0}>
     <section className="bg-[#EBF7F4] py-10" aria-labelledby="demo-title">
       <Container className="flex flex-col items-center text-center mb-10">
         
@@ -88,5 +90,6 @@ export default function DemoSection() {
 
       </Container>
     </section>
+    </FadeContent>
   );
 }
