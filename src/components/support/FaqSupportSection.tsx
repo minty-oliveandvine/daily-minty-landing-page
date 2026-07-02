@@ -1,8 +1,10 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import FadeContent from '@/animations/landing/fadeanim';
 
 export default function FAQSupportSection() {
   return (
+    <FadeContent blur={true} duration={1000} ease="ease-out" initialOpacity={0}>
     <section className="bg-[#FAF6F0] py-8 md:py-12 px-4">
       <div className="bg-white rounded-[24px] md:rounded-[32px] max-w-[900px] mx-auto p-6 md:p-10 shadow-[0_2px_8px_rgba(17,59,74,0.05)] flex flex-col md:flex-row items-center justify-between gap-6 md:gap-10 relative overflow-hidden">
 
@@ -41,5 +43,6 @@ export default function FAQSupportSection() {
 
       </div>
     </section>
+    </FadeContent>
   );
 }

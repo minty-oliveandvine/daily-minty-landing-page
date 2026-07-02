@@ -1,7 +1,19 @@
 import { Mail, MessageSquare, HelpCircle, CheckCircle2 } from 'lucide-react';
-
+import AnimatedContent from '@/animations/contact/heroanim';
 export default function ContactFormSection() {
   return (
+    <AnimatedContent
+      distance={100}
+      direction="vertical"
+      reverse={false}
+      duration={0.8}
+      ease="power3.out"
+      initialOpacity={0}
+      animateOpacity
+      scale={1}
+      threshold={0.1}
+      delay={0}
+    >
     <section className="max-w-[1000px] mx-auto px-4 grid grid-cols-1 lg:grid-cols-12 gap-6 md:gap-8 pb-12 md:pb-20 mt-12 md:mt-20">
       {/* Left: Contact Form Card with Subtle Shadow */}
       <div className="lg:col-span-7 bg-white p-6 md:p-10 rounded-[20px] md:rounded-[32px] shadow-[0_4px_32px_rgba(0,0,0,0.03)] border border-gray-100">
@@ -98,5 +110,6 @@ export default function ContactFormSection() {
         </div>
       </div>
     </section>
+    </AnimatedContent>
   );
 }

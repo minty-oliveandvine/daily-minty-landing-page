@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import Image from 'next/image';
 import Button from '@/components/ui/Button';
+import AnimatedContent from '@/animations/pricing/heroanim';
 
 const pricingPlans = [
   {
@@ -51,6 +52,18 @@ export default function PricingGrid() {
   const [selectedPlan, setSelectedPlan] = useState<string>('super-minty');
 
   return (
+    <AnimatedContent
+      distance={100}
+      direction="vertical"
+      reverse={false}
+      duration={0.8}
+      ease="power3.out"
+      initialOpacity={0}
+      animateOpacity
+      scale={1}
+      threshold={0.1}
+      delay={0}
+    >
     <section className="max-w-[1200px] mx-auto px-4 mb-16">
       <div className="flex justify-center mb-12">
       <span className="bg-white border border-gray-100 text-[#113B4A] text-[13px] font-bold px-6 py-2.5 rounded-full shadow-md tracking-wide">
@@ -136,5 +149,6 @@ export default function PricingGrid() {
         *Prices in HKD, billed monthly per shop. Subscribe to one service for HKD 280/mo, or add the second for just HKD 120 more — the Super Minty bundle at HKD 400/mo.
       </p>
     </section>
+    </AnimatedContent>
   );
 }

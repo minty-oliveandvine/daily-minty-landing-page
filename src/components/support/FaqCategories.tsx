@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import { landingFaq } from '@/config/faq';
 import FaqAccordion from './FaqAccordion';
+import AnimatedContent from '@/animations/landing/heroanim';
 
 export default function FAQCategories({ openId }: { openId?: string | null }) {
   const [activeTab, setActiveTab] = useState<'beginner' | 'intermediate' | 'accountant'>('beginner');
@@ -35,6 +36,18 @@ export default function FAQCategories({ openId }: { openId?: string | null }) {
   const filteredFaqs = landingFaq.filter((item) => item.category === activeTab);
 
   return (
+    <AnimatedContent
+      distance={100}
+      direction="vertical"
+      reverse={false}
+      duration={0.8}
+      ease="power3.out"
+      initialOpacity={0}
+      animateOpacity
+      scale={1}
+      threshold={0.1}
+      delay={0}
+    >
     <section className="max-w-5xl mx-auto px-4 py-8 md:py-12">
       {/* Tab Navigation */}
       <div className="flex flex-col items-center mb-8 md:mb-12">
@@ -81,5 +94,6 @@ export default function FAQCategories({ openId }: { openId?: string | null }) {
 
       <FaqAccordion items={filteredFaqs} defaultOpenId={targetId} />
     </section>
+    </AnimatedContent>
   );
 }

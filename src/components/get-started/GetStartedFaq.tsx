@@ -4,11 +4,12 @@ import Link from 'next/link';
 import Container from '@/components/ui/Container';
 import Button from '@/components/ui/Button';
 import { getStartedContent } from '@/config/get-started';
-
+import FadeContent from '@/animations/landing/fadeanim';
 export default function GetStartedFaqSection() {
   const { faqSection } = getStartedContent;
 
   return (
+    <FadeContent blur={true} duration={1000} ease="ease-out" initialOpacity={0}>
     <section className="bg-[#F4F7F9] py-20 font-sans">
       <Container className="max-w-[950px]">
         <div className="text-center mb-12">
@@ -86,5 +87,6 @@ export default function GetStartedFaqSection() {
         </div>
       </Container>
     </section>
+    </FadeContent>
   );
 }
