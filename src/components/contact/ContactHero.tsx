@@ -12,7 +12,7 @@ export default function ContactHero() {
             Talk to <span className="text-[#00CBB0]">Minty.</span>
         </h1>
 
-        <p className="max-w-[480px] mx-auto text-[#4A7280] leading-relaxed text-[13px] md:text-sm">
+        <p className="max-w-[520px] mx-auto text-[#4A7280] leading-[1.6] md:leading-[1.7] text-[15px] md:text-[17px]">
             {"Real humans, fast answers. Whether you've hit a snag, want a hand setting up, or just have a question about your numbers — drop us a line."}
         </p>
 
