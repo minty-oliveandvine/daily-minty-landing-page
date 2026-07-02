@@ -2,11 +2,11 @@
 
 import { useState } from 'react';
 import { cn } from '@/lib/utils';
-import type { FaqItem, FaqBlock } from '@/config/faq';
+import type { FaqItem, FaqBlock, PermissionRow } from '@/config/faq';
 
-function PermissionsTable() {
+function PermissionsTable({ permissions }: { permissions?: PermissionRow[] }) {
   const roles = ['CASHIER', 'SHOP MANAGER', 'ACCOUNTANT', 'ADMIN'];
-  const permissions = [
+  const defaultPermissions: PermissionRow[] = [
     { name: 'Prepare daily report', roles: { CASHIER: true, 'SHOP MANAGER': true, ACCOUNTANT: true, ADMIN: true } },
     { name: 'View daily report you created', roles: { CASHIER: true, 'SHOP MANAGER': true, ACCOUNTANT: true, ADMIN: true } },
     { name: 'View daily report of the whole shop', roles: { CASHIER: false, 'SHOP MANAGER': true, ACCOUNTANT: true, ADMIN: true } },
@@ -15,6 +15,7 @@ function PermissionsTable() {
     { name: 'Publish to Xero', roles: { CASHIER: false, 'SHOP MANAGER': false, ACCOUNTANT: true, ADMIN: true } },
     { name: 'Connect & disconnect to Xero', roles: { CASHIER: false, 'SHOP MANAGER': false, ACCOUNTANT: false, ADMIN: true } },
   ];
+  const tablePermissions = permissions || defaultPermissions;
 
   return (
     <div className="mt-4 overflow-x-auto border border-gray-200 rounded-lg">
@@ -28,9 +29,20 @@ function PermissionsTable() {
           </tr>
         </thead>
         <tbody>
-          {permissions.map((perm, idx) => (
+          {tablePermissions.map((perm, idx) => (
             <tr key={idx} className={idx % 2 === 0 ? 'bg-gray-50' : 'bg-white'}>
-              <td className="px-4 py-3 font-medium text-ink">{perm.name}</td>
+              <td className="px-4 py-3 font-medium text-ink">
+                {perm.name.includes('Xero') ? (
+                  <>
+                    {perm.name.substring(0, perm.name.indexOf('Xero')).trim()}
+                    {' '}
+                    <span className="font-bold text-black">Xero</span>
+                    {perm.name.substring(perm.name.indexOf('Xero') + 4).trimStart()}
+                  </>
+                ) : (
+                  perm.name
+                )}
+              </td>
               {roles.map((role) => (
                 <td key={role} className="px-4 py-3 text-center">
                   {perm.roles[role as keyof typeof perm.roles] ? (
@@ -74,7 +86,16 @@ export default function FaqAccordion({ items }: { items: FaqItem[] }) {
               onClick={() => setOpenId(isOpen ? null : item.id)}
             >
               <span className="flex-1 text-base font-semibold text-teal-deep leading-[1.4]">
-                Q. {item.question}
+                Q. {item.question.includes('Xero') ? (
+                  <>
+                    {item.question.substring(0, item.question.indexOf('Xero')).trim()}
+                    {' '}
+                    <span className="font-bold text-black">Xero</span>
+                    {item.question.substring(item.question.indexOf('Xero') + 4).trimStart()}
+                  </>
+                ) : (
+                  item.question
+                )}
               </span>
               <span
                 aria-hidden="true"
@@ -128,7 +149,7 @@ function renderBlocks(blocks: FaqBlock[]) {
           </ol>
         );
       case 'permissions-table':
-        return <PermissionsTable key={idx} />;
+        return <PermissionsTable key={idx} permissions={block.permissions} />;
     }
   });
 }

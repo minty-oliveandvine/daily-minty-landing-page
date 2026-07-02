@@ -42,7 +42,7 @@ export default function HelpsYouSection() {
                   {card.body.includes('Xero') ? (
                     <>
                       Trust your daily numbers and sync them directly to{' '}
-                      <span className="text-teal-deep font-bold">Xero.</span>
+                      <span className="text-black font-bold">Xero.</span>
                     </>
                   ) : (
                     card.body

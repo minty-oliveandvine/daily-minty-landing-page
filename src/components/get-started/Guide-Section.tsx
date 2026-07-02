@@ -67,7 +67,16 @@ export default function GuidesSection() {
             </div>
 
             <h3 className="text-[#113B4A] text-xl font-extrabold leading-snug mb-1">
-              {activeGuide.title}
+              {activeGuide.title.includes('Xero') ? (
+                <>
+                  {activeGuide.title.substring(0, activeGuide.title.indexOf('Xero')).trim()}
+                  {' '}
+                  <span style={{ color: '#266DD3' }}>Xero</span>
+                  {activeGuide.title.substring(activeGuide.title.indexOf('Xero') + 4).trimStart()}
+                </>
+              ) : (
+                activeGuide.title
+              )}
             </h3>
             <p className="text-gray-400 text-xs italic mb-6">
               {activeGuide.description}
@@ -128,7 +137,16 @@ export default function GuidesSection() {
 
 
                 <h3 className="text-[#113B4A] text-lg font-extrabold leading-snug mb-1">
-                  {guide.title}
+                  {guide.title.includes('Xero') ? (
+                    <>
+                      {guide.title.substring(0, guide.title.indexOf('Xero')).trim()}
+                      {' '}
+                      <span style={{ color: '#266DD3' }}>Xero</span>
+                      {guide.title.substring(guide.title.indexOf('Xero') + 4).trimStart()}
+                    </>
+                  ) : (
+                    guide.title
+                  )}
                 </h3>
                 <p className="text-gray-400 text-xs italic mb-6">
                   {guide.description}

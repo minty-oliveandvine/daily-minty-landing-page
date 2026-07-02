@@ -2,6 +2,7 @@ import Image from 'next/image';
 import Container from '@/components/ui/Container';
 import Button from '@/components/ui/Button';
 import { landingContent } from '@/config/landing';
+import { ArrowRight } from 'lucide-react';
 
 export default function HeroSection() {
   const { hero } = landingContent;
@@ -23,7 +24,7 @@ export default function HeroSection() {
               {hero.primaryCta.label}
             </Button>
             <Button href={hero.secondaryCta.href} variant="text">
-              {hero.secondaryCta.label}
+              {hero.secondaryCta.label} <ArrowRight />
               
             </Button>
           </div>
@@ -34,7 +35,13 @@ export default function HeroSection() {
                 <polyline points="20 6 9 17 4 12" />
               </svg>
             </span>
-            {hero.trustText}
+            {typeof hero.trustText == 'object' ? (
+              <>
+                {hero.trustText.before}<span className="text-ink font-bold">{hero.trustText.highlighted}</span>
+              </>
+            ) : (
+              hero.trustText
+            )}
           </span>
         </div>
         <div className="aspect-[4/5] md:aspect-[5/4] flex items-center justify-center mt-0 md:mt-0 mb-0 md:mb-0">

@@ -14,6 +14,7 @@ const pricingPlans = [
     currentPrice: 'Free',
     subText: 'per shop, billed monthly\nSingle service subscription.',
     trialText: 'Free trial for the first 30 days, then HKD 280/mo.',
+    featuresHeading: 'What you get:',
     features: ['Daily petty cash', 'Cash flow & PDF report', 'Xero sync (cash entries)', 'Team invites & roles'],
     isPopular: false,
   },
@@ -26,6 +27,7 @@ const pricingPlans = [
     currentPrice: 'Free',
     subText: 'per shop, billed monthly\nSingle service subscription.',
     trialText: 'Free trial for the first 30 days, then HKD 280/mo.',
+    featuresHeading: 'What you get:',
     features: ['Bill scheduling & reminder', 'Supplier & vendor directory', 'Payment logging & proof upload', 'Payables & PDF reports', 'Xero sync (bills & payments)', 'Team invites & roles'],
     isPopular: false,
   },
@@ -38,6 +40,7 @@ const pricingPlans = [
     currentPrice: 'Free',
     subText: 'Petty Cash + Bill Payment, billed monthly.',
     trialText: 'Free trial for the first 30 days, then HKD 400/mo.',
+    featuresHeading: 'Everything in both services:',
     features: ['Everything from Petty Cash', 'Everything from Bill Payment', 'Xero sync (full)', 'Multi-shop management', 'Team invites & roles'],
     isPopular: true,
     badgeText: 'Best Value'
@@ -100,14 +103,29 @@ export default function PricingGrid() {
               <Button href='/' className={`w-full py-3 rounded-xl font-bold text-sm mb-8 ${isSelected ? 'bg-[#113B4A] text-white' : 'bg-[#ECF2F5] text-[#113B4A]'}`}>
                 Try for free
               </Button>
-            
-              <ul className={`flex flex-col gap-3.5 border-t pt-6 ${isSuperMintyGreen ? 'border-white/20' : 'border-gray-100'}`}>
+
+              <div className={`border-t pt-6 ${isSuperMintyGreen ? 'border-white/20' : 'border-gray-100'}`}>
+                <p className={`text-xs font-bold mb-3 ${isSuperMintyGreen ? 'text-white' : 'text-[#113B4A]'}`}>
+                  {plan.featuresHeading}
+                </p>
+                <ul className={`flex flex-col gap-3.5`}>
                 {plan.features.map((feature, idx) => (
-                  <li key={idx} className={`flex items-start gap-2.5 text-xs ${isSuperMintyGreen ? 'text-white' : 'text-gray-600'}`}>
-                    <span className={isSuperMintyGreen ? 'text-white font-bold' : 'text-[#00CBB0] font-bold'}>✓</span> {feature}
+                  <li key={idx} className={`flex items-start gap-1.5 text-xs ${isSuperMintyGreen ? 'text-white' : 'text-gray-600'}`}>
+                    <span className={isSuperMintyGreen ? 'text-white font-bold' : 'text-black font-bold'}>✓</span>
+                    {feature.includes('Xero') ? (
+                      <>
+                        {feature.substring(0, feature.indexOf('Xero')).trim()}
+                        {' '}
+                        <span className="font-bold text-black">Xero</span>
+                        {feature.substring(feature.indexOf('Xero') + 4).trimStart()}
+                      </>
+                    ) : (
+                      feature
+                    )}
                   </li>
                 ))}
-              </ul>
+                </ul>
+              </div>
             </div>
           </div>
         );

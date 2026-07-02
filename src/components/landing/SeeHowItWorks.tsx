@@ -21,13 +21,16 @@ export default function SeeHowItWorksSection() {
           {seeHowItWorks.buttonText}
         </Button>
 
-        <div className="w-full max-w-[400px] md:max-w-[600px] aspect-[1.5/1] md:aspect-[1.7/1] rounded-[24px] md:rounded-[32px] overflow-hidden">
+        <div className="w-full max-w-[400px] md:max-w-[600px] aspect-[1.5/1] md:aspect-[1.7/1] rounded-[24px] md:rounded-[32px] overflow-hidden select-none pointer-events-none">
             <video
             className="w-full h-full object-contain"
             autoPlay
             muted
             loop
             playsInline
+            controlsList="nofullscreen nodownload nopictureinpicture"
+            disablePictureInPicture
+            onContextMenu={(e) => e.preventDefault()}
             >
             <source src={`/${seeHowItWorks.image}`} type="video/mp4" />
             Your browser does not support the video tag.
