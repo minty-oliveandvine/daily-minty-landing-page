@@ -8,6 +8,10 @@ import FadeContent from '@/animations/landing/fadeanim';
 export default function SeeHowItWorksSection() {
   const { seeHowItWorks } = landingContent;
 
+  // Strip the extension so we can offer multiple formats.
+  // Safari/iOS cannot play WebM, so we must provide an MP4 fallback.
+  const videoBase = seeHowItWorks.image.replace(/\.(webm|mp4|mov)$/i, '');
+
   return (
     <FadeContent blur={true} duration={1000} ease="ease-out" initialOpacity={0}>
     <section id="see-how-it-works" className="bg-[#00CBB0] pt-12 md:pt-20 pb-12 md:pb-20 text-center flex flex-col items-center">
@@ -30,11 +34,14 @@ export default function SeeHowItWorksSection() {
             muted
             loop
             playsInline
+            preload="auto"
             controlsList="nofullscreen nodownload nopictureinpicture"
             disablePictureInPicture
             onContextMenu={(e) => e.preventDefault()}
             >
-            <source src={`/${seeHowItWorks.image}`} type="video/mp4" />
+            {/* WebM first for Chrome/Firefox (smaller); MP4 fallback for Safari/iOS which cannot play WebM */}
+            <source src={`/${videoBase}.webm`} type="video/webm" />
+            <source src={`/${videoBase}.mp4`} type="video/mp4" />
             Your browser does not support the video tag.
             </video>
         </div>
