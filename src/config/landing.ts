@@ -113,7 +113,7 @@ demo: {
 seeHowItWorks: {
   title: 'See how Minty works.',
   buttonText: 'Open the demo →',
-  image: 'assets/deployed-assets/minty-mascot-wave-t.mp4'
+  image: 'assets/deployed-assets/minty-mascot-wave.mp4'
   
 }
 };
