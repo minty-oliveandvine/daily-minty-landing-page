@@ -1,5 +1,6 @@
 'use client';
 
+import { useState, useEffect } from 'react';
 import Container from '@/components/ui/Container';
 import Button from '@/components/ui/Button';
 import { landingContent } from '@/config/landing';
@@ -11,6 +12,19 @@ export default function SeeHowItWorksSection() {
   // Strip the extension so we can offer multiple formats.
   // Safari/iOS cannot play WebM, so we must provide an MP4 fallback.
   const videoBase = seeHowItWorks.image.replace(/\.(webm|mp4|mov)$/i, '');
+
+  // Only the transparent WebM keeps its alpha. Browsers that can't play WebM
+  // (Safari/iOS) fall back to the MP4, whose transparent areas render as black.
+  // For those we blend "screen" over the teal section to hide that black.
+  // We must NOT blend on WebM-capable browsers, or it would wash out the mascot.
+  const [needsBlend, setNeedsBlend] = useState(false);
+
+  useEffect(() => {
+    const testVideo = document.createElement('video');
+    const canPlayWebm = testVideo.canPlayType('video/webm; codecs="vp9"') !== '' ||
+      testVideo.canPlayType('video/webm') !== '';
+    setNeedsBlend(!canPlayWebm);
+  }, []);
 
   return (
     <FadeContent blur={true} duration={1000} ease="ease-out" initialOpacity={0}>
@@ -38,6 +52,11 @@ export default function SeeHowItWorksSection() {
             controlsList="nofullscreen nodownload nopictureinpicture"
             disablePictureInPicture
             onContextMenu={(e) => e.preventDefault()}
+            // MP4/H.264 (used by Safari/iOS) can't store transparency, so its
+            // transparent areas show as black. Blending "screen" over the solid
+            // teal section makes those pure-black pixels composite away. Only
+            // applied when the browser falls back to MP4 (see needsBlend).
+            style={needsBlend ? { mixBlendMode: 'screen' } : undefined}
             >
             {/* WebM first for Chrome/Firefox (smaller); MP4 fallback for Safari/iOS which cannot play WebM */}
             <source src={`/${videoBase}.webm`} type="video/webm" />

@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import Container from '@/components/ui/Container';
 import { landingContent } from '@/config/landing';
 import FadeContent from '@/animations/landing/fadeanim';
@@ -8,10 +8,31 @@ import FadeContent from '@/animations/landing/fadeanim';
 export default function DemoSection() {
   const { demo } = landingContent;
   const [isPlaying, setIsPlaying] = useState(false);
+  const videoCardRef = useRef<HTMLDivElement>(null);
 
   // Extract video ID from YouTube embed URL
   const videoId = demo.videoUrl.split('/embed/')[1];
   const thumbnailUrl = `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`;
+
+  // Autoplay the demo once the card scrolls into view. Browsers only allow
+  // autoplay when the video is muted, so the iframe URL includes mute=1.
+  useEffect(() => {
+    const el = videoCardRef.current;
+    if (!el) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting) {
+          setIsPlaying(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.5 }
+    );
+
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
 
   return (
     <FadeContent blur={true} duration={1000} ease="ease-out" initialOpacity={0}>
@@ -35,12 +56,12 @@ export default function DemoSection() {
         </p>
 
         {/* Video Player Floating Card */}
-        <div className="w-full max-w-4xl aspect-[16/10] rounded-[32px] overflow-hidden shadow-[0_20px_50px_rgba(17,59,74,0.08)] bg-white relative">
+        <div ref={videoCardRef} className="w-full max-w-4xl aspect-[16/10] rounded-[32px] overflow-hidden shadow-[0_20px_50px_rgba(17,59,74,0.08)] bg-white relative">
           {isPlaying ? (
             <iframe
               width="100%"
               height="100%"
-              src={`${demo.videoUrl}?autoplay=1`}
+              src={`${demo.videoUrl}?autoplay=1&mute=1`}
               title="Minty Demo"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowFullScreen
