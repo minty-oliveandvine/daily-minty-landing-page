@@ -1,6 +1,4 @@
-'use client';
-
-import { useEffect, useRef } from 'react';
+import Image from 'next/image';
 import Container from '@/components/ui/Container';
 import Button from '@/components/ui/Button';
 import { landingContent } from '@/config/landing';
@@ -8,19 +6,6 @@ import FadeContent from '@/animations/landing/fadeanim';
 
 export default function SeeHowItWorksSection() {
   const { seeHowItWorks } = landingContent;
-  const videoRef = useRef<HTMLVideoElement>(null);
-
-  // iOS Safari blocks autoplay unless the video is muted AND the muted DOM
-  // property is actually set (React doesn't reliably reflect the `muted`
-  // attribute to the property). Set it imperatively and kick off playback,
-  // which makes the video reliably appear/play on iPhone & iPad.
-  useEffect(() => {
-    const v = videoRef.current;
-    if (!v) return;
-    v.muted = true;
-    const attempt = v.play();
-    if (attempt) attempt.catch(() => {});
-  }, []);
 
   return (
     <FadeContent blur={true} duration={1000} ease="ease-out" initialOpacity={0}>
@@ -37,26 +22,18 @@ export default function SeeHowItWorksSection() {
           {seeHowItWorks.buttonText}
         </Button>
 
-        {/* Container is the section teal so the transparent WebM shows it through. */}
-        <div className="w-full max-w-[400px] md:max-w-[600px] aspect-[1.5/1] md:aspect-[1.7/1] rounded-[24px] md:rounded-[32px] overflow-hidden select-none pointer-events-none bg-[#00CBB0]">
-            <video
-            ref={videoRef}
-            className="w-full h-full object-contain"
-            autoPlay
-            muted
-            loop
-            playsInline
-            preload="auto"
-            controlsList="nofullscreen nodownload nopictureinpicture"
-            disablePictureInPicture
-            onContextMenu={(e) => e.preventDefault()}
-            >
-            {/* Transparent WebM first — Chrome/Firefox show the teal container through it (no black).
-                MP4 fallback for Safari/iOS, which can't render WebM alpha. */}
-            <source src="/assets/deployed-assets/minty-mascot-wave-clear.webm" type="video/webm" />
-            <source src={`/${seeHowItWorks.image}`} type="video/mp4" />
-            Your browser does not support the video tag.
-            </video>
+        {/* Animated GIF with the teal (#00CCB1) baked in — displays via <img>, so it
+            animates on every browser and device (including iOS) with no black box
+            and no video color-range shift. Container teal matches for seamless edges. */}
+        <div className="w-full max-w-[400px] md:max-w-[600px] aspect-[1.5/1] md:aspect-[1.7/1] rounded-[24px] md:rounded-[32px] overflow-hidden select-none pointer-events-none bg-[#00CCB1]">
+            <Image
+              src="/assets/deployed-assets/minty-mascot-wave-teal.gif"
+              alt="Minty mascot waving"
+              width={400}
+              height={400}
+              unoptimized
+              className="w-full h-full object-contain"
+            />
         </div>
       </Container>
     </section>
