@@ -59,8 +59,8 @@ export default function SeeHowItWorksSection() {
             style={needsBlend ? { mixBlendMode: 'screen' } : undefined}
             >
             {/* WebM first for Chrome/Firefox (smaller); MP4 fallback for Safari/iOS which cannot play WebM */}
-            <source src={`/${videoBase}.webm`} type="video/webm" />
             <source src={`/${videoBase}.mp4`} type="video/mp4" />
+            <source src={`/${videoBase}.webm`} type="video/webm" />
             Your browser does not support the video tag.
             </video>
         </div>
