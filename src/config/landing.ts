@@ -118,6 +118,7 @@ demo: {
   badge: 'WATCH HOW IT WORKS',
   title: 'See Minty in action',
   subtitle: '',
+  buttonText: 'Join Waitlist',
   videoUrl: 'https://www.youtube.com/embed/LZVNOp6YTzE',
 },
 keepMeUpdated: {
