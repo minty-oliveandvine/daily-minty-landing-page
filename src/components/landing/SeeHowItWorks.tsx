@@ -7,7 +7,7 @@ import { landingContent } from '@/config/landing';
 import FadeContent from '@/animations/landing/fadeanim';
 import Image from 'next/image';
 
-export default function demoSection() {
+export default function seeHowItWorksSection() {
   const { demo } = landingContent;
   const videoRef = useRef<HTMLVideoElement>(null);
 
