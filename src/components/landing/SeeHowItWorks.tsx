@@ -7,8 +7,8 @@ import { landingContent } from '@/config/landing';
 import FadeContent from '@/animations/landing/fadeanim';
 import Image from 'next/image';
 
-export default function SeeHowItWorksSection() {
-  const { seeHowItWorks } = landingContent;
+export default function demoSection() {
+  const { demo } = landingContent;
   const videoRef = useRef<HTMLVideoElement>(null);
 
   // iOS Safari only autoplays when the muted DOM property is actually set
@@ -28,13 +28,13 @@ export default function SeeHowItWorksSection() {
       <Container className="flex flex-col items-center mb-0">
 
         <h2 className="text-[28px] md:text-[40px] font-extrabold text-white mb-4 md:mb-6 tracking-tight">
-          {seeHowItWorks.title}
+          {demo.title}
         </h2>
 
         <Button
           className="bg-white text-[#113B4A] hover:bg-white/90 font-bold px-6 py-2.5 md:py-3 rounded-full text-[13px] md:text-[14px] shadow-sm transition-all duration-200 mb-8 md:mb-12"
         >
-          {seeHowItWorks.buttonText}
+          {demo.buttonText}
         </Button>
 
         {/* Teal (#00CCB1) baked into the video — opaque, so it plays with no black box
