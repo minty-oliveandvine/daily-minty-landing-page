@@ -144,9 +144,9 @@ function renderBlocks(blocks: FaqBlock[]) {
   return blocks.map((block, idx) => {
     switch (block.type) {
       case 'p':
-        return <p key={idx} className="text-ink-muted [&+p]:mt-2.5">{block.text}</p>;
+        return <p key={idx} className="text-ink-muted [&+p]:mt-2.5 [text-align:justify]">{block.text}</p>;
       case 'p-strong':
-        return <p key={idx} className="text-ink-muted [&+p]:mt-2.5"><strong>{block.text}</strong></p>;
+        return <p key={idx} className="text-ink-muted [&+p]:mt-2.5 [text-align:justify]"><strong>{block.text}</strong></p>;
       case 'ul':
         return (
           <ul key={idx} className="mt-2.5 pl-5 text-ink-soft text-[14.5px] leading-[1.65] marker:text-teal">

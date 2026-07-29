@@ -587,7 +587,7 @@ export const navLinks: NavLink[] = [
     variant: 'text',
     enabled: true,
     children: [
-      { label: 'Support / FAQ', href: '/resources/support', enabled: true },
+      { label: 'Learning / FAQ', href: '/resources/support', enabled: true },
       { label: 'Contact',       href: '/resources/contact', enabled: true },
     ],
   },

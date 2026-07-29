@@ -1,7 +1,11 @@
+'use client';
+
+import { useState } from 'react';
 import Image from 'next/image';
 import Container from '@/components/ui/Container';
+import VideoModal from '@/components/ui/VideoModal';
 import { landingContent } from '@/config/landing';
-import { Wallet, ReceiptText, Menu, LucideIcon } from 'lucide-react';
+import { Wallet, ReceiptText, Menu, Play, LucideIcon } from 'lucide-react';
 import FadeContent from '@/animations/landing/fadeanim';
 
 const iconMap: { [key: string]: LucideIcon } = {
@@ -11,6 +15,8 @@ const iconMap: { [key: string]: LucideIcon } = {
 
 export default function OutcomeSection() {
   const { outcome } = landingContent;
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedCard, setSelectedCard] = useState<{ title: string; href: string } | null>(null);
   const cardThemeStyles = [
     {
       bgClass: "bg-[#00cbb2]", 
@@ -23,8 +29,12 @@ export default function OutcomeSection() {
   ];
 
   return (
+    <>
     <FadeContent blur={true} duration={1000} ease="ease-out" initialOpacity={0}>
-    <section className="bg-[#dcf3ec] py-20" aria-labelledby="outcome-title">
+    {/* id is the target of the hero's "See how it works" CTA. No scroll-mt —
+        the navbar is `relative`, not sticky, so any offset would just leave a
+        strip of the previous section visible above this one. */}
+    <section id="solution" className="bg-[#dcf3ec] py-12 md:py-20" aria-labelledby="outcome-title">
       <Container className="max-w-5xl mx-auto">
         {/* Section Header */}
         <div className="flex flex-col items-center text-center mb-12">
@@ -44,12 +54,13 @@ export default function OutcomeSection() {
             const theme = cardThemeStyles[index] || cardThemeStyles[0];
             const IconComponent = iconMap[card.icon];
             return (
-              <a
+              <button
                 key={card.key}
-                href={card.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className={`${theme.bgClass} rounded-[24px] p-6 pb-0 flex flex-col justify-between shadow-md overflow-hidden aspect-[4/3] cursor-pointer transition-transform duration-200 hover:scale-105 hover:shadow-lg`}
+                onClick={() => {
+                  setSelectedCard({ title: card.title, href: card.href });
+                  setIsModalOpen(true);
+                }}
+                className={`${theme.bgClass} rounded-[24px] p-6 pb-0 flex flex-col justify-between shadow-md overflow-hidden aspect-[4/3] cursor-pointer transition-transform duration-200 hover:scale-105 hover:shadow-lg w-full text-left`}
               >
                 <div className="flex items-center justify-between mb-4">
                   <h3 className="text-[24px] font-bold text-white tracking-wide">
@@ -65,7 +76,7 @@ export default function OutcomeSection() {
 
                 {/* Image Placeholder */}
                 <div className="bg-white rounded-t-[16px] flex-grow flex items-center justify-center overflow-hidden">
-                  <div className="relative w-full h-full min-h-[140px]">
+                  <div className="relative w-full h-full min-h-[140px] group">
                     <Image
                       src={card.image}
                       alt={card.alt}
@@ -73,14 +84,30 @@ export default function OutcomeSection() {
                       className="object-cover rounded-t-[16px]"
                       priority={index < 2}
                     />
+                    {/* Play Button Overlay */}
+                    <div className="absolute inset-0 flex items-center justify-center bg-black/20 group-hover:bg-black/30 transition-all duration-200">
+                      <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-200">
+                        <Play className="w-7 h-7 text-[#00cbb2] fill-[#00cbb2] ml-0.5" />
+                      </div>
+                    </div>
                   </div>
                 </div>
-              </a>
+              </button>
             );
           })}
         </div>
       </Container>
     </section>
     </FadeContent>
+
+    {selectedCard && (
+      <VideoModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        videoUrl={selectedCard.href}
+        title={selectedCard.title}
+      />
+    )}
+    </>
   );
 }

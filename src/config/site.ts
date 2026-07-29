@@ -8,6 +8,9 @@ export const siteConfig = {
   loginUrl:
     process.env.NEXT_PUBLIC_WAITLIST_URL ||
     'https://www.minty.oliveandvinehk.com/',
+  waitlistUrl:
+    process.env.NEXT_PUBLIC_WAITLIST_FORM_URL ||
+    'https://forms.clickup.com/9008167462/f/8ceveh6-19038/4A7KI514BG030HAP22',
   contactEmail:
     process.env.NEXT_PUBLIC_CONTACT_EMAIL || 'hello@dailyminty.com',
   ogImage: '/assets/og-image.png',

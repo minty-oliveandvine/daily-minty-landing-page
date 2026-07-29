@@ -15,8 +15,8 @@ export default function FAQHero() {
       threshold={0.1}
       delay={0}
     >
-    <section className="relative w-full max-w-[1200px] mx-auto my-6 md:my-8 px-4">
-      <div className="relative w-full bg-gradient-to-r from-[#03c5c0] to-[#69d8c2] rounded-[24px] md:rounded-[32px] p-6 md:p-12 overflow-visible min-h-auto md:min-h-[240px] flex flex-col md:items-center md:justify-between md:flex-row gap-4 md:gap-6">
+    <section className="relative w-full max-w-[1400px] mx-auto my-6 md:my-8 px-4">
+      <div className="relative w-full bg-gradient-to-r from-[#03c5c0] to-[#69d8c2] rounded-[24px] md:rounded-[32px] p-6 md:px-12 md:py-4 overflow-visible min-h-auto md:min-h-[240px] flex flex-col md:items-center md:justify-between md:flex-row gap-4 md:gap-6">
 
         {/* Left Content */}
         <div className="z-10 flex-1">
@@ -41,8 +41,9 @@ export default function FAQHero() {
           <Image
             src="/assets/deployed-assets/faq-professor-cat.png"
             alt="Minty Teacher Mascot"
-            width={240}
-            height={240}
+            width={420}
+            height={280}
+            sizes="(min-width: 1024px) 420px, (min-width: 768px) 280px, 150px"
             className="w-[150px] md:w-[280px] lg:w-[420px] h-auto object-contain"
             priority
           />

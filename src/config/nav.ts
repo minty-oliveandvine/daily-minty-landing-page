@@ -25,16 +25,17 @@ export const navLinks: NavLink[] = [
     variant: 'text',
     enabled: true,
     children: [
-      // { label: 'Support / FAQ', href: '/resources/support', enabled: true },
-      { label: 'Support / FAQ', href: '/resources/support', enabled: true },
-      { label: 'Contact',       href: '/resources/contact/', enabled: true },
+      { label: 'Learning', href: '/resources/learning', enabled: true },
+      { label: 'FAQ',      href: '/resources/faq',      enabled: true },
+      { label: 'Contact',  href: '/resources/contact',  enabled: true },
     ],
   },
   {
     key: 'get-started',
-    label: 'Get Started with Minty',
-    href: '/get-started',
+    label: 'Join Waitlist',
+    href: siteConfig.waitlistUrl,
     variant: 'primary',
+    external: true,
     enabled: true,
   },
   {

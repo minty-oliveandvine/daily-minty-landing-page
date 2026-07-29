@@ -1,15 +1,18 @@
+import { siteConfig } from './site';
+
 export const landingContent = {
   hero: {
     title: 'Daily Minty',
     titleAccent: '',
     lede: 'No more lost receipts, no more missing numbers.',
     primaryCta: {
-      label: 'Get started with Minty',
-      href: '/get-started',
+      label: 'Join Waitlist',
+      href: siteConfig.waitlistUrl,
+      external: true,
     },
     secondaryCta: {
       label: 'See how it works',
-      href: '#see-how-it-works',
+      href: '#solution',
     },
     trustText: {before: 'Sync directly with',highlighted: 'Xero'},
     imageAlt: 'Daily Minty hero image showing a cat with a laptop and phone',
@@ -18,7 +21,7 @@ export const landingContent = {
   how: {
     title: 'Minty helps you close the day,',
     titleAccent: 'everyday.',
-    subtitle: 'Three methods. One go-to dashboard. Zero spreadsheet trauma.',
+    subtitle: 'Four methods. One go-to dashboard. Zero spreadsheet trauma.',
     steps: [
       {
         num: 1,
@@ -29,13 +32,20 @@ export const landingContent = {
       },
       {
         num: 2,
-        image: '/assets/deployed-assets/step2-cat-atm.png',
+        image: '/assets/deployed-assets/cash.png',
         alt: 'Check the cash',
         title: 'Check the cash',
         body: 'Count your draw amount + Minty does the math along side you.',
       },
       {
         num: 3,
+        image: '/assets/deployed-assets/box_minty.png',
+        alt: 'Request payments',
+        title: 'Request payments',
+        body: 'Create, pay, and track payments + Minty keeps everyone aligned on bill payments.',
+      },
+      {
+        num: 4,
         image: '/assets/deployed-assets/step3-cat-phone.png',
         alt: 'Get a clean daily report',
         title: 'Get a clean daily report',
@@ -45,8 +55,8 @@ export const landingContent = {
   },
   problem: {
     tag: 'The Problem',
-    headline: 'Daily closing gets complicated on busy days.',
-    highlights: ['complicated'], 
+    headline: 'Stuck in a messy and\ntiring routine.',
+    highlights: ['messy', 'tiring'],
     items: [
       'Rushed entries at closing',
       "Numbers don't match",
@@ -110,10 +120,12 @@ demo: {
   subtitle: '',
   videoUrl: 'https://www.youtube.com/embed/LZVNOp6YTzE',
 },
-seeHowItWorks: {
-  title: 'See how Minty works.',
-  buttonText: 'Open the demo →',
-  image: 'assets/deployed-assets/minty-mascot-wave.mp4'
-  
+keepMeUpdated: {
+  eyebrow: 'Interested?',
+  title: 'Keep me updated',
+  buttonText: 'Join the Waitlist',
+  backgroundImage: '/assets/deployed-assets/sky.png',
+  mascotImage: '/assets/deployed-assets/super.png',
+  mascotAlt: 'Minty mascot superhero with red cape',
 }
 };

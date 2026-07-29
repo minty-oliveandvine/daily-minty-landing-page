@@ -15,7 +15,7 @@ export default function PricingFAQSupport() {
 
         <div className="flex flex-col md:flex-row flex-wrap justify-center gap-3 md:gap-4 items-center">
           <Link
-            href="/resources/support"
+            href="/resources/faq"
             className="bg-[#00CBB0] hover:bg-[#00B59D] text-white font-bold px-6 md:px-8 py-2.5 md:py-3 rounded-full text-[12px] md:text-[13px] shadow-sm transition-all duration-200 w-full md:w-auto"
           >
             Visit FAQ

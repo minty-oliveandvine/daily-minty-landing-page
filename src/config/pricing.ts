@@ -39,7 +39,7 @@ export const landingPricing: PricingPlan[] = [
     meta: 'per shop, billed monthly\nSingle service subscription.',
     trialNote: 'Free trial for the first 30 days, then HKD 280/mo.',
     cta: {
-      label: 'Try for free',
+      label: 'Join Waitlist',
       href: '/auth/signup?plan=petty-cash'
     },
     featuresHeading: 'What you get:',
@@ -64,7 +64,7 @@ export const landingPricing: PricingPlan[] = [
     meta: 'per shop, billed monthly\nSingle service subscription.',
     trialNote: 'Free trial for the first 30 days, then HKD 280/mo.',
     cta: {
-      label: 'Try for free',
+      label: 'Join Waitlist',
       href: '/auth/signup?plan=bill-payment'
     },
     featuresHeading: 'What you get:',
@@ -92,7 +92,7 @@ export const landingPricing: PricingPlan[] = [
     meta: 'Petty Cash + Bill Payment, billed monthly.',
     trialNote: 'Free trial for the first 30 days, then HKD 400/mo.',
     cta: {
-      label: 'Try for free',
+      label: 'Join Waitlist',
       href: '/auth/signup?plan=super-minty'
     },
     featuresHeading: 'Everything in both services:',

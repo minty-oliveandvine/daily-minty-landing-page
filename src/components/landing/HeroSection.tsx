@@ -20,23 +20,29 @@ export default function HeroSection() {
       threshold={0.1}
       delay={0}
     >
-    <section className="bg-white py-10 md:py-20" aria-labelledby="hero-title">
-      <Container className="grid grid-cols-1 md:grid-cols-[1.05fr_1fr] gap-0 md:gap-10 items-center max-w-[1200px] text-center md:text-left px-4 md:px-0">
-        <div className="md:pl-12 flex flex-col items-center md:items-start">
+    <section className="bg-white pt-16 md:pt-28 md:pb-20" aria-labelledby="hero-title">
+      {/* Column split + width mirror the original landing page (2fr/3fr inside a
+          1440px shell) so the hero art renders at the same scale it did there. */}
+      <Container className="grid grid-cols-1 md:grid-cols-[2fr_3fr] gap-12 items-center max-w-[1440px] text-center md:text-left px-4 md:px-6">
+        {/* No left inset here — the original hero ran its headline flush to the
+            column edge, which is what gives the 80px type room to sit on one line. */}
+        <div className="min-w-0 flex flex-col items-center md:items-start">
           <h1
             id="hero-title"
-            className="text-[32px] md:text-[clamp(44px,5.4vw,64px)] font-extrabold leading-[1.1] md:leading-[1.05] tracking-[-0.035em] mb-4"
+            className="text-[32px] md:text-[clamp(56px,6vw,80px)] md:whitespace-nowrap font-extrabold leading-[1.1] md:leading-[1.05] tracking-[-0.035em] mb-4"
           >
             {hero.title} <span className="text-ink">{hero.titleAccent}</span>
           </h1>
-          <p className="text-[15px] md:text-[17px] max-w-[460px] mx-auto md:mx-0 text-ink-soft mb-6 md:mb-7">
+          <p className="text-[15px] md:text-[19px] max-w-[460px] md:max-w-none md:whitespace-nowrap mx-auto md:mx-0 text-ink-soft mb-6 md:mb-8">
             {hero.lede}
           </p>
-          <div className="flex gap-2 md:gap-3.5 items-center justify-center md:justify-start flex-wrap mb-4">
-            <Button href={hero.primaryCta.href} variant="primary">
+          {/* Generous bottom margin: the waitlist CTA's pulsing ring expands ~18px
+              past the button edge, so a tighter gap lets it wash over this line. */}
+          <div className="flex gap-2 md:gap-3.5 items-center justify-center md:justify-start flex-wrap mb-6 md:mb-9">
+            <Button href={hero.primaryCta.href} external={hero.primaryCta.external} variant="waitlist" size="xl">
               {hero.primaryCta.label}
             </Button>
-            <Button href={hero.secondaryCta.href} variant="text">
+            <Button href={hero.secondaryCta.href} variant="text" size="lg">
               {hero.secondaryCta.label} <ArrowRight />
               
             </Button>
@@ -58,14 +64,18 @@ export default function HeroSection() {
             )}
           </span>
         </div>
-        <div className="aspect-[4/5] md:aspect-[5/4] flex items-center justify-center mt-0 md:mt-0 mb-0 md:mb-0">
+        {/* min-w-0 keeps the 1920px-wide art from forcing the fr track wider
+            than its share and overflowing the page horizontally. */}
+        <div className="min-w-0 flex items-center justify-center mt-0 md:mt-0 mb-0 md:mb-0">
           <Image
             src={hero.image}
             alt={hero.imageAlt}
-            width={600}
-            height={600}
+            width={1920}
+            height={1080}
+            sizes="(min-width: 1440px) 835px, (min-width: 768px) 60vw, 100vw"
+            quality={100}
             priority
-            className="w-full max-w-[400px] md:max-w-[600px] h-auto object-contain"
+            className="w-full max-w-[400px] md:max-w-[820px] h-auto object-contain"
           />
         </div>
       </Container>

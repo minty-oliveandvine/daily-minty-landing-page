@@ -10,8 +10,15 @@ function FooterAnchor({
 }: {
   href: string; external?: boolean; className?: string; children: React.ReactNode;
 }) {
+  // mailto:/tel: must be plain anchors — Next's <Link> routes them through the
+  // client router, which swallows every click after the first (same URL, treated
+  // as a no-op). No target="_blank" either, or the browser leaves a blank tab open.
+  if (/^(mailto:|tel:)/i.test(href)) {
+    return <a href={href} className={className}>{children}</a>;
+  }
+
   return external ? (
-    <a href={href} className={className} rel="noopener noreferrer">{children}</a>
+    <a href={href} className={className} target="_blank" rel="noopener noreferrer">{children}</a>
   ) : (
     <Link href={href} className={className}>{children}</Link>
   );

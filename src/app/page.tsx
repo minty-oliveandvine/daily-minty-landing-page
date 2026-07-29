@@ -7,7 +7,7 @@ import OutcomeSection from '@/components/landing/OutcomeSection';
 import HowItWorksSection from '@/components/landing/HowItWorksSection';
 import HelpsYouSection from '@/components/landing/HelpsYouSection';
 import DemoSection from '@/components/landing/DemoSection';
-import SeeHow from '@/components/landing/SeeHowItWorks';
+import KeepMeUpdatedSection from '@/components/landing/KeepMeUpdatedSection';
 export const metadata: Metadata = {
   title: 'Daily Minty',
   description:
@@ -21,12 +21,12 @@ export default function HomePage() {
       <Navbar />
       <main>
         <HeroSection />
+        <DemoSection />
         <ProblemSection />
         <OutcomeSection />
         <HowItWorksSection />
         <HelpsYouSection />
-        <DemoSection />
-        <SeeHow />
+        <KeepMeUpdatedSection />
       </main>
       <Footer />
       

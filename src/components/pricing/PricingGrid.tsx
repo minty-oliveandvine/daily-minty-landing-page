@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import Image from 'next/image';
 import Button from '@/components/ui/Button';
+import { siteConfig } from '@/config/site';
 import AnimatedContent from '@/animations/pricing/heroanim';
 
 const pricingPlans = [
@@ -64,13 +65,13 @@ export default function PricingGrid() {
       threshold={0.1}
       delay={0}
     >
-    <section className="max-w-[1200px] mx-auto px-4 mb-16">
+    <section className="max-w-[1400px] mx-auto px-4 mb-16">
       <div className="flex justify-center mb-12">
       <span className="bg-white border border-gray-100 text-[#113B4A] text-[13px] font-bold px-6 py-2.5 rounded-full shadow-md tracking-wide">
         Subscription Types
       </span>
     </div>
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 items-stretch">
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 items-stretch">
       {pricingPlans.map((plan) => {
         const isSelected = selectedPlan === plan.id;
         const isSuperMintyGreen = isSelected && plan.id === 'super-minty';
@@ -113,8 +114,12 @@ export default function PricingGrid() {
       
               <p className={`text-[11px] font-medium p-3 rounded-xl mb-6 ${isSuperMintyGreen ? 'bg-white/15 text-white' : 'text-[#113B4A] bg-[#F5F8F9]'}`}>{plan.trialText}</p>
 
-              <Button href='/' className={`w-full py-3 rounded-xl font-bold text-sm mb-8 ${isSelected ? 'bg-[#113B4A] text-white' : 'bg-[#ECF2F5] text-[#113B4A]'}`}>
-                Try for free
+              <Button
+                href={siteConfig.waitlistUrl}
+                external
+                className={`w-full py-3 rounded-xl font-bold text-sm mb-8 ${isSelected ? 'bg-[#113B4A] text-white' : 'bg-[#ECF2F5] text-[#113B4A]'}`}
+              >
+                Join Waitlist
               </Button>
 
               <div className={`border-t pt-6 ${isSuperMintyGreen ? 'border-white/20' : 'border-gray-100'}`}>

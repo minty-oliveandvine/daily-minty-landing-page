@@ -37,7 +37,7 @@ export default function Navbar() {
 
   return (
     <nav className="relative top-0 z-50 bg-white border-b border-ink/[0.06]" aria-label="Primary">
-      <Container className="flex items-center justify-between py-[18px] max-w-[1300px]">
+      <Container className="flex items-center justify-between py-5 md:py-10 max-w-[1440px] px-4 md:px-6">
         <Link href="/" className="inline-flex items-center" aria-label="Daily Minty home">
           <Image
             src="/assets/deployed-assets/minty-logo-v2.png"
@@ -187,13 +187,14 @@ export default function Navbar() {
             })}
 
           <div className="flex flex-col gap-3 mt-4">
-            <Link
-              href="/get-started"
+            <a
+              href={siteConfig.waitlistUrl}
+              rel="noopener noreferrer"
               onClick={() => setIsOpen(false)}
-              className="bg-[#00CBB0] text-white px-6 py-3 rounded-full font-bold text-center hover:opacity-90 transition-opacity"
+              className="bg-[#00CBB0] text-white px-6 py-3 rounded-full font-bold text-center hover:opacity-90 transition-opacity no-underline"
             >
-              Get Started with Minty
-            </Link>
+              Join Waitlist
+            </a>
             <Link
               href={siteConfig.loginUrl}
               onClick={() => setIsOpen(false)}

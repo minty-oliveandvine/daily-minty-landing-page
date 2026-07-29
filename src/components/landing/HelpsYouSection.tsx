@@ -14,7 +14,7 @@ export default function HelpsYouSection() {
   const { helpsYou, demo } = landingContent;
   return (
     <FadeContent blur={true} duration={1000} ease="ease-out" initialOpacity={0}>
-    <section className="bg-mint-soft py-10" aria-labelledby="helps-title">
+    <section className="bg-mint-soft py-12 md:py-20" aria-labelledby="helps-title">
       <Container>
         {/* Title with leaf icon */}
         <div className="text-center mb-20 flex flex-col items-center justify-center">

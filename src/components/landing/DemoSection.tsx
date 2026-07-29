@@ -36,8 +36,8 @@ export default function DemoSection() {
 
   return (
     <FadeContent blur={true} duration={1000} ease="ease-out" initialOpacity={0}>
-    <section className="bg-[#EBF7F4] py-10" aria-labelledby="demo-title">
-      <Container className="flex flex-col items-center text-center mb-10">
+    <section className="bg-[#EBF7F4] py-12 md:py-20" aria-labelledby="demo-title">
+      <Container className="flex flex-col items-center text-center">
         
         {/* Top Pill Badge */}
         <div className="inline-flex items-center gap-1.5 bg-[#D2EFE9] text-[#00A884] text-[11px] font-bold tracking-wider uppercase px-4 py-1.5 rounded-full mb-5">
