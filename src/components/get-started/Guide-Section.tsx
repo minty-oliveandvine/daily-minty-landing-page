@@ -169,7 +169,7 @@ export default function GuidesSection() {
                   line, and the button's w-full lands on the title's width.
                   Mobile: full width, description wraps, button sizes to itself. */}
               <div className="w-full md:w-fit">
-                <h2 className="text-[#113B4A] text-[24px] md:text-[28px] font-extrabold tracking-tight mb-2">
+                <h2 className="text-[#113B4A] text-[22px] sm:text-[26px] md:text-[32px] font-extrabold tracking-tight mb-2">
                   {group.callout.title}
                 </h2>
                 <p className="text-gray-500 text-sm md:text-base mb-6 md:w-0 md:min-w-full md:whitespace-nowrap">
