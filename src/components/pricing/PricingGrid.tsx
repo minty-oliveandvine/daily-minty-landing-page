@@ -23,14 +23,14 @@ const pricingPlans = [
   {
     id: 'bill-payment',
     title: 'Payment',
-    description: 'Schedule supplier bills, log payments, and never miss a due date.',
+    description: 'Schedule supplier payment, log payments, and never miss a due date.',
     illustrationSrc: '/assets/deployed-assets/sub-bill-payment.png',
     crossedText: 'HKD 280/mo',
     currentPrice: 'Free',
     subText: 'per shop, billed monthly\nSingle service subscription.',
     trialText: 'Free trial for the first 30 days, then HKD 280/mo.',
     featuresHeading: 'What you get:',
-    features: ['Bill scheduling & reminder', 'Supplier & vendor directory', 'Payment logging & proof upload', 'Payables & PDF reports', 'Xero sync (bills & payments)', 'Team invites & roles'],
+    features: ['Payment scheduling & reminder', 'Supplier & vendor directory', 'Payment logging & proof upload', 'Payables & PDF reports', 'Xero sync (bills & payments)', 'Team invites & roles'],
     isPopular: false,
   },
   {
@@ -40,10 +40,10 @@ const pricingPlans = [
     illustrationSrc: '/assets/deployed-assets/sub-super-minty.png',
     crossedText: 'HKD 400/mo',
     currentPrice: 'Free',
-    subText: 'Petty Cash + Bill Payment, billed monthly.',
+    subText: 'Petty Cash + Payment Request, billed monthly.',
     trialText: 'Free trial for the first 30 days, then HKD 400/mo.',
     featuresHeading: 'Everything in both services:',
-    features: ['Everything from Petty Cash', 'Everything from Bill Payment', 'Xero sync (full)', 'Multi-shop management', 'Team invites & roles'],
+    features: ['Everything from Petty Cash', 'Everything from Payment Request', 'Xero sync (full)', 'Multi-shop management', 'Team invites & roles'],
     isPopular: true,
     badgeText: 'Best Value'
   }
