@@ -18,42 +18,81 @@ function PermissionsTable({ permissions }: { permissions?: PermissionRow[] }) {
   const tablePermissions = permissions || defaultPermissions;
 
   return (
-    <div className="mt-4 overflow-x-auto border border-gray-200 rounded-lg">
-      <table className="w-full text-sm">
-        <thead className="bg-gray-50 border-b border-gray-200">
+    <div className="mt-4 overflow-x-auto rounded-xl">
+      <table className="w-full min-w-[620px] text-sm border-collapse">
+        <thead>
           <tr>
-            <th className="px-4 py-3 text-left font-bold text-ink">PERMISSION</th>
-            {roles.map((role) => (
-              <th key={role} className="px-4 py-3 text-center font-bold text-ink text-xs uppercase tracking-wider">{role}</th>
+            {/* The name column carries a warm tint and the role columns a mint one,
+                so the header reads as two blocks rather than one grey bar. */}
+            <th className="bg-[#FCEFE6] px-5 py-3.5 text-left text-xs font-bold uppercase tracking-wider text-ink rounded-tl-xl">
+              PERMISSION
+            </th>
+            {roles.map((role, i) => (
+              <th
+                key={role}
+                className={cn(
+                  'bg-[#E4F6F1] px-4 py-3.5 text-center text-xs font-bold uppercase tracking-wider text-[#00B49A]',
+                  i === roles.length - 1 && 'rounded-tr-xl'
+                )}
+              >
+                {role}
+              </th>
             ))}
           </tr>
         </thead>
         <tbody>
-          {tablePermissions.map((perm, idx) => (
-            <tr key={idx} className={idx % 2 === 0 ? 'bg-gray-50' : 'bg-white'}>
-              <td className="px-4 py-3 font-medium text-ink">
-                {perm.name.includes('Xero') ? (
-                  <>
-                    {perm.name.substring(0, perm.name.indexOf('Xero')).trim()}
-                    {' '}
-                    <span className="font-bold text-black">Xero</span>
-                    {perm.name.substring(perm.name.indexOf('Xero') + 4).trimStart()}
-                  </>
-                ) : (
-                  perm.name
-                )}
-              </td>
-              {roles.map((role) => (
-                <td key={role} className="px-4 py-3 text-center">
-                  {perm.roles[role as keyof typeof perm.roles] ? (
-                    <span className="text-teal-deep text-xl">✓</span>
+          {tablePermissions.map((perm, idx) => {
+            const isLast = idx === tablePermissions.length - 1;
+            return (
+              <tr key={idx}>
+                <td
+                  className={cn(
+                    'px-5 py-3.5 font-medium text-ink border-b border-white',
+                    idx % 2 === 0 ? 'bg-[#FDF4EF]' : 'bg-[#FFFAF6]',
+                    isLast && 'rounded-bl-xl border-b-0'
+                  )}
+                >
+                  {perm.name.includes('Xero') ? (
+                    <>
+                      {perm.name.substring(0, perm.name.indexOf('Xero')).trim()}
+                      {' '}
+                      <span className="font-bold text-[#2baae0]">Xero</span>
+                      {perm.name.substring(perm.name.indexOf('Xero') + 4).trimStart()}
+                    </>
                   ) : (
-                    <span className="text-gray-300 text-xl">○</span>
+                    perm.name
                   )}
                 </td>
-              ))}
-            </tr>
-          ))}
+                {roles.map((role, i) => (
+                  <td
+                    key={role}
+                    className={cn(
+                      'px-4 py-3.5 text-center border-b border-white',
+                      idx % 2 === 0 ? 'bg-[#F4FBF8]' : 'bg-white',
+                      isLast && 'border-b-0',
+                      isLast && i === roles.length - 1 && 'rounded-br-xl'
+                    )}
+                  >
+                    {perm.roles[role as keyof typeof perm.roles] ? (
+                      <span
+                        aria-label="Allowed"
+                        className="inline-flex h-5 w-5 items-center justify-center rounded-full bg-[#D8F3EA] text-[11px] font-bold leading-none text-[#00B49A]"
+                      >
+                        ✓
+                      </span>
+                    ) : (
+                      <span
+                        aria-label="Not allowed"
+                        className="inline-flex h-5 w-5 items-center justify-center rounded-full bg-[#FBE0D2] text-[10px] font-bold leading-none text-[#E8845A]"
+                      >
+                        ✕
+                      </span>
+                    )}
+                  </td>
+                ))}
+              </tr>
+            );
+          })}
         </tbody>
       </table>
     </div>
@@ -107,7 +146,7 @@ export default function FaqAccordion({ items, defaultOpenId }: { items: FaqItem[
                   <>
                     {item.question.substring(0, item.question.indexOf('Xero')).trim()}
                     {' '}
-                    <span className="font-bold text-black">Xero</span>
+                    <span className="font-bold text-[#2baae0]">Xero</span>
                     {item.question.substring(item.question.indexOf('Xero') + 4).trimStart()}
                   </>
                 ) : (

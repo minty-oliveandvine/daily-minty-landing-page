@@ -9,6 +9,7 @@ import { cn } from '@/lib/utils';
 import { Clock } from 'lucide-react';
 import VideoPlayer from '@/components/get-started/VideoPlayer';
 import FadeContent from '@/animations/landing/fadeanim';
+import { highlightXero } from '@/components/ui/XeroText';
 
 export default function GuidesSection() {
   const { guideGroups } = getStartedContent;
@@ -96,16 +97,7 @@ export default function GuidesSection() {
 
 
               <h3 className="text-[#113B4A] text-lg font-extrabold leading-snug mb-1">
-                {guide.title.includes('Xero') ? (
-                  <>
-                    {guide.title.substring(0, guide.title.indexOf('Xero')).trim()}
-                    {' '}
-                    <span style={{ color: '#266DD3' }}>Xero</span>
-                    {guide.title.substring(guide.title.indexOf('Xero') + 4).trimStart()}
-                  </>
-                ) : (
-                  guide.title
-                )}
+                {highlightXero(guide.title)}
               </h3>
               {/* Guides without a subtitle skip the <p> entirely, so an empty
                   string doesn't leave a blank line above the thumbnail. */}
@@ -170,10 +162,10 @@ export default function GuidesSection() {
                   Mobile: full width, description wraps, button sizes to itself. */}
               <div className="w-full md:w-fit">
                 <h2 className="text-[#113B4A] text-[22px] sm:text-[26px] md:text-[32px] font-extrabold tracking-tight mb-2">
-                  {group.callout.title}
+                  {highlightXero(group.callout.title)}
                 </h2>
                 <p className="text-gray-500 text-sm md:text-base mb-6 md:w-0 md:min-w-full md:whitespace-nowrap">
-                  {group.callout.description}
+                  {highlightXero(group.callout.description)}
                 </p>
                 {/* Lift + shadow on hover, dip on press, arrow slides right —
                     so the click has feedback before the page changes. */}

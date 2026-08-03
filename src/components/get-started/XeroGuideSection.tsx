@@ -6,6 +6,7 @@ import { getStartedContent } from '@/config/get-started';
 import { cn } from '@/lib/utils';
 import VideoPlayer from '@/components/get-started/VideoPlayer';
 import FadeContent from '@/animations/landing/fadeanim';
+import { highlightXero } from '@/components/ui/XeroText';
 
 /**
  * "Connecting and Managing Xero Integration in Minty" — a walkthrough video
@@ -20,7 +21,7 @@ export default function XeroGuideSection() {
       <section className="bg-[#F7F9FB] py-10 md:py-16 font-sans">
         <Container className="max-w-[1440px] px-4 md:px-6">
           <h2 className="text-[#113B4A] text-[22px] sm:text-[26px] md:text-[28px] font-extrabold tracking-tight mb-8 md:mb-10">
-            {xeroGuide.title}
+            {highlightXero(xeroGuide.title)}
           </h2>
 
           <div className="mx-auto w-full max-w-[880px]">

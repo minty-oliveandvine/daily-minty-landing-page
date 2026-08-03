@@ -3,6 +3,7 @@ import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
 import Container from '@/components/ui/Container';
 import XeroMapping from '@/components/xero/XeroMapping';
+import { highlightXero } from '@/components/ui/XeroText';
 import XeroGuideSection from '@/components/get-started/XeroGuideSection';
 import GuidesSectionFaq from '@/components/get-started/GetStartedFaq';
 import AnimatedContent from '@/animations/landing/heroanim';
@@ -56,7 +57,7 @@ export default function XeroIntegrationPage() {
           <section className="bg-white py-10 md:py-16">
             <Container className="max-w-[1440px] px-4 md:px-6">
               <h2 className="text-[#113B4A] text-[22px] sm:text-[26px] md:text-[28px] font-extrabold tracking-tight mb-8 md:mb-10">
-                {mapping.title}
+                {highlightXero(mapping.title)}
               </h2>
               <div className="mx-auto w-full max-w-[820px]">
                 <XeroMapping

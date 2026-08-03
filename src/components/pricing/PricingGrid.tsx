@@ -134,7 +134,9 @@ export default function PricingGrid() {
                       <>
                         {feature.substring(0, feature.indexOf('Xero')).trim()}
                         {' '}
-                        <span className="font-bold text-black">Xero</span>
+                        {/* The blue washes out on the teal Super Minty card, so it
+                            falls back to black there. */}
+                        <span className={`font-bold ${isSuperMintyGreen ? 'text-black' : 'text-[#2baae0]'}`}>Xero</span>
                         {feature.substring(feature.indexOf('Xero') + 4).trimStart()}
                       </>
                     ) : (

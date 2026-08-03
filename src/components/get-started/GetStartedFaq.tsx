@@ -8,6 +8,25 @@ import { getStartedContent } from '@/config/get-started';
 import { cn } from '@/lib/utils';
 import FadeContent from '@/animations/landing/fadeanim';
 
+// "Xero" inside a heading becomes a blue link through to the integration page.
+// Headings only — the FAQ questions sit inside a <button>, and an anchor nested
+// in a button is invalid markup.
+function linkXero(text: string) {
+  return text.split(/(Xero)/g).map((part, i) =>
+    part === 'Xero' ? (
+      <Link
+        key={i}
+        href="/resources/xero-integration"
+        className="text-[#2baae0] no-underline hover:underline"
+      >
+        {part}
+      </Link>
+    ) : (
+      part
+    )
+  );
+}
+
 export default function GetStartedFaqSection() {
   const { faqSection } = getStartedContent;
   const [openId, setOpenId] = useState<number | null>(null);
@@ -18,7 +37,7 @@ export default function GetStartedFaqSection() {
       <Container className="max-w-[950px] px-4 md:px-7">
         <div className="text-center mb-8 md:mb-12">
           <h2 className="text-[#113B4A] text-[28px] md:text-[34px] font-extrabold tracking-tight mb-3">
-            {faqSection.title}
+            {linkXero(faqSection.title)}
           </h2>
           <p className="text-gray-500 text-sm md:text-base">
             {faqSection.subtitle}
@@ -27,7 +46,7 @@ export default function GetStartedFaqSection() {
 
         <div className="bg-white rounded-3xl p-6 md:p-10 border border-gray-100 shadow-[0_4px_24px_rgba(17,59,74,0.02)] mb-8">
           <h3 className="text-[#113B4A] text-[16px] font-extrabold mb-6 tracking-tight">
-            {faqSection.faqBox.title}
+            {linkXero(faqSection.faqBox.title)}
           </h3>
 
           {/* Questions expand in place rather than linking to /resources/faq. */}

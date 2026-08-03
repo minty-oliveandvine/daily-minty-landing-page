@@ -57,7 +57,7 @@ export default function HeroSection() {
             {typeof hero.trustText == 'object' ? (
               <>
                 {hero.trustText.before}
-                <span className="text-ink font-bold -ml-1">{hero.trustText.highlighted}</span>
+                <span className="text-[#2baae0] font-bold -ml-1">{hero.trustText.highlighted}</span>
               </>
             ) : (
               hero.trustText

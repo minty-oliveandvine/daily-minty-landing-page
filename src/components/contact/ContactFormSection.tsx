@@ -278,7 +278,7 @@ export default function ContactFormSection() {
               <MessageSquare className="w-4 md:w-5 h-4 md:h-5 text-[#00CBB0]" />
             </div>
             <div className="flex-1 min-w-0">
-              <h3 className="font-bold text-[#113B4A] mb-1 text-[13px] md:text-sm">Whatsapp us</h3>
+              <h3 className="font-bold text-[#113B4A] mb-1 text-[13px] md:text-sm">WhatsApp us</h3>
               <p className="text-[11px] md:text-xs text-[#4A7280] leading-relaxed mb-2">Get instant replies during business hours. Chat directly with our team on WhatsApp.</p>
                <a href="https://wa.me/85260423884" target="_blank" rel="noopener noreferrer" className="text-[11px] md:text-xs font-bold text-[#00CBB0] hover:underline">Start chat →</a>
             </div>
