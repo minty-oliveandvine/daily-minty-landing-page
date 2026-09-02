@@ -165,7 +165,7 @@ export const getStartedContent = {
   xeroGuide: {
     title: "Connecting and Managing Xero Integration in Minty",
     videoThumbnail: "/assets/deployed-assets/GS-02-02.png",
-    videoUrl: "https://www.youtube.com/watch?v=02fYdxjx6j8",
+    videoUrl: "https://www.youtube.com/watch?v=7CnOOOzlSrU",
     duration: "1:26",
     videoNote: "IF ANY...",
     items: [
