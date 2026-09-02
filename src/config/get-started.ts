@@ -70,26 +70,36 @@ export const getStartedContent = {
       subtitle: "Short, practical tutorials to help you master Minty step by step.",
       background: "bg-[#FBF7F0]",
       items: [
-        {
-          id: 6,
-          category: "Coming Soon",
-          duration: "0:00 sec",
-          title: "Coming Soon",
-          description: 'Coming Soon',
-          badge: "",
-          videoThumbnail: "",
-          videoUrl: ""
-        },
         // {
-        //   id: 2,
-        //   category: "Getting Started",
-        //   duration: "0:42 sec",
-        //   title: "2. Request Payment and keep it on track",
-        //   description: '"How do I connect Minty account with other accounting systems?"',
+        //   id: 6,
+        //   category: "Coming Soon",
+        //   duration: "0:00 sec",
+        //   title: "Coming Soon",
+        //   description: 'Coming Soon',
         //   badge: "",
-        //   videoThumbnail: "/assets/deployed-assets/GS-07-01.png",
-        //   videoUrl: "https://www.youtube.com/watch?v=Uku-S8hNs6c"
+        //   videoThumbnail: "",
+        //   videoUrl: ""
         // },
+        {
+          id: 20,
+          category: "Getting Started",
+          duration: "1:00 min",
+          title: "1. Daily Closing Step by Step Overview",
+          description: '"How do I close the day in Minty?"',
+          badge: "",
+          videoThumbnail: "/assets/deployed-assets/Daily Closing Step by Step Overview.png",
+          videoUrl: "https://www.youtube.com/watch?v=xFKNPOxuYPo"
+        },
+        {
+          id: 21,
+          category: "Getting Started",
+          duration: "0:47 sec",
+          title: "2. When the Numbers Don't Agree",
+          description: '"My numbers don\'t match - what now?"',
+          badge: "",
+          videoThumbnail: "/assets/deployed-assets/When the Numbers Don't Agree.png",
+          videoUrl: "https://www.youtube.com/watch?v=lgCHne-AhZ8"
+        },
       ],
     },
     {
@@ -104,20 +114,20 @@ export const getStartedContent = {
           category: "Getting Started",
           duration: "0:43 sec",
           title: "1. Request Payment and keep it on track",
-          description: '"How do I connect Minty account with other accounting systems?"',
+          description: '"How do I request a payment and track it?"',
           badge: "",
           videoThumbnail: "/assets/deployed-assets/GS-07-01.png",
-          videoUrl: "https://www.youtube.com/watch?v=Uku-S8hNs6c"
+          videoUrl: "https://www.youtube.com/watch?v=KEhW9LWVMFg"
         },
          {
           id: 5,
           category: "Getting Started",
           duration: "0:34 sec",
-          title: "2. Void Incorrect Bills",
-          description: '"How do I connect Minty account with other accounting systems?"',
+          title: "2. Voiding Incorrect Bills",
+          description: '"I raised the wrong bill - how do I cancel it?"',
           badge: "",
           videoThumbnail: "/assets/deployed-assets/GS-07-03.png",
-          videoUrl: "https://www.youtube.com/watch?v=TtO_HbNOLyM"
+          videoUrl: "https://www.youtube.com/watch?v=jjTfSYQAy0E"
         },
       ],
     },
@@ -136,7 +146,17 @@ export const getStartedContent = {
           description: '"I\'m new to Minty - where should I start?"',
           badge: "",
           videoThumbnail: "/assets/deployed-assets/GS-02-03.png",
-          videoUrl: "https://www.youtube.com/watch?v=1AwgfXOV-k0"
+          videoUrl: "https://www.youtube.com/watch?v=owqwK3zfYho"
+        },
+        {
+          id: 2,
+          category: "Getting Started",
+          duration: "1:27 min",
+          title: "2. Connecting Minty to Xero",
+          description: '"How do I connect Minty to Xero?"',
+          badge: "",
+          videoThumbnail: "/assets/deployed-assets/Connecting Minty to Xero.png",
+          videoUrl: "https://www.youtube.com/watch?v=7CnOOOzlSrU"
         },
         
       ],
@@ -145,7 +165,7 @@ export const getStartedContent = {
   xeroGuide: {
     title: "Connecting and Managing Xero Integration in Minty",
     videoThumbnail: "/assets/deployed-assets/GS-02-02.png",
-    videoUrl: "https://youtu.be/02fYdxjx6j8",
+    videoUrl: "https://www.youtube.com/watch?v=02fYdxjx6j8",
     duration: "1:26",
     videoNote: "IF ANY...",
     items: [

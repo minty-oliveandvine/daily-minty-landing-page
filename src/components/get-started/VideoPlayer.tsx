@@ -16,9 +16,11 @@ function youtubeId(videoUrl: string): string {
 function buildEmbedUrl(videoUrl: string): string {
   const params = new URLSearchParams({
     autoplay: '1',
-    // Muted is required or browsers block autoplay outright. YouTube's own
-    // volume control in the bar below is how the viewer turns sound on.
-    mute: '1',
+    // Start with sound — playback is always kicked off by a click on the
+    // poster, so the browser's user-activation requirement is already met.
+    // Where a browser still refuses (iOS Safari, a fresh profile), it starts
+    // muted instead and the "Tap for sound" button below comes back.
+    mute: '0',
     // Native chrome: draggable timeline, elapsed/total time, volume,
     // fullscreen. Set to '0' to hide it again.
     controls: '1',
@@ -87,7 +89,9 @@ export default function VideoPlayer({
     onPlayingChange?.(next);
   };
 
-  const [isMuted, setIsMuted] = useState(true);
+  // Optimistic: the embed asks for sound. The listener below flips this back
+  // to true only if the player reports that the browser forced it muted.
+  const [isMuted, setIsMuted] = useState(false);
   const playerRef = useRef<HTMLDivElement>(null);
   const iframeRef = useRef<HTMLIFrameElement>(null);
 
@@ -96,12 +100,46 @@ export default function VideoPlayer({
   const poster = thumbnail || `https://img.youtube.com/vi/${youtubeId(videoUrl)}/hqdefault.jpg`;
   const isLocalThumb = Boolean(thumbnail) && thumbnail!.startsWith('/');
 
-  // Each newly opened video starts muted again.
+  // Each newly opened video assumes sound again until the player says otherwise.
   useEffect(() => {
-    setIsMuted(true);
+    setIsMuted(false);
   }, [isPlaying]);
 
-  // Controls are hidden, so offer an explicit way to turn sound on.
+  // The iframe reports its state (mute included) once we subscribe with a
+  // `listening` message — that is what tells us whether the browser honoured
+  // the unmuted autoplay or silently overrode it.
+  useEffect(() => {
+    if (!isPlaying) return;
+    const onMessage = (event: MessageEvent) => {
+      if (!event.origin.includes('youtube.com')) return;
+      try {
+        const data = typeof event.data === 'string' ? JSON.parse(event.data) : event.data;
+        const muted = data?.info?.muted;
+        if (typeof muted === 'boolean') setIsMuted(muted);
+      } catch {
+        // Non-JSON chatter from the embed — nothing to read.
+      }
+    };
+    window.addEventListener('message', onMessage);
+    return () => window.removeEventListener('message', onMessage);
+  }, [isPlaying]);
+
+  // Subscribe for state updates, then push unMute + play. Both are no-ops when
+  // the browser already started it with sound; they recover the sound when a
+  // stricter autoplay policy stepped in.
+  const onIframeLoad = () => {
+    const frame = iframeRef.current?.contentWindow;
+    if (!frame) return;
+    for (const message of [
+      { event: 'listening' },
+      { event: 'command', func: 'unMute', args: [] },
+      { event: 'command', func: 'playVideo', args: [] },
+    ]) {
+      frame.postMessage(JSON.stringify(message), '*');
+    }
+  };
+
+  // Fallback for browsers that force the embed to start muted anyway.
   const unmute = () => {
     iframeRef.current?.contentWindow?.postMessage(
       JSON.stringify({ event: 'command', func: 'unMute', args: [] }),
@@ -184,6 +222,7 @@ export default function VideoPlayer({
         width="100%"
         height="100%"
         src={buildEmbedUrl(videoUrl)}
+        onLoad={onIframeLoad}
         title={title}
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
         allowFullScreen
