@@ -89,19 +89,28 @@ export default function PricingGrid() {
             }`}
           >
             <div>
-              <div className={`bg-[#F5F8F9] rounded-2xl w-full aspect-[1.75/1] flex items-center justify-center border border-gray-100/50 ${plan.id === 'super-minty' ? 'mb-[50px]' : 'mb-6'}`}>
-                <Image src={plan.illustrationSrc} alt={plan.title} width={plan.id === 'super-minty' ? 500 : 450} height={220} className="object-contain" />
+              {/* Fixed-ratio frame: the source PNGs have different intrinsic ratios, so the
+                  image must fit inside the box rather than set its height — otherwise
+                  each card's content starts at a different y. */}
+              <div className="relative bg-[#F5F8F9] rounded-2xl w-full aspect-[1.45/1] mb-6 overflow-hidden border border-gray-100/50">
+                <Image
+                  src={plan.illustrationSrc}
+                  alt={plan.title}
+                  fill
+                  sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
+                  className="object-contain"
+                />
               </div>
 
               
-              <div className={`flex gap-2 items-center mb-3 ${plan.id === 'super-minty' ? 'mb-[16px]' : ''}`}>
+              <div className="flex gap-2 items-center mb-3">
                 <h2 className={`text-2xl font-extrabold ${isSuperMintyGreen ? 'text-white' : 'text-[#113B4A]'}`}>{plan.title}</h2>
                 {plan.badgeText && <span className={`text-[10px] font-bold px-2.5 py-0.5 rounded-full uppercase tracking-wide ${isSuperMintyGreen ? 'bg-white/20 text-white' : 'bg-[#E5ECF0] text-[#4A7280]'}`}>{plan.badgeText}</span>}
               </div>
 
-              <p className={`text-xs leading-relaxed mb-8 ${isSuperMintyGreen ? 'text-white/80' : 'text-gray-500'}`}>{plan.description}</p>
+              <p className={`text-xs leading-relaxed mb-8 min-h-[39px] ${isSuperMintyGreen ? 'text-white/80' : 'text-gray-500'}`}>{plan.description}</p>
 
-              <div className={`flex items-center gap-3 mb-1.5 ${plan.id === 'super-minty' ? 'mb-[28px]' : ''}`}>
+              <div className="flex items-center gap-3 mb-1.5">
                 <span className={`font-bold text-2xl relative ${isSuperMintyGreen ? 'text-white/70' : 'text-gray-400'}`}>
                   {plan.crossedText}
                   <span className="absolute left-0 top-1/2 w-full h-[2.5px] bg-[#FF5E5E] -translate-y-1/2 rounded" />
@@ -109,7 +118,7 @@ export default function PricingGrid() {
                 <span className={isSuperMintyGreen ? 'text-white font-extrabold text-3xl' : 'text-[#00CBB0] font-extrabold text-3xl'}>{plan.currentPrice}</span>
               </div>
 
-              <p className={`text-[11px] whitespace-pre-line mb-3 ${isSuperMintyGreen ? 'text-white/80' : 'text-gray-400'}`}>{plan.subText}</p>
+              <p className={`text-[11px] leading-[1.6] whitespace-pre-line mb-3 min-h-[36px] ${isSuperMintyGreen ? 'text-white/80' : 'text-gray-400'}`}>{plan.subText}</p>
               
       
               <p className={`text-[11px] font-medium p-3 rounded-xl mb-6 ${isSuperMintyGreen ? 'bg-white/15 text-white' : 'text-[#113B4A] bg-[#F5F8F9]'}`}>{plan.trialText}</p>
