@@ -40,9 +40,8 @@ export const getStartedContent = {
   // own background colour; `eyebrow` is the dark prefix before the teal title,
   // and a group with no eyebrow/subtitle shows just its title (see login-otp).
   //
-  // TODO: ids must stay unique across ALL groups — the player keys its open
-  // state off them. Videos below are the three we have; the remaining cards
-  // reuse them as placeholders until per-module recordings are supplied.
+  // NOTE: ids must stay unique across ALL groups — the player keys its open
+  // state off them. Next free id: 25.
   guideGroups: [
     {
       id: "login-otp",
@@ -70,20 +69,10 @@ export const getStartedContent = {
       subtitle: "Short, practical tutorials to help you master Minty step by step.",
       background: "bg-[#FBF7F0]",
       items: [
-        // {
-        //   id: 6,
-        //   category: "Coming Soon",
-        //   duration: "0:00 sec",
-        //   title: "Coming Soon",
-        //   description: 'Coming Soon',
-        //   badge: "",
-        //   videoThumbnail: "",
-        //   videoUrl: ""
-        // },
         {
           id: 20,
           category: "Getting Started",
-          duration: "1:00 min",
+          duration: "1:01 min",
           title: "1. Daily Closing : Step by Step Overview",
           description: '"How do I close the day in Minty?"',
           badge: "",
@@ -93,12 +82,42 @@ export const getStartedContent = {
         {
           id: 21,
           category: "Getting Started",
-          duration: "0:47 sec",
+          duration: "0:48 sec",
           title: "2. When the Numbers Don't Agree",
           description: '"My numbers don\'t match - what now?"',
           badge: "",
           videoThumbnail: "/assets/deployed-assets/When the Numbers Don't Agree.png",
           videoUrl: "https://www.youtube.com/watch?v=lgCHne-AhZ8"
+        },
+        {
+          id: 22,
+          category: "Getting Started",
+          duration: "0:41 sec",
+          title: "3. When Yesterday Slips Past You",
+          description: '"What happens if I miss a day\'s closing?"',
+          badge: "",
+          videoThumbnail: "/assets/deployed-assets/When Yesterday Slips Past You.png",
+          videoUrl: "https://www.youtube.com/watch?v=1389UDsTs-Y"
+        },
+        {
+          id: 23,
+          category: "Getting Started",
+          duration: "0:38 sec",
+          title: "4. Publishing a Daily Closing",
+          description: '"How do I publish my daily closing?"',
+          badge: "",
+          videoThumbnail: "/assets/deployed-assets/Publishing a Daily Closing.png",
+          videoUrl: "https://www.youtube.com/watch?v=l7zkPbLfjbE"
+        },
+        {
+          id: 24,
+          category: "Getting Started",
+          duration: "0:43 sec",
+          title: "5. Three Words for Three Moments",
+          description: '"Which status should my closing be in?"',
+          badge: "",
+          videoThumbnail: "/assets/deployed-assets/Three Words for Three Moments.png",
+          videoUrl: "https://www.youtube.com/watch?v=osczCj2qFBk"
         },
       ],
     },
