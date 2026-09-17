@@ -168,12 +168,12 @@ real submission is tested.
 | **Grant `Mail.Send` admin consent** | Blocking — nothing sends until this is done |
 | **Test a live submission** | Confirms token flow, permission, and delivery together |
 | **Add env vars to the deploy host** | Production will fail without them |
-| **`.env.example` does not document the Graph vars** | A new developer cloning the repo gets no hint the four variables exist |
-| Rate limiting | None. The endpoint can be POSTed in a loop; the honeypot only stops naive bots |
+| ~~`.env.example` does not document the Graph vars~~ | Done 2026-09-17 — all four are listed with placeholders. |
+| ~~Rate limiting~~ | Done — `src/lib/rate-limit.ts`, three windows (2/min, 5/10 min, 10/hour) applied in the route before the body is read. |
 | Privacy policy link | Still `href="#"` in the form's footer text |
 | Confirmation email to submitter | Not implemented — submitters get no receipt |
-| Automated tests | None for the route or validation logic |
-| `src/components/contact/ContactForm.tsx` | Dead component — despite the name it contains no form and nothing imports it. Candidate for deletion |
+| Automated tests | `e2e/contact.spec.ts` (2026-09-17) covers the form rendering, the browser-side required check, and the route's origin, honeypot and timing rejections — everything short of a real send. Nothing exercises a valid submission, by design. |
+| ~~`src/components/contact/ContactForm.tsx`~~ | Deleted 2026-09-17. |
 
 ---
 
