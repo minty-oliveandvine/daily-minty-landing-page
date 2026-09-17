@@ -31,7 +31,7 @@ export default function ContactHero() {
 
         <div className="absolute left-[5%] top-[80px] hidden lg:block w-[320px]">
             <Image
-            src="/assets/deployed-assets/contact-cat-desk.png"
+            src="/support/contact-cat-desk.png"
             alt="Minty working"
             width={320}
             height={240}

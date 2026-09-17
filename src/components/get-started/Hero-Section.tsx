@@ -45,7 +45,7 @@ export default function HeroSection() {
             <h1 className="text-white text-[28px] sm:text-[32px] md:text-[48px] font-extrabold tracking-tight leading-tight mb-4 flex items-center flex-wrap gap-x-3">
               {hero.title}
               <Image
-                src="/assets/minty-logo.png"
+                src="/brand/minty-logo.png"
                 alt="Minty"
                 width={100}
                 height={60}

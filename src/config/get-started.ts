@@ -17,7 +17,7 @@ export const getStartedContent = {
     primaryBtnHref: "/pricing",
     secondaryBtn: "Log In",
     secondaryBtnHref: "",
-    mascotSrc: "/assets/deployed-assets/minty-mascot-glasses.png",
+    mascotSrc: "/guides/minty-mascot-glasses.png",
   },
   benefits: {
     title: "What will you get from this page?",
@@ -58,7 +58,7 @@ export const getStartedContent = {
         description: "Create Xero organisation to be used in Minty",
         buttonText: "View details",
         buttonHref: "/resources/xero-integration",
-        image: "/assets/deployed-assets/minty_xero.png",
+        image: "/guides/minty-xero.png",
         imageAlt: "The Minty x Xero logo lockup",
       },
     },
@@ -76,7 +76,7 @@ export const getStartedContent = {
           title: "1. Daily Closing : Step by Step Overview",
           description: '"How do I close the day in Minty?"',
           badge: "",
-          videoThumbnail: "/assets/deployed-assets/Daily Closing Step by Step Overview.png",
+          videoThumbnail: "/guides/daily-closing-step-by-step-overview.png",
           videoUrl: "https://www.youtube.com/watch?v=xFKNPOxuYPo"
         },
         {
@@ -86,7 +86,7 @@ export const getStartedContent = {
           title: "2. When the Numbers Don't Agree",
           description: '"My numbers don\'t match - what now?"',
           badge: "",
-          videoThumbnail: "/assets/deployed-assets/When the Numbers Don't Agree.png",
+          videoThumbnail: "/guides/when-the-numbers-dont-agree.png",
           videoUrl: "https://www.youtube.com/watch?v=lgCHne-AhZ8"
         },
         {
@@ -96,7 +96,7 @@ export const getStartedContent = {
           title: "3. When Yesterday Slips Past You",
           description: '"What happens if I miss a day\'s closing?"',
           badge: "",
-          videoThumbnail: "/assets/deployed-assets/When Yesterday Slips Past You.png",
+          videoThumbnail: "/guides/when-yesterday-slips-past-you.png",
           videoUrl: "https://www.youtube.com/watch?v=1389UDsTs-Y"
         },
         {
@@ -106,7 +106,7 @@ export const getStartedContent = {
           title: "4. Publishing a Daily Closing",
           description: '"How do I publish my daily closing?"',
           badge: "",
-          videoThumbnail: "/assets/deployed-assets/Publishing a Daily Closing.png",
+          videoThumbnail: "/guides/publishing-a-daily-closing.png",
           videoUrl: "https://www.youtube.com/watch?v=l7zkPbLfjbE"
         },
         {
@@ -116,7 +116,7 @@ export const getStartedContent = {
           title: "5. Three Words for Three Moments",
           description: '"Which status should my closing be in?"',
           badge: "",
-          videoThumbnail: "/assets/deployed-assets/Three Words for Three Moments.png",
+          videoThumbnail: "/guides/three-words-for-three-moments.png",
           videoUrl: "https://www.youtube.com/watch?v=osczCj2qFBk"
         },
       ],
@@ -135,7 +135,7 @@ export const getStartedContent = {
           title: "1. Request Payment and Keep It on Track",
           description: '"How do I request a payment and track it?"',
           badge: "",
-          videoThumbnail: "/assets/deployed-assets/GS-07-01.png",
+          videoThumbnail: "/guides/GS-07-01.png",
           videoUrl: "https://www.youtube.com/watch?v=KEhW9LWVMFg"
         },
          {
@@ -145,7 +145,7 @@ export const getStartedContent = {
           title: "2. Voiding Incorrect Bills",
           description: '"I raised the wrong bill - how do I cancel it?"',
           badge: "",
-          videoThumbnail: "/assets/deployed-assets/GS-07-03.png",
+          videoThumbnail: "/guides/GS-07-03.png",
           videoUrl: "https://www.youtube.com/watch?v=jjTfSYQAy0E"
         },
       ],
@@ -164,7 +164,7 @@ export const getStartedContent = {
           title: "1. When Xero Comes First",
           description: '"I\'m new to Minty - where should I start?"',
           badge: "",
-          videoThumbnail: "/assets/deployed-assets/GS-02-03.png",
+          videoThumbnail: "/guides/GS-02-03.png",
           videoUrl: "https://www.youtube.com/watch?v=owqwK3zfYho"
         },
         {
@@ -174,7 +174,7 @@ export const getStartedContent = {
           title: "2. Connecting Minty to Xero",
           description: '"How do I connect Minty to Xero?"',
           badge: "",
-          videoThumbnail: "/assets/deployed-assets/Connecting Minty to Xero.png",
+          videoThumbnail: "/guides/connecting-minty-to-xero.png",
           videoUrl: "https://www.youtube.com/watch?v=7CnOOOzlSrU"
         },
         
@@ -183,7 +183,7 @@ export const getStartedContent = {
   ],
   xeroGuide: {
     title: "Connecting and Managing Xero Integration in Minty",
-    videoThumbnail: "/assets/deployed-assets/GS-02-02.png",
+    videoThumbnail: "/guides/GS-02-02.png",
     videoUrl: "https://www.youtube.com/watch?v=7CnOOOzlSrU",
     duration: "1:27",
     videoNote: "IF ANY...",

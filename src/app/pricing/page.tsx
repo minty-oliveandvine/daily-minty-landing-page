@@ -39,7 +39,7 @@ export default function PricingPage() {
       id: 'petty-cash',
       title: 'Petty Cash',
       description: 'Track every dollar in and out of the till — receipts, floats, and daily reconciliation.',
-      illustrationSrc: '/assets/deployed-assets/sub-petty-cash.png',
+      illustrationSrc: '/pricing/sub-petty-cash.png',
       crossedText: 'HKD 280/mo',
       currentPrice: 'Free',
       subText: 'per shop, billed monthly\nSingle service subscription.',
@@ -56,7 +56,7 @@ export default function PricingPage() {
       id: 'bill-payment',
       title: 'Bill Payment',
       description: 'Schedule supplier bills, log payments, and never miss a due date.',
-      illustrationSrc: '/assets/deployed-assets/sub-bill-payment.png', 
+      illustrationSrc: '/pricing/sub-bill-payment.png', 
       crossedText: 'HKD 280/mo',
       currentPrice: 'Free',
       subText: 'per shop, billed monthly\nSingle service subscription.',
@@ -75,7 +75,7 @@ export default function PricingPage() {
       id: 'super-minty',
       title: 'Super Minty',
       description: 'Both services, one bill — add the second for just HKD 120 more.',
-      illustrationSrc: '/assets/deployed-assets/sub-super-minty.png',
+      illustrationSrc: '/pricing/sub-super-minty.png',
       crossedText: 'HKD 400/mo',
       currentPrice: 'Free',
       subText: 'Petty Cash + Bill Payment, billed monthly.',
@@ -112,7 +112,7 @@ export default function PricingPage() {
 
               <div className="lg:col-span-5 flex justify-center md:justify-end md:pr-8 lg:pr-0 lg:absolute lg:right-12 lg:bottom-[-45px] w-full max-w-[200px] md:max-w-[240px] lg:w-[320px] mx-auto lg:mx-0 pointer-events-none z-20">
                 <Image
-                  src="/assets/deployed-assets/minty-hero-cat.png"
+                  src="/pricing/minty-hero-cat.png"
                   alt="Minty Superhero Mascot"
                   width={320}
                   height={320}
