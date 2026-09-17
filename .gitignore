@@ -18,15 +18,25 @@
 
 # misc
 .DS_Store
+Thumbs.db
 *.pem
+.vscode/
+.idea/
+
+# archives - every file inside deployed-assets.zip was already extracted beside it,
+# and a 28 MB zip shipped to the public web root on every deploy until 2026-09-17
+*.zip
+__MACOSX/
 
 # debug
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-# local env files
+# env files - .env.example is the documented template and stays tracked
+.env
 .env*.local
+!.env.example
 
 # vercel
 .vercel
