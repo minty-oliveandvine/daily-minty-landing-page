@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
 import { sendContactEmail, type ContactSubmission } from '@/lib/graph-mailer';
+import { EMAIL_ASCII_HINT, hasNonAsciiEmailChar, isEmail } from '@/lib/email';
 import { check, clientIp } from '@/lib/rate-limit';
 
 export const runtime = 'nodejs';
@@ -58,7 +59,10 @@ function validate(body: Record<string, unknown>): { data?: ContactSubmission; er
   if (!data.name || !data.email || !data.topic || !data.message) {
     return { error: 'Please fill in all required fields.' };
   }
-  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email)) {
+  if (hasNonAsciiEmailChar(data.email)) {
+    return { error: EMAIL_ASCII_HINT };
+  }
+  if (!isEmail(data.email)) {
     return { error: 'Please enter a valid email address.' };
   }
   for (const [key, limit] of Object.entries(MAX_LENGTHS)) {

@@ -3,6 +3,8 @@
 import { useState, useEffect, useCallback, useRef } from 'react';
 import { Mail, MessageSquare, HelpCircle, CheckCircle2 } from 'lucide-react';
 import AnimatedContent from '@/animations/contact/heroanim';
+import { EMAIL_ASCII_HINT } from '@/lib/email';
+import { useEmailInput } from '@/lib/emailInput';
 
 const TOPICS = [
   'Getting started',
@@ -49,6 +51,7 @@ function recordSubmission(timestamps: number[]) {
 export default function ContactFormSection() {
   const [status, setStatus] = useState<Status>('idle');
   const [errorMessage, setErrorMessage] = useState('');
+  const emailInput = useEmailInput();
   const [submissions, setSubmissions] = useState<number[]>([]);
   const [secondsLeft, setSecondsLeft] = useState(0);
   // When the form became fillable — the server rejects implausibly fast submits.
@@ -197,7 +200,10 @@ export default function ContactFormSection() {
             </div>
             <div>
               <label htmlFor="email" className="block text-xs font-bold text-[#113B4A] mb-1.5">Email *</label>
-              <input id="email" name="email" type="email" required maxLength={200} className="w-full bg-[#fbf8f2] p-2.5 md:p-3 rounded-lg md:rounded-xl border border-[#e7ddd0] focus:ring-2 focus:ring-[#e7ddd0]/20 outline-none transition-all text-[13px]" placeholder="you@business.com" />
+              <input id="email" name="email" {...emailInput.props} required maxLength={200} aria-describedby={emailInput.rejected ? 'email-hint' : undefined} className="w-full bg-[#fbf8f2] p-2.5 md:p-3 rounded-lg md:rounded-xl border border-[#e7ddd0] focus:ring-2 focus:ring-[#e7ddd0]/20 outline-none transition-all text-[13px]" placeholder="you@business.com" />
+              {emailInput.rejected && (
+                <p id="email-hint" role="status" className="mt-1.5 text-[12px] text-red-600">{EMAIL_ASCII_HINT}</p>
+              )}
             </div>
           </div>
 

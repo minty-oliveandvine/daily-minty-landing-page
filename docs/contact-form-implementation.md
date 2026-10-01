@@ -76,6 +76,11 @@ Notable choices:
 - Required fields: `name`, `email`, `topic`, `message`. `businessName` is optional.
 - Email checked against a format regex; all fields have length caps (`message` 5000,
   `name` 100, etc.) mirroring the client-side `maxLength` attributes.
+- Email is English only (2026-10-01): a non-ASCII address is a 400, "Email can only contain
+  English letters, numbers and symbols.". The rules are in `src/lib/email.ts`. The form's
+  field uses `useEmailInput` (`src/lib/emailInput.ts`): it is `type="text" inputMode="email"`,
+  and it drops non-ASCII once an IME composition ends and shows the same sentence. The
+  browser's `type="email"` had let Korean through after the "@".
 - **Honeypot:** a hidden `company` field. Real users leave it empty; bots fill it. When
   populated the route returns `{ ok: true }` *without sending* — the bot sees success and
   does not retry.
