@@ -1,0 +1,23 @@
+# Types, lint, a production build and the browser specs. The workflow body is shared:
+# minty-oliveandvine/.github -> .github/workflows/next-web.yml
+#
+# This is the one repo whose playwright.config.ts starts its own server and needs no backend and
+# no database, so its specs run here rather than in Minty's stack job. contact.spec.ts never
+# sends a valid message, so no mail leaves CI.
+#
+# Branch names are this repo's own (master / Newlandingpages), not the main / development the
+# other repos use. They line up when the landing page is renamed and repointed (Part 3 step 4).
+name: ci
+
+on:
+  push:
+    branches: [master, Newlandingpages]
+  pull_request:
+
+jobs:
+  check:
+    uses: minty-oliveandvine/.github/.github/workflows/next-web.yml@v1
+    with:
+      typecheck-script: type-check
+      unit-tests: false
+      e2e: true
