@@ -1,12 +1,47 @@
+// The owner's canonical curriculum code, e.g. "GS-07-02". It is the ONLY key: React key,
+// open-state key, and the DOM id (#guide-GS-07-02) that deep links and the e2e order test use.
+// Because GS-xx-yy sorts lexicographically into curriculum order, "rendered order == sorted
+// order" is a one-line assertion - which is what stops the list drifting out of order again.
 export interface GuideItem {
-  id: number;
-  category: string;
-  duration: string;
+  code: string;
+  title: string;
+  /** The question a first-timer would actually ask. Omit to render no subline. */
+  question?: string;
+  /** mm:ss, read from the video itself. Absent while a guide is still unfilmed. */
+  duration?: string;
+  /** "" = scripted but not yet filmed; renders as a non-interactive "Coming soon" row. */
+  videoUrl: string;
+}
+
+export interface GuideCallout {
   title: string;
   description: string;
-  badge: string;
-  videoThumbnail: string;
-  videoUrl: string;
+  buttonText: string;
+  buttonHref: string;
+  image: string;
+  imageAlt: string;
+}
+
+export interface GuideGroup {
+  /** The module code, "GS-00" ... "GS-08". */
+  code: string;
+  /** Anchor target for the desktop rail, e.g. "module-xero". */
+  slug: string;
+  eyebrow: string;
+  title: string;
+  subtitle: string;
+  items: GuideItem[];
+  /** A full-width band rendered directly after this group. */
+  callout?: GuideCallout;
+  /** Tailwind background class. Only the banner group sets one; the list itself is white. */
+  background?: string;
+}
+
+/** "GS-07-02" -> { module: 7, step: 2 }. Throws rather than silently mis-numbering a row. */
+export function parseGuideCode(code: string): { module: number; step: number } {
+  const m = /^GS-(\d{2})-(\d{2})$/.exec(code);
+  if (!m) throw new Error(`Malformed guide code: "${code}" (expected GS-nn-nn)`);
+  return { module: Number(m[1]), step: Number(m[2]) };
 }
 
 export const getStartedContent = {
@@ -17,7 +52,7 @@ export const getStartedContent = {
     primaryBtnHref: "/pricing",
     secondaryBtn: "Log In",
     secondaryBtnHref: "",
-    mascotSrc: "/guides/minty-mascot-glasses.png",
+    mascotSrc: "/guides/minty-mascot-glasses.webp",
   },
   benefits: {
     title: "What will you get from this page?",
@@ -36,154 +71,236 @@ export const getStartedContent = {
       }
     ]
   },
-  // Guides are grouped by module. Each group renders as its own band with its
-  // own background colour; `eyebrow` is the dark prefix before the teal title,
-  // and a group with no eyebrow/subtitle shows just its title (see login-otp).
+  // The guide curriculum. The order here IS the order on the page, and it is the owner
+  // canonical GS-xx-yy sequence - do not reorder without moving the codes with it.
   //
-  // NOTE: ids must stay unique across ALL groups — the player keys its open
-  // state off them. Next free id: 25.
+  // Numbering is DERIVED, never typed: the step comes from the code (parseGuideCode) and
+  // the module number from the group's position among groups that have items. That is
+  // deliberate - the numbers used to live inside the title strings ("1. Daily Closing ..."),
+  // which is how the list silently drifted out of order. e2e/learning.spec.ts pins it now.
+  //
+  // There is no GS-06 in the owner's list. Because module numbers are positional, the gap
+  // is invisible to visitors and a future GS-06 renumbers everything for free.
   guideGroups: [
     {
-      id: "login-otp",
+      // Not a module: the title-only banner that opens the page, kept exactly as it was.
+      code: "banner-login-otp",
+      slug: "login-otp",
       eyebrow: "",
       title: "Login to Minty with OTP",
       subtitle: "Get started instantly with a simple one-time password login.",
-      // The original benefits band's tint.
       background: "bg-[#f3f9f7]",
-      // Empty on purpose — this band is a title-only banner, no guide cards.
-      items: [] as GuideItem[],
-      // Rendered as a full-width band directly after this group.
+      items: [],
+      // Rendered as a full-width band directly after this banner.
       callout: {
         title: "Xero Integration",
         description: "Create Xero organisation to be used in Minty",
         buttonText: "View details",
         buttonHref: "/resources/xero-integration",
-        image: "/guides/minty-xero.png",
+        image: "/guides/minty-xero.webp",
         imageAlt: "The Minty x Xero logo lockup",
       },
     },
     {
-      id: "petty-cash",
-      eyebrow: "Guides for",
-      title: "Petty Cash Module",
-      subtitle: "Short, practical tutorials to help you master Minty step by step.",
-      background: "bg-[#FBF7F0]",
+      code: "GS-00",
+      slug: "module-basics",
+      eyebrow: "Start with",
+      title: "The Basics",
+      subtitle: "What Minty is, and the first thing you\'ll create.",
       items: [
         {
-          id: 20,
-          category: "Getting Started",
-          duration: "1:01 min",
-          title: "1. Daily Closing : Step by Step Overview",
-          description: '"How do I close the day in Minty?"',
-          badge: "",
-          videoThumbnail: "/guides/daily-closing-step-by-step-overview.png",
-          videoUrl: "https://www.youtube.com/watch?v=xFKNPOxuYPo"
+          code: "GS-00-01",
+          title: "What is Minty?",
+          question: '"What does Minty actually do for me?"',
+          duration: "0:39",
+          videoUrl: "https://www.youtube.com/watch?v=muOqcQ-_pRc",
         },
         {
-          id: 21,
-          category: "Getting Started",
-          duration: "0:48 sec",
-          title: "2. When the Numbers Don't Agree",
-          description: '"My numbers don\'t match - what now?"',
-          badge: "",
-          videoThumbnail: "/guides/when-the-numbers-dont-agree.png",
-          videoUrl: "https://www.youtube.com/watch?v=lgCHne-AhZ8"
-        },
-        {
-          id: 22,
-          category: "Getting Started",
-          duration: "0:41 sec",
-          title: "3. When Yesterday Slips Past You",
-          description: '"What happens if I miss a day\'s closing?"',
-          badge: "",
-          videoThumbnail: "/guides/when-yesterday-slips-past-you.png",
-          videoUrl: "https://www.youtube.com/watch?v=1389UDsTs-Y"
-        },
-        {
-          id: 23,
-          category: "Getting Started",
-          duration: "0:38 sec",
-          title: "4. Publishing a Daily Closing",
-          description: '"How do I publish my daily closing?"',
-          badge: "",
-          videoThumbnail: "/guides/publishing-a-daily-closing.png",
-          videoUrl: "https://www.youtube.com/watch?v=l7zkPbLfjbE"
-        },
-        {
-          id: 24,
-          category: "Getting Started",
-          duration: "0:43 sec",
-          title: "5. Three Words for Three Moments",
-          description: '"Which status should my closing be in?"',
-          badge: "",
-          videoThumbnail: "/guides/three-words-for-three-moments.png",
-          videoUrl: "https://www.youtube.com/watch?v=osczCj2qFBk"
+          code: "GS-00-02",
+          title: "Creating Your First Entity",
+          question: '"What\'s an entity, and how do I make one?"',
+          duration: "1:23",
+          videoUrl: "https://www.youtube.com/watch?v=8H5d3HPMVOo",
         },
       ],
     },
     {
-      id: "payment-request",
+      code: "GS-01",
+      slug: "module-store",
       eyebrow: "Guides for",
-      title: "Payment Request Module",
-      subtitle: "Short, practical tutorials to help you master Minty step by step.",
-      background: "bg-white",
+      title: "Your Store Setup",
+      subtitle: "One store, one entity - then make Minty look like yours.",
       items: [
         {
-          id: 4,
-          category: "Getting Started",
-          duration: "0:43 sec",
-          title: "1. Request Payment and Keep It on Track",
-          description: '"How do I request a payment and track it?"',
-          badge: "",
-          videoThumbnail: "/guides/GS-07-01.png",
-          videoUrl: "https://www.youtube.com/watch?v=KEhW9LWVMFg"
+          code: "GS-01-01",
+          title: "One Store, One Entity: Master Your Daily Closing by Store",
+          question: '"I have more than one shop - how do I keep them apart?"',
+          duration: "0:30",
+          videoUrl: "https://www.youtube.com/watch?v=wVT0_64OW8I",
         },
-         {
-          id: 5,
-          category: "Getting Started",
-          duration: "0:34 sec",
-          title: "2. Voiding Incorrect Bills",
-          description: '"I raised the wrong bill - how do I cancel it?"',
-          badge: "",
-          videoThumbnail: "/guides/GS-07-03.png",
-          videoUrl: "https://www.youtube.com/watch?v=jjTfSYQAy0E"
+        {
+          code: "GS-01-02",
+          title: "Making Minty Look Like Your Store",
+          question: '"Can I set this up the way my shop actually works?"',
+          duration: "0:39",
+          videoUrl: "https://www.youtube.com/watch?v=ybS1Q_SY3gA",
         },
       ],
     },
     {
-      id: "settings",
+      code: "GS-02",
+      slug: "module-xero",
       eyebrow: "Guides for",
       title: "Xero Settings",
-      subtitle: "Short, practical tutorials to help you master Minty step by step.",
-      background: "bg-[#F1F6F8]",
+      subtitle: "Why the connection matters, and how to make it.",
       items: [
         {
-          id: 1,
-          category: "Getting Started",
-          duration: "0:43 sec",
-          title: "1. When Xero Comes First",
-          description: '"I\'m new to Minty - where should I start?"',
-          badge: "",
-          videoThumbnail: "/guides/GS-02-03.png",
-          videoUrl: "https://www.youtube.com/watch?v=owqwK3zfYho"
+          code: "GS-02-01",
+          title: "Why Minty Connects to Xero",
+          question: '"Do I really need to connect Xero?"',
+          duration: "0:32",
+          videoUrl: "https://www.youtube.com/watch?v=lPe_kCPhDpQ",
         },
         {
-          id: 2,
-          category: "Getting Started",
-          duration: "1:27 min",
-          title: "2. Connecting Minty to Xero",
-          description: '"How do I connect Minty to Xero?"',
-          badge: "",
-          videoThumbnail: "/guides/connecting-minty-to-xero.png",
-          videoUrl: "https://www.youtube.com/watch?v=7CnOOOzlSrU"
+          code: "GS-02-02",
+          title: "Connecting Minty to Xero",
+          question: '"How do I connect Minty to Xero?"',
+          duration: "1:27",
+          videoUrl: "https://www.youtube.com/watch?v=7CnOOOzlSrU",
         },
-        
+        {
+          code: "GS-02-03",
+          title: "When Xero Comes First",
+          question: '"I\'m new to Minty - where should I start?"',
+          duration: "0:43",
+          videoUrl: "https://www.youtube.com/watch?v=owqwK3zfYho",
+        },
       ],
     },
-  ],
+    {
+      code: "GS-03",
+      slug: "module-closing",
+      eyebrow: "Guides for",
+      title: "Your Daily Closing",
+      subtitle: "The whole flow first, then the same thing step by step.",
+      items: [
+        {
+          code: "GS-03-01",
+          title: "The Daily Closing Flow, Explained",
+          question: '"What happens when I close the day?"',
+          duration: "0:30",
+          videoUrl: "https://www.youtube.com/watch?v=nkjrKpBXWVo",
+        },
+        {
+          code: "GS-03-02",
+          title: "Daily Closing: Step by Step Overview",
+          question: '"How do I close the day in Minty?"',
+          duration: "1:00",
+          videoUrl: "https://www.youtube.com/watch?v=xFKNPOxuYPo",
+        },
+      ],
+    },
+    {
+      code: "GS-04",
+      slug: "module-mismatches",
+      eyebrow: "Guides for",
+      title: "When Things Don\'t Add Up",
+      subtitle: "Numbers that disagree, and days that slipped past you.",
+      items: [
+        {
+          code: "GS-04-01",
+          title: "When the Numbers Don\'t Agree",
+          question: '"My numbers don\'t match - what now?"',
+          duration: "0:47",
+          videoUrl: "https://www.youtube.com/watch?v=lgCHne-AhZ8",
+        },
+        {
+          code: "GS-04-02",
+          title: "When Yesterday Slips Past You",
+          question: '"What happens if I miss a day\'s closing?"',
+          duration: "0:41",
+          videoUrl: "https://www.youtube.com/watch?v=1389UDsTs-Y",
+        },
+      ],
+    },
+    {
+      code: "GS-05",
+      slug: "module-publishing",
+      eyebrow: "Guides for",
+      title: "Publishing and Status",
+      subtitle: "Send the day across, and know which status it\'s in.",
+      items: [
+        {
+          code: "GS-05-01",
+          title: "Publishing a Daily Closing",
+          question: '"How do I publish my daily closing?"',
+          duration: "0:37",
+          videoUrl: "https://www.youtube.com/watch?v=l7zkPbLfjbE",
+        },
+        {
+          code: "GS-05-02",
+          title: "Three Words for Three Moments",
+          question: '"Which status should my closing be in?"',
+          duration: "0:42",
+          videoUrl: "https://www.youtube.com/watch?v=osczCj2qFBk",
+        },
+      ],
+    },
+    {
+      code: "GS-07",
+      slug: "module-payments",
+      eyebrow: "Guides for",
+      title: "Payment Requests",
+      subtitle: "Request it, record it, and cancel it when it\'s wrong.",
+      items: [
+        {
+          code: "GS-07-01",
+          title: "Request Payment and Keep It on Track",
+          question: '"How do I request a payment and track it?"',
+          duration: "0:44",
+          videoUrl: "https://www.youtube.com/watch?v=KEhW9LWVMFg",
+        },
+        {
+          code: "GS-07-02",
+          title: "Record Your Payment, Full / Partial",
+          question: '"They only paid half - how do I record that?"',
+          duration: "1:34",
+          videoUrl: "https://www.youtube.com/watch?v=KEGGLKFz_Pw",
+        },
+        {
+          code: "GS-07-03",
+          title: "Voiding Incorrect Bills",
+          question: '"I raised the wrong bill - how do I cancel it?"',
+          duration: "0:35",
+          videoUrl: "https://www.youtube.com/watch?v=jjTfSYQAy0E",
+        },
+      ],
+    },
+    {
+      code: "GS-08",
+      slug: "module-team",
+      eyebrow: "Coming soon:",
+      title: "Your Team",
+      subtitle: "Roles, and the people who help you close. Both of these are in production.",
+      items: [
+        {
+          code: "GS-08-01",
+          title: "Understanding User Roles in Minty",
+          question: '"Who on my team can see and do what?"',
+          videoUrl: "",
+        },
+        {
+          code: "GS-08-02",
+          title: "Adding the People Who Help You Close",
+          question: '"How do I invite my staff?"',
+          videoUrl: "",
+        },
+      ],
+    },
+  ] as GuideGroup[],
   xeroGuide: {
     title: "Connecting and Managing Xero Integration in Minty",
-    videoThumbnail: "/guides/GS-02-02.png",
+    videoThumbnail: "/guides/GS-02-02.webp",
     videoUrl: "https://www.youtube.com/watch?v=7CnOOOzlSrU",
     duration: "1:27",
     videoNote: "IF ANY...",
@@ -282,3 +399,26 @@ faqSection: {
     ]
   }
 };
+
+// Fail loudly on a malformed curriculum, but only in development: this module is imported by a
+// 'use client' component, so throwing in production would white-screen the page for a visitor
+// over a typo. In dev it surfaces the moment you save.
+if (process.env.NODE_ENV !== "production") {
+  const seen = new Set<string>();
+  for (const group of getStartedContent.guideGroups) {
+    for (const item of group.items) {
+      parseGuideCode(item.code);
+      if (!item.code.startsWith(`${group.code}-`)) {
+        throw new Error(`${item.code} is filed under group ${group.code}`);
+      }
+      if (seen.has(item.code)) throw new Error(`Duplicate guide code ${item.code}`);
+      seen.add(item.code);
+      if (item.videoUrl && !item.duration) {
+        throw new Error(`${item.code} has a video but no duration`);
+      }
+      if (!item.videoUrl && item.duration) {
+        throw new Error(`${item.code} has a duration but no video`);
+      }
+    }
+  }
+}

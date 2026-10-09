@@ -20,7 +20,11 @@ export const siteConfig = {
     'https://forms.clickup.com/9008167462/f/8ceveh6-19038/4A7KI514BG030HAP22',
   contactEmail:
     process.env.NEXT_PUBLIC_CONTACT_EMAIL || 'hello@dailyminty.com',
-  ogImage: '/assets/og-image.png',
+  // The social preview card (og:image / twitter:image). This pointed at /assets/og-image.png,
+  // a folder that has never existed, so every shared link rendered with no picture. Stopgap:
+  // an illustration we actually have, which crops acceptably to the 1200x630 most platforms
+  // use. Replace with a purpose-made 1200x630 card when one exists - it is a one-line change.
+  ogImage: '/landing/hero-cat-laptop-phone.webp',
   keywords: [
     'daily cash close',
     'petty cash app',

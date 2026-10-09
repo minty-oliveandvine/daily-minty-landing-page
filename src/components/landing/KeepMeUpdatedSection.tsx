@@ -61,7 +61,6 @@ export default function KeepMeUpdatedSection() {
             width={2372}
             height={1778}
             sizes="(min-width: 1024px) 620px, 100vw"
-            quality={100}
             className="block h-auto w-full"
           />
         </div>

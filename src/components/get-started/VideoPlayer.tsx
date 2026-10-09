@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useRef, useEffect, type ReactNode } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import Image from 'next/image';
 import { cn } from '@/lib/utils';
 import { VolumeX, Clock } from 'lucide-react';
@@ -50,8 +50,6 @@ interface VideoPlayerProps {
   collapsedWidth?: string;
   /** Poster aspect ratio; the playing frame is always 16/9. */
   posterAspect?: string;
-  /** Rendered on top of the poster, e.g. a category badge. */
-  posterOverlay?: ReactNode;
   /** Shown bottom-right of the poster, e.g. "4:13". Hidden when empty. */
   duration?: string;
   /** Set false when the surrounding card supplies its own close control. */
@@ -74,7 +72,6 @@ export default function VideoPlayer({
   onPlayingChange,
   collapsedWidth = 'max-w-[460px]',
   posterAspect = 'aspect-[16/9]',
-  posterOverlay,
   duration,
   showClose = true,
   scrollOnPlay = true,
@@ -179,7 +176,6 @@ export default function VideoPlayer({
               // picks a srcset entry for the whole viewport — soft on a poster
               // that is really ~880px. quality 100 avoids extra recompression.
               sizes="(min-width: 1024px) 880px, 100vw"
-              quality={100}
               className="object-cover transition-transform duration-300 group-hover:scale-[1.02]"
             />
           ) : (
@@ -188,8 +184,6 @@ export default function VideoPlayer({
               style={{ backgroundImage: `url('${poster}')` }}
             />
           )}
-
-          {posterOverlay}
 
           <div className="absolute inset-0 bg-black/5 flex items-center justify-center transition-colors group-hover:bg-black/10">
             <div className="w-14 h-14 bg-white/90 rounded-full flex items-center justify-center shadow-md backdrop-blur-xs transform transition-transform group-hover:scale-110">

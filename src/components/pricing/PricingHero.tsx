@@ -45,7 +45,7 @@ export default function PricingHero() {
             lg:max-w-[720px]
             ">
             <Image
-                src="/pricing/minty-hero-cat.png"
+                src="/pricing/minty-hero-cat.webp"
                 alt="Minty Superhero Mascot"
                 width={720}
                 height={720}

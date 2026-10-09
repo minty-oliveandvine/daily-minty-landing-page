@@ -33,6 +33,9 @@ const config: Config = {
           DEFAULT: '#0f2d3a',
           soft:    '#2c4754',
           muted:   '#6b8088',
+          // The guide list's heading navy. Was written as the literal #113B4A in a dozen
+          // places; same value, so nothing shifts a pixel.
+          deep:    '#113B4A',
         },
         line: {
           DEFAULT: '#e7ddd0',

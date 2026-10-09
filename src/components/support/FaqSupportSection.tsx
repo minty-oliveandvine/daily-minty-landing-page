@@ -33,7 +33,7 @@ export default function FAQSupportSection() {
 
         <div className="hidden md:flex flex-shrink-0 z-10 w-[200px] md:w-[260px] md:mr-4 lg:mr-6">
           <Image
-            src="/support/minty-mascot-chat.png"
+            src="/support/minty-mascot-chat.webp"
             alt="Minty Waving Mascot"
             width={260}
             height={260}

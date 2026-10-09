@@ -39,7 +39,7 @@ export default function FAQHero() {
           </div>
 
           <Image
-            src="/support/faq-professor-cat.png"
+            src="/support/faq-professor-cat.webp"
             alt="Minty Teacher Mascot"
             width={420}
             height={280}

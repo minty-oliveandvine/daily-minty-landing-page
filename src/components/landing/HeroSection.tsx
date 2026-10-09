@@ -73,7 +73,6 @@ export default function HeroSection() {
             width={1920}
             height={1080}
             sizes="(min-width: 1440px) 835px, (min-width: 768px) 60vw, 100vw"
-            quality={100}
             priority
             className="w-full max-w-[400px] md:max-w-[820px] h-auto object-contain"
           />

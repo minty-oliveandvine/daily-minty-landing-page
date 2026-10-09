@@ -28,7 +28,6 @@ export default function ProblemSection() {
                 width={2048}
                 height={2048}
                 sizes="(min-width: 1440px) 672px, (min-width: 768px) 50vw, 100vw"
-                quality={100}
                 className="w-full h-full object-cover object-[center_75%]"
               />
             </div>

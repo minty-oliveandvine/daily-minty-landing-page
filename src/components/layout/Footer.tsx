@@ -95,7 +95,7 @@ export default function Footer() {
         <div className="flex flex-col md:flex-row gap-[18px] items-center text-ink-muted text-[12px] md:text-[13px]">
           <Link href="/" aria-label="Daily Minty home" className="inline-flex items-center">
             <Image
-              src="/brand/minty-logo-v2.png"
+              src="/brand/minty-logo-v2.webp"
               alt=""
               width={100}
               height={60}
