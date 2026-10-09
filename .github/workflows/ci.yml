@@ -5,13 +5,14 @@
 # no database, so its specs run here rather than in Minty's stack job. contact.spec.ts never
 # sends a valid message, so no mail leaves CI.
 #
-# Branch names are this repo's own (master / Newlandingpages), not the main / development the
-# other repos use. They line up when the landing page is renamed and repointed (Part 3 step 4).
+# On the main / development convention since 2026-10-09, like every other repo: `master` was
+# renamed to `main` on GitHub (so the old trigger matched no ref at all) and `development` now
+# carries the work. `Newlandingpages` stays until main is fast-forwarded onto it, then goes.
 name: ci
 
 on:
   push:
-    branches: [master, Newlandingpages]
+    branches: [main, development]
   pull_request:
 
 jobs:
