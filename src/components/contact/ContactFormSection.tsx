@@ -195,12 +195,12 @@ export default function ContactFormSection() {
         <form className="space-y-4 md:space-y-5" onSubmit={handleSubmit}>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-5">
             <div>
-              <label htmlFor="name" className="block text-xs font-bold text-[#113B4A] mb-1.5">Your name *</label>
-              <input id="name" name="name" required maxLength={100} className="w-full bg-[#fbf8f2] p-2.5 md:p-3 rounded-lg md:rounded-xl border border-[#e7ddd0] focus:ring-2 focus:ring-[#e7ddd0]/20 outline-none transition-all text-[13px]" placeholder="minty" />
+              <label htmlFor="name" className="block text-xs font-bold text-[#113B4A] mb-1.5">Your name<span className="text-red-500" aria-hidden> *</span></label>
+              <input id="name" name="name" required maxLength={100} className="w-full bg-[#fbf8f2] p-2.5 md:p-3 rounded-lg md:rounded-xl border border-[#e7ddd0] [&:user-invalid]:border-red-500 [&:user-invalid]:focus:ring-red-200/40 focus:ring-2 focus:ring-[#e7ddd0]/20 outline-none transition-all text-[13px]" placeholder="minty" />
             </div>
             <div>
-              <label htmlFor="email" className="block text-xs font-bold text-[#113B4A] mb-1.5">Email *</label>
-              <input id="email" name="email" {...emailInput.props} required maxLength={200} aria-describedby={emailInput.rejected ? 'email-hint' : undefined} className="w-full bg-[#fbf8f2] p-2.5 md:p-3 rounded-lg md:rounded-xl border border-[#e7ddd0] focus:ring-2 focus:ring-[#e7ddd0]/20 outline-none transition-all text-[13px]" placeholder="you@business.com" />
+              <label htmlFor="email" className="block text-xs font-bold text-[#113B4A] mb-1.5">Email<span className="text-red-500" aria-hidden> *</span></label>
+              <input id="email" name="email" {...emailInput.props} required maxLength={200} aria-describedby={emailInput.rejected ? 'email-hint' : undefined} className="w-full bg-[#fbf8f2] p-2.5 md:p-3 rounded-lg md:rounded-xl border border-[#e7ddd0] [&:user-invalid]:border-red-500 [&:user-invalid]:focus:ring-red-200/40 focus:ring-2 focus:ring-[#e7ddd0]/20 outline-none transition-all text-[13px]" placeholder="you@business.com" />
               {emailInput.rejected && (
                 <p id="email-hint" role="status" className="mt-1.5 text-[12px] text-red-600">{EMAIL_ASCII_HINT}</p>
               )}
@@ -214,8 +214,8 @@ export default function ContactFormSection() {
               </div>
 
               <div>
-                <label htmlFor="topic" className="block text-xs font-bold text-[#113B4A] mb-1.5">Topic *</label>
-                <select id="topic" name="topic" required defaultValue="" className="w-full bg-[#fbf8f2] p-2.5 md:p-3 rounded-lg md:rounded-xl border border-[#e7ddd0] text-[#4A7280] focus:ring-2 focus:ring-[#e7ddd0]/20 outline-none transition-all appearance-none text-[13px]">
+                <label htmlFor="topic" className="block text-xs font-bold text-[#113B4A] mb-1.5">Topic<span className="text-red-500" aria-hidden> *</span></label>
+                <select id="topic" name="topic" required defaultValue="" className="w-full bg-[#fbf8f2] p-2.5 md:p-3 rounded-lg md:rounded-xl border border-[#e7ddd0] [&:user-invalid]:border-red-500 [&:user-invalid]:focus:ring-red-200/40 text-[#4A7280] focus:ring-2 focus:ring-[#e7ddd0]/20 outline-none transition-all appearance-none text-[13px]">
                   <option value="" disabled>Pick one..</option>
                   {TOPICS.map((topic) => (
                     <option key={topic} value={topic}>{topic}</option>
@@ -225,8 +225,8 @@ export default function ContactFormSection() {
           </div>
 
           <div>
-            <label htmlFor="message" className="block text-xs font-bold text-[#113B4A] mb-1.5">How can we help? *</label>
-            <textarea id="message" name="message" required maxLength={5000} className="w-full bg-[#fbf8f2] p-2.5 md:p-4 rounded-lg md:rounded-xl border border-[#e7ddd0] focus:ring-2 focus:ring-[#e7ddd0]/20 outline-none transition-all resize-none text-[13px]" rows={4} placeholder="Tell us a bit about..." />
+            <label htmlFor="message" className="block text-xs font-bold text-[#113B4A] mb-1.5">How can we help?<span className="text-red-500" aria-hidden> *</span></label>
+            <textarea id="message" name="message" required maxLength={5000} className="w-full bg-[#fbf8f2] p-2.5 md:p-4 rounded-lg md:rounded-xl border border-[#e7ddd0] [&:user-invalid]:border-red-500 [&:user-invalid]:focus:ring-red-200/40 focus:ring-2 focus:ring-[#e7ddd0]/20 outline-none transition-all resize-none text-[13px]" rows={4} placeholder="Tell us a bit about..." />
           </div>
 
           {/* Honeypot — hidden from users, catches bots that fill every field */}

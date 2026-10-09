@@ -98,6 +98,15 @@ Converted to a client component (`'use client'`) with a four-state machine:
 - Errors render in an inline banner above the button; the user's input is preserved.
 - The **Topic** dropdown was populated with five options, defined in the `TOPICS` array at
   the top of the file. Edit that array to change them.
+- **Required marks (2026-10-09).** All four mandatory labels already *said* `*`, but it was
+  plain text inside the label, so it inherited the label's dark ink `#113B4A` and did not read
+  as a requirement at all. The asterisk now lives in its own
+  `<span className="text-red-500" aria-hidden> *</span>` — red, and hidden from screen readers,
+  which hear the native `required` instead. `Business name` stays unmarked; it is optional.
+  The four controls also gained `[&:user-invalid]:border-red-500`: an arbitrary variant rather
+  than `invalid:`, because `:invalid` matches an empty required field on arrival and would
+  paint an untouched form red, while `:user-invalid` waits for an interaction or a refused
+  submit. The form is not `noValidate`, so the browser does the refusing.
 - Added `id`/`name`/`htmlFor` pairs and `required`/`maxLength` attributes throughout —
   these were previously absent, so the fields were also not accessible to screen readers.
 
